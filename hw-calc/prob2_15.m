@@ -1,4 +1,4 @@
-% This is the calculation code for problem 2.15 of the RBE500 textbook (HW 1)
+% Calculation code for problem 2.15 of the RBE500 textbook (HW 1)
 
 clear; close all; clc;
 
