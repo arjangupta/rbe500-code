@@ -20,7 +20,8 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'talker = homework1.hw1_publisher:main'
+            'talker = homework1.hw1_publisher:main',
+            'listener = homework1.hw1_subscriber:main'
         ],
     },
 )
