@@ -14,8 +14,11 @@ class Homework1Subscriber(Node):
         self.subscription = self.create_subscription(Int32,'homework1_topic',self.listener_callback,25)
         self.subscription  # prevent unused variable warning
 
+    def even_or_odd(self, num):
+        return 'even' if num % 2 == 0 else 'odd'
+
     def listener_callback(self, msg):
-        self.get_logger().info('I received: "%d". It is an even/odd number' % msg.data)
+        self.get_logger().info(f'I received: {msg.data} It is an {self.even_or_odd(msg.data)} number')
 
 # This function runs the subscriber
 def main():
