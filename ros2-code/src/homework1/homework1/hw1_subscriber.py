@@ -11,7 +11,7 @@ class Homework1Subscriber(Node):
 
     def __init__(self):
         super().__init__('homework1_subscriber')
-        self.subscription = self.create_subscription(Int32,'homwork1_topic',self.listener_callback,25)
+        self.subscription = self.create_subscription(Int32,'homework1_topic',self.listener_callback,25)
         self.subscription  # prevent unused variable warning
 
     def listener_callback(self, msg):
