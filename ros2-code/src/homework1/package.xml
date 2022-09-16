@@ -3,9 +3,12 @@
 <package format="3">
   <name>homework1</name>
   <version>0.0.0</version>
-  <description>TODO: Package description</description>
-  <maintainer email="arjangupta95@gmail.com">arjan</maintainer>
-  <license>TODO: License declaration</license>
+  <description>HW 1 assignment for RBE500</description>
+  <maintainer email="agupta11@wpi.edu">Arjan Gupta</maintainer>
+  <license>Property of Worcester Polytechnic Institute</license>
+
+  <exec_depend>rclpy</exec_depend>
+  <exec_depend>std_msgs</exec_depend>
 
   <test_depend>ament_copyright</test_depend>
   <test_depend>ament_flake8</test_depend>

@@ -13,13 +13,14 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='arjan',
-    maintainer_email='arjangupta95@gmail.com',
-    description='TODO: Package description',
-    license='TODO: License declaration',
+    maintainer='Arjan Gupta',
+    maintainer_email='agupta11@wpi.edu',
+    description='HW 1 assignment for RBE500',
+    license='Property of Worcester Polytechnic Institute',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'talker = homework1.hw1_publisher:main'
         ],
     },
 )
