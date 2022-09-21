@@ -1,14 +1,15 @@
 import rclpy
 import rclpy.node
-import std_msgs # (TODO: remove this comment) for using Float32MultiArray.msg
+import std_msgs.msg
 
 class EulerToQuat(rclpy.node.Node):
     def __init__(self) -> None:
         super().__init__('euler_to_quat')
         self.subscription = self.create_subscription(
-            std_msgs.msg.Float32MultiArray.msg,
+            std_msgs.msg.Float32MultiArray,
             'euler_to_quat_topic',
-            self.subscription_callback)
+            self.subscription_callback,
+            15)
 
     def subscription_callback(self, msg):
         print("Hi, this is the euler_to_quat package!")
