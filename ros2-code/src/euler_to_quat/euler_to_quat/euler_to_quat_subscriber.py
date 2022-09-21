@@ -12,7 +12,7 @@ class EulerToQuat(rclpy.node.Node):
             15)
 
     def subscription_callback(self, msg):
-        print("Hi, this is the euler_to_quat package!")
+        print(f"Received: {msg.data}")
 
 
 def main():
