@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'listener = euler_to_quat.euler_to_quat_subscriber:main'
         ],
     },
 )
