@@ -1,4 +1,5 @@
 import rclpy
+import rclpy.node
 import std_msgs # (TODO: remove this comment) for using Float32MultiArray.msg
 
 class EulerToQuat(rclpy.node.Node):
