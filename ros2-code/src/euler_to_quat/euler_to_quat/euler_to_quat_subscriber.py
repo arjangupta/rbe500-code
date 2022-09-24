@@ -33,10 +33,15 @@ class EulerToQuat(rclpy.node.Node):
         return {'w': w, 'x': x, 'y': y, 'z': z}
 
     def subscription_callback(self, msg):
+        # Check input
+        if len(msg.data) != 3:
+            print("\nYou have not provided 3 angles to this subscriber. No conversion has been done.")
+            return
+        # Extract data from message
         psi   = msg.data[0]
         theta = msg.data[1]
         phi   = msg.data[2]
-        print("\n\n-----------------------------------------------")
+        print("\n-----------------------------------------------")
         print(f"Received, psi: {psi}, theta: {theta}, phi: {phi}\n")
         quaternion = self.convert_euler_to_quat(psi, theta, phi)
         print(f"Converted to quaternion, w: {quaternion['w']}, x: {quaternion['x']}, y: {quaternion['y']}, z: {quaternion['z']}")
