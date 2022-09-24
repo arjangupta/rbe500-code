@@ -36,11 +36,11 @@ class EulerToQuat(rclpy.node.Node):
         psi   = msg.data[0]
         theta = msg.data[1]
         phi   = msg.data[2]
-        print("\n\n---------------------")
+        print("\n\n-----------------------------------------------")
         print(f"Received, psi: {psi}, theta: {theta}, phi: {phi}\n")
         quaternion = self.convert_euler_to_quat(psi, theta, phi)
         print(f"Converted to quaternion, w: {quaternion['w']}, x: {quaternion['x']}, y: {quaternion['y']}, z: {quaternion['z']}")
-        print("-------------------------")
+        print("-----------------------------------------------")
 
 
 def main():
