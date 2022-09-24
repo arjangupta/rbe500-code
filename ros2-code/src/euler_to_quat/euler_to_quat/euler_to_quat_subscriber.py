@@ -26,13 +26,21 @@ class EulerToQuat(rclpy.node.Node):
 
         # Get the quaternion coordinates
         w = (cos_half_phi * cos_half_theta * cos_half_psi) + (sin_half_phi * sin_half_theta * sin_half_psi)
+        x = (sin_half_phi * cos_half_theta * cos_half_psi) - (cos_half_phi * sin_half_theta * sin_half_psi)
+        y = (cos_half_phi * sin_half_theta * cos_half_psi) + (sin_half_phi * cos_half_theta * sin_half_psi)
+        z = (cos_half_phi * cos_half_theta * sin_half_psi) - (sin_half_phi * sin_half_theta * cos_half_psi)
+
+        return {'w': w, 'x': x, 'y': y, 'z': z}
 
     def subscription_callback(self, msg):
         psi   = msg.data[0]
         theta = msg.data[1]
         phi   = msg.data[2]
-        print(f"Received, psi: {psi}, theta: {theta}, phi: {phi}")
-        print(f"Converted to quaternion, w: {self.convert_euler_to_quat(psi, theta, phi)}")
+        print("\n\n---------------------")
+        print(f"Received, psi: {psi}, theta: {theta}, phi: {phi}\n")
+        quaternion = self.convert_euler_to_quat(psi, theta, phi)
+        print(f"Converted to quaternion, w: {quaternion['w']}, x: {quaternion['x']}, y: {quaternion['y']}, z: {quaternion['z']}")
+        print("-------------------------")
 
 
 def main():
