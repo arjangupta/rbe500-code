@@ -8,6 +8,9 @@
 \usepackage{tikz}
 \usepackage[plain]{algorithm}
 \usepackage{algpseudocode}
+\usepackage{graphicx}
+
+\graphicspath{{./images/}}
 
 \usetikzlibrary{automata,positioning}
 
@@ -126,7 +129,10 @@
 
 \begin{homeworkProblem}[3.5]
     Consider the three-link articulated robot of Figure 3.16. Derive the forward kinematic equations using the DH convention.
-    \\
+    \begin{figure}[h]
+        \includegraphics[scale=0.25]{figure3-16.png}
+        \centering
+    \end{figure}
 
     \textbf{Solution}
 
@@ -151,8 +157,6 @@
     Thus a valid \(c\) could be when \(c = 2\).
     \\
 
-    \textbf{Part Two}
-
     \[
         \begin{split}
             n^2 + n\sqrt{n} &=
@@ -171,8 +175,6 @@
 
     Thus a valid \(c\) is \(c = 2\).
     \\
-
-    \textbf{Part Three}
 
     \[
         \begin{split}
