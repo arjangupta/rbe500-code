@@ -9,8 +9,5 @@ A3 = [c3 -s3 0 a3*c3; s3 c3 0 a3*s3; 0 0 1 0; 0 0 0 1];
 
 T = A1*A2*A3;
 
-% Show output matrix
-disp(T)
-
 % Generate LaTex code
 latex(T)
