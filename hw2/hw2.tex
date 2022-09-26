@@ -313,256 +313,26 @@
     
 \end{homeworkProblem}
 
-\pagebreak
-
-\begin{homeworkProblem}
-    Write part of \alg{Quick-Sort($list, start, end$)}
-
-    \begin{algorithm}[]
-        \begin{algorithmic}[1]
-            \Function{Quick-Sort}{$list, start, end$}
-                \If{$start \geq end$}
-                    \State{} \Return{}
-                \EndIf{}
-                \State{} $mid \gets \Call{Partition}{list, start, end}$
-                \State{} \Call{Quick-Sort}{$list, start, mid - 1$}
-                \State{} \Call{Quick-Sort}{$list, mid + 1, end$}
-            \EndFunction{}
-        \end{algorithmic}
-        \caption{Start of QuickSort}
-    \end{algorithm}
-\end{homeworkProblem}
+\nobreak\extramarks{Problem 5.3}{}\nobreak{}
 
 \pagebreak
 
-\begin{homeworkProblem}
-    Suppose we would like to fit a straight line through the origin, i.e.,
-    \(Y_i = \beta_1 x_i + e_i\) with \(i = 1, \ldots, n\), \(\E [e_i] = 0\),
-    and \(\Var [e_i] = \sigma^2_e\) and \(\Cov[e_i, e_j] = 0, \forall i \neq
-    j\).\\
-    \part
-
-    Find the least squares esimator for \(\hat{\beta_1}\) for the slope
-    \(\beta_1\).
-    \\
-
-    \solution
-
-    To find the least squares estimator, we should minimize our Residual Sum
-    of Squares, RSS:
-
-    \[
-        \begin{split}
-            RSS &= \sum_{i = 1}^{n} {(Y_i - \hat{Y_i})}^2
-            \\
-            &= \sum_{i = 1}^{n} {(Y_i - \hat{\beta_1} x_i)}^2
-        \end{split}
-    \]
-
-    By taking the partial derivative in respect to \(\hat{\beta_1}\), we get:
-
-    \[
-        \pderiv{
-            \hat{\beta_1}
-        }{RSS}
-        = -2 \sum_{i = 1}^{n} {x_i (Y_i - \hat{\beta_1} x_i)}
-        = 0
-    \]
-
-    This gives us:
-
-    \[
-        \begin{split}
-            \sum_{i = 1}^{n} {x_i (Y_i - \hat{\beta_1} x_i)}
-            &= \sum_{i = 1}^{n} {x_i Y_i} - \sum_{i = 1}^{n} \hat{\beta_1} x_i^2
-            \\
-            &= \sum_{i = 1}^{n} {x_i Y_i} - \hat{\beta_1}\sum_{i = 1}^{n} x_i^2
-        \end{split}
-    \]
-
-    Solving for \(\hat{\beta_1}\) gives the final estimator for \(\beta_1\):
-
-    \[
-        \begin{split}
-            \hat{\beta_1}
-            &= \frac{
-                \sum {x_i Y_i}
-            }{
-                \sum x_i^2
-            }
-        \end{split}
-    \]
-
-    \pagebreak
-
-    \part
-
-    Calculate the bias and the variance for the estimated slope
-    \(\hat{\beta_1}\).
-    \\
-
-    \solution
-
-    For the bias, we need to calculate the expected value
-    \(\E[\hat{\beta_1}]\):
-
-    \[
-        \begin{split}
-            \E[\hat{\beta_1}]
-            &= \E \left[ \frac{
-                \sum {x_i Y_i}
-            }{
-                \sum x_i^2
-            }\right]
-            \\
-            &= \frac{
-                \sum {x_i \E[Y_i]}
-            }{
-                \sum x_i^2
-            }
-            \\
-            &= \frac{
-                \sum {x_i (\beta_1 x_i)}
-            }{
-                \sum x_i^2
-            }
-            \\
-            &= \frac{
-                \sum {x_i^2 \beta_1}
-            }{
-                \sum x_i^2
-            }
-            \\
-            &= \beta_1 \frac{
-                \sum {x_i^2 \beta_1}
-            }{
-                \sum x_i^2
-            }
-            \\
-            &= \beta_1
-        \end{split}
-    \]
-
-    Thus since our estimator's expected value is \(\beta_1\), we can conclude
-    that the bias of our estimator is 0.
-    \\
-
-    For the variance:
-
-    \[
-        \begin{split}
-            \Var[\hat{\beta_1}]
-            &= \Var \left[ \frac{
-                \sum {x_i Y_i}
-            }{
-                \sum x_i^2
-            }\right]
-            \\
-            &=
-            \frac{
-                \sum {x_i^2}
-            }{
-                \sum x_i^2 \sum x_i^2
-            } \Var[Y_i]
-            \\
-            &=
-            \frac{
-                \sum {x_i^2}
-            }{
-                \sum x_i^2 \sum x_i^2
-            } \Var[Y_i]
-            \\
-            &=
-            \frac{
-                1
-            }{
-                \sum x_i^2
-            } \Var[Y_i]
-            \\
-            &=
-            \frac{
-                1
-            }{
-                \sum x_i^2
-            } \sigma^2
-            \\
-            &=
-            \frac{
-                \sigma^2
-            }{
-                \sum x_i^2
-            }
-        \end{split}
-    \]
-
+\begin{homeworkProblem}[5.3]
+    Prompt
 \end{homeworkProblem}
+
+\nobreak\extramarks{Problem 5.6}{}\nobreak{}
 
 \pagebreak
 
-\begin{homeworkProblem}
-    Prove a polynomial of degree \(k\), \(a_kn^k + a_{k - 1}n^{k - 1} + \hdots
-    + a_1n^1 + a_0n^0\) is a member of \(\Theta(n^k)\) where \(a_k \hdots a_0\)
-    are nonnegative constants.
-
-    \begin{proof}
-        To prove that \(a_kn^k + a_{k - 1}n^{k - 1} + \hdots + a_1n^1 +
-        a_0n^0\), we must show the following:
-
-        \[
-            \exists c_1 \exists c_2 \forall n \geq n_0,\ {c_1 \cdot g(n) \leq
-            f(n) \leq c_2 \cdot g(n)}
-        \]
-
-        For the first inequality, it is easy to see that it holds because no
-        matter what the constants are, \(n^k \leq a_kn^k + a_{k - 1}n^{k - 1} +
-        \hdots + a_1n^1 + a_0n^0\) even if \(c_1 = 1\) and \(n_0 = 1\).  This
-        is because \(n^k \leq c_1 \cdot a_kn^k\) for any nonnegative constant,
-        \(c_1\) and \(a_k\).
-        \\
-
-        Taking the second inequality, we prove it in the following way.
-        By summation, \(\sum\limits_{i=0}^k a_i\) will give us a new constant,
-        \(A\). By taking this value of \(A\), we can then do the following:
-
-        \[
-            \begin{split}
-                a_kn^k + a_{k - 1}n^{k - 1} + \hdots + a_1n^1 + a_0n^0 &=
-                \\
-                &\leq (a_k + a_{k - 1} \hdots a_1 + a_0) \cdot n^k
-                \\
-                &= A \cdot n^k
-                \\
-                &\leq c_2 \cdot n^k
-            \end{split}
-        \]
-
-        where \(n_0 = 1\) and \(c_2 = A\). \(c_2\) is just a constant. Thus the
-        proof is complete.
-    \end{proof}
+\begin{homeworkProblem}[5.6]
+    Suppose we would like to fit a straight line through the origin.
 \end{homeworkProblem}
+
+\nobreak\extramarks{ROS2 Report}{}\nobreak{}
 
 \pagebreak
 
-%
-% Non sequential homework problems
-%
-
-% Jump to problem 18
-\begin{homeworkProblem}[18]
-    Evaluate \(\sum_{k=1}^{5} k^2\) and \(\sum_{k=1}^{5} (k - 1)^2\).
-\end{homeworkProblem}
-
-% Continue counting to 19
-\begin{homeworkProblem}
-    Find the derivative of \(f(x) = x^4 + 3x^2 - 2\)
-\end{homeworkProblem}
-
-% Go back to where we left off
-\begin{homeworkProblem}[6]
-    Evaluate the integrals
-    \(\int_0^1 (1 - x^2) \dx\)
-    and
-    \(\int_1^{\infty} \frac{1}{x^2} \dx\).
-\end{homeworkProblem}
+\section{Report for ROS2 Portion}
 
 \end{document}
