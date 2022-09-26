@@ -325,6 +325,43 @@
         \centering
     \end{figure}
 
+    \textbf{Solution}
+    \vspace{0.1in}\\
+    Let us draw the base frame's axes $x_0 y_0 z_0$ as shown in the figure below. Also, let us
+    select a point $(x_c, y_c, z_c)$ as the wrist center at the far end of the second prismatic joint, as shown.
+    \begin{figure}[h]
+        \includegraphics[scale=0.45]{figure-5.3-sketched.png}
+        \centering
+    \end{figure}
+
+    \vspace{0.2in}
+    To solve the inverse position kinematics problem for this configuration, we need to find $q_1, q_2, q_3$, or more precisely, $\theta_1, d_2, d_3$.
+
+    \vspace{0.2in}
+    Using the $Atan2()$ algorithmic function as described in the appendix of the textbook, we determine from the figure that,
+
+    \[
+        \theta_1 = Atan2(x_c, y_c)
+    \]
+        
+    or, alternatively,
+        
+    \[
+        \theta_1 = \pi + Atan2(x_c, y_c)
+    \]
+
+    \vspace{0.2in}
+    Furthermore, it is apparent that
+
+    \[
+        \begin{split}
+            z_c &= 1 + d_2\\
+            d_2 &= z_c - 1
+        \end{split}
+    \]
+
+    We also see that
+
 \end{homeworkProblem}
 
 \nobreak\extramarks{Problem 5.6}{}\nobreak{}
