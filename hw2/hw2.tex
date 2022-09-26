@@ -394,12 +394,32 @@
     \textbf{Solution}
     \vspace{0.1in}\\
     Let us consider a spherical wrist identical to the one used in the textbook. We attach this spherical wrist such that the wrist center,
-    now denoted by vector $o_c$, coincide with the point $(x_c,y_c,z_c)$ as we found in Problem 5--3. However, for the sake of
-    clearly denoting $d_3$ as joint variable $q_3$, we have now used $u_3$ in the figure. It is still the same distance found in Problem 5--3.
+    now denoted by vector $o_c$, coincides with the point $(x_c,y_c,z_c)$ as we found in Problem 5--3. We have concluded that the wrist center
+    lies at this point because axes \(z_3, z_4, z_5\) intersect at this point. This point is also where the origins \(o_3, o_4, o_5\) lie as 
+    per the frame assignment by DH conventions. We also know that the position of $o_c$ does not change despite \(\theta_4, \theta_5, \theta_6\)
+    being variables.\\
+    
+    Also, for the sake of clearly denoting $d_3$ as joint variable $q_3$, we have now used $u_3$ in the figure. It is still the same distance 
+    found in Problem 5--3, i.e. \(u_3 = \sqrt[]{{x_c}^2 + {y_c}^2} - 1\). Given our placement of frame 2, we now have $d_3 = u_3 + 1$. Therefore,
+    \(q_3 = d_3 = \sqrt[]{{x_c}^2 + {y_c}^2}\).\\
+
+    An additional thing to note is that although $z_6$ is along the same direction as $z_5$, the coordinates of $o_6$ lie on the point shown by
+    the vector $o_6$.
     \begin{figure}[h]
         \includegraphics[scale=0.45]{figure-5.5-sketched.png}
         \centering
     \end{figure}
+
+    Before we proceed further, let us make a brief list of steps we need to take to solve the complete inverse kinematics problem for our 
+    particular manipulator's configuration.
+    \begin{enumerate}
+        \item Find wrist center $o_c$.
+        \item Find $q1, q2, q3$.
+        \item Perform forward kinematics to arrive at \(R^0_3 = {(R^3_0)}^T\).
+        \item Get \(R^0_6 = R^3_6R^0_6\).
+        \item Use $R^3_6$ to find $\phi, \theta, \psi$ of Euler configuration to find $q_4, q_5, q_6$.
+    \end{enumerate}
+    In essence, once we have found all joint variables given the end-effector's homogeneous transformation, we have solved the inverse kinematics problem.
 
 \end{homeworkProblem}
 
