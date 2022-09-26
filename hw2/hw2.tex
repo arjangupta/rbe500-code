@@ -341,13 +341,13 @@
     Using the $Atan2()$ algorithmic function as described in the appendix of the textbook, we determine from the figure that,
 
     \[
-        \theta_1 = Atan2(x_c, y_c)
+        \boxed{\theta_1 = Atan2(x_c, y_c)}
     \]
         
     or, alternatively,
         
     \[
-        \theta_1 = \pi + Atan2(x_c, y_c)
+        \boxed{\theta_1 = \pi + Atan2(x_c, y_c)}
     \]
 
     \vspace{0.2in}
@@ -355,12 +355,31 @@
 
     \[
         \begin{split}
-            z_c &= 1 + d_2\\
-            d_2 &= z_c - 1
+            z_c = 1 + d_2\\
+            \boxed{d_2 = z_c - 1}
         \end{split}
     \]
 
-    We also see that
+    We also see from the figure that
+
+    \[
+        r = \sqrt[]{{x_c}^2 + {y_c}^2}
+    \]
+
+    But,
+
+    \[
+        r = 1 + d_3
+    \]
+
+    So,
+
+    \[
+        \boxed{d_3 = \sqrt[]{{x_c}^2 + {y_c}^2} - 1}
+    \]
+
+    \vspace{0.2in}
+    This solves the inverse position kinematics problem for the given cylindrical configuration.
 
 \end{homeworkProblem}
 
