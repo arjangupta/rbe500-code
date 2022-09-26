@@ -579,7 +579,7 @@
         \end{bmatrix}
     \]
 
-    Now, if we equate this with our matrix from Step 4, we get
+    Now, if we equate this with our matrix from Step 4, we get the third column as,
     \[
         \begin{split}
             c_4s_5 = c_{1}\,r_{13}+r_{23}\,s_{1}\\
@@ -587,14 +587,32 @@
             c_5 = r_{13}\,s_{1}-c_{1}\,r_{23}
         \end{split}
     \]
-
-    So, finally,
-
+    And the third row as,
     \[
         \begin{split}
-            \theta_4 = \\
-            \theta_5 = \\
-            \theta_6 = \\
+            -s_5c_6 = r_{11}\,s_{1}-c_{1}\,r_{21}\\
+            s_5s_6 = r_{12}\,s_{1}-c_{1}\,r_{22}\\
+            c_5 = r_{13}\,s_{1}-c_{1}\,r_{23}
+        \end{split}
+    \]
+
+    So, finally, using equations (2.29), (2.30), (2.31), and (2.32) of the textbook,
+
+    \[
+        \boxed{\theta_5 = Atan2(r_{13}\,s_{1}-c_{1}\,r_{23}, \sqrt[]{1 - {(r_{13}\,s_{1}-c_{1}\,r_{23})}^2})}\\
+    \]
+    or
+    \[
+        \boxed{\theta_5 = Atan2(r_{13}\,s_{1}-c_{1}\,r_{23}, -\sqrt[]{1 - {(r_{13}\,s_{1}-c_{1}\,r_{23})}^2})}\\
+    \]
+
+    where $Atan2$ is the two-argument algorithmic arctangent function defined in Appendix A of the textbook.\\
+
+    Also,
+    \[
+        \begin{split}
+            \boxed{\theta_4 = Atan2(c_{1}\,r_{13}+r_{23}\,s_{1}, r_{33})} \\
+            \boxed{\theta_6 = Atan2(-r_{11}\,s_{1}+c_{1}\,r_{21}, r_{12}\,s_{1}-c_{1}\,r_{22})}\\
         \end{split}
     \]
 
@@ -608,7 +626,7 @@
 
     For our ROS part of this assignment, we created a subscriber just like how we did in the last homework assignment. 
     We did not create a publisher, however instead we tested the subscriber's conversion of data by using the "ros2 topic pub ..."
-    command. A sample of this has been submitted under publish.sh.
+    command. A sample of this has been submitted under publish.sh.\\
     
     The subscriber listens for a Float32MultiArray, and when it is received, it checks if the array length is 3. If it is not
     3, then the subscriber notifies that no action will be taken. When the array length is exactly 3, the subscriber passes the array
