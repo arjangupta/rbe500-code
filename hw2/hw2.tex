@@ -152,7 +152,7 @@
             \hline
             Link & $\alpha_i$ & $a_i$ & $\theta_i$ & $d_i$ \\
             \hline
-            1 & -90 & 0 & $\theta_1$ & $d_1$ \\
+            1 & -90\degree & 0 & $\theta_1$ & $d_1$ \\
             2 & 0 & $a_2$ & $\theta_2$ & 0\\
             3 & 0 & $a_3$ & $\theta_3$ & 0\\
             \hline
@@ -234,6 +234,27 @@
     \textbf{Solution}
     \vspace{0.1in}\\
     First we assign coordinate frames 0 through 3 (links 0 through 3). This is done as per the following figure.
+    \begin{figure}[h]
+        \includegraphics[scale=0.35]{figure3-17-frames.png}
+        \centering
+    \end{figure}
+
+    Now, we create a table for quantities \(\alpha_i, a_i, \theta_i, d_i\) for links 1 through 3.
+
+    \begin{table}[h!]
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|}
+            \hline
+            Link & $\alpha_i$ & $a_i$ & $\theta_i$ & $d_i$ \\
+            \hline
+            1 & 90\degree & 0 & 0 & $d_1$ \\
+            2 & 90\degree & 0 & 90\degree & $d_2$\\
+            3 & 0 & 0 & 0 & $d_3$\\
+            \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
     
 \end{homeworkProblem}
 
