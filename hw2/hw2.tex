@@ -147,7 +147,7 @@
 
     \begin{table}[h!]
         \begin{center}
-            \begin{tabular}{|c|c|c|c|c|} % <-- Alignments: 1st column left, 2nd middle and 3rd right, with vertical lines in between
+            \begin{tabular}{|c|c|c|c|c|}
             \hline
             Link & $\alpha_i$ & $a_i$ & $\theta_i$ & $d_i$ \\
             \hline
@@ -193,6 +193,20 @@
             c_3 & -s_3 & 0 & a_3c_3\\
             s_3 & c_3 & 0 & a_3s_3\\
             0 & 0 & 1 & 0\\
+            0 & 0 & 0 & 1
+        \end{bmatrix}
+    \]
+
+    Now we can find \(T_3^0 = A_1A_2A_3\). We use the following MATLAB code to compute this.
+
+    Therefore,
+    \[
+        T_3^0 =
+        \begin{bmatrix}
+            c_{1}\,c_{2}\,c_{3}-c_{1}\,s_{2}\,s_{3} & -c_{1}\,c_{2}\,s_{3}-c_{1}\,c_{3}\,s_{2} & -s_{1} & d_{1}+a_{2}\,c_{1}\,c_{2}-a_{3}\,c_{1}\,s_{2}\,s_{3}+a_{3}\,c_{1}\,c_{2}\,c_{3}\\
+            c_{2}\,c_{3}\,s_{1}-s_{1}\,s_{2}\,s_{3} & -c_{2}\,s_{1}\,s_{3}-c_{3}\,s_{1}\,s_{2} & c_{1} & a_{2}\,c_{2}\,s_{1}-a_{3}\,s_{1}\,s_{2}\,s_{3}+a_{3}\,c_{2}\,c_{3}\,s_{1}\\
+            -c_{2}\,s_{3}-c_{3}\,s_{2} & s_{2}\,s_{3}-c_{2}\,c_{3} & 0 & d_{1}-a_{2}\,s_{2}-a_{3}\,c_{2}\,s_{3}-a_{3}\,c_{3}\,s_{2}\\
+            -c_{2}\,s_{3}-c_{3}\,s_{2} & s_{2}\,s_{3}-c_{2}\,c_{3} & 0 & d_{1}-a_{2}\,s_{2}-a_{3}\,c_{2}\,s_{3}-a_{3}\,c_{3}\,s_{2}\\
             0 & 0 & 0 & 1
         \end{bmatrix}
     \]
