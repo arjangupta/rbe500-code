@@ -486,10 +486,6 @@
     \[
         q_1 = \theta_1 = Atan2(x_c, y_c)\\
     \]
-    or
-    \[
-        q_1 = \theta_1 = \pi + Atan2(x_c, y_c)
-    \]
     \[
         q_2 = d_2 = z_c - 1\\
     \]
@@ -497,11 +493,34 @@
         q_3 = d_3 = \sqrt[]{{x_c}^2 + {y_c}^2}
     \]
 
+    We have discarded the second possibility of $q_1$ as our choice.
+
     \vspace{0.15in}
 
     \textbf{Step 3}
-    
 
+    We perform forward kinematics for the first three joint variables. Here is our table,
+
+    \begin{table}[h!]
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|}
+            \hline
+            Link & $\alpha_i$ & $a_i$ & $\theta_i$ & $d_i$ \\
+            \hline
+            1 & 0 & 0 & $\theta_1$ & 1 \\
+            2 & 90\degree & 0 & 0 & $d_2$ \\
+            3 & 0 & 0 & 0 & $d_3$\\
+            \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+    
+    Next, we use the matrix obtained from equation 3.10 of the textbook to calculate \(A_1, A_2, A_3\).
+
+    \[
+        A_1 =
+        \begin{bmatrix}\cos\left(\theta _{1}\right) & -\sin\left(\theta _{1}\right) & 0 & 0\\ \sin\left(\theta _{1}\right) & \cos\left(\theta _{1}\right) & 0 & 0\\ 0 & 0 & 1 & 1\\ 0 & 0 & 0 & 1 \end{bmatrix}
+    \]
 \end{homeworkProblem}
 
 \nobreak\extramarks{ROS2 Report}{}\nobreak{}
