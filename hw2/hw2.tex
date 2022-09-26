@@ -523,7 +523,27 @@
         ,
         A_2 = \begin{bmatrix} 1 & 0 & 0 & 0\\ 0 & 0 & -1 & 0\\ 0 & 1 & 0 & d_{2}\\ 0 & 0 & 0 & 1 \end{bmatrix}
         ,
-        A_3 = \begin{bmatrix} 1 & 0 & 0 & 0\\ 0 & 0 & -1 & 0\\ 0 & 1 & 0 & d_{2}\\ 0 & 0 & 0 & 1 \end{bmatrix}
+        A_3 = \begin{bmatrix} 1 & 0 & 0 & 0\\ 0 & 1 & 0 & 0\\ 0 & 0 & 1 & d_{3}\\ 0 & 0 & 0 & 1 \end{bmatrix}
+    \]
+
+    We obtain $T^0_3$ using the following MATLAB code.
+
+    \lstinputlisting{./prob5_5.m}
+
+    \vspace{0.2in}
+    Therefore,
+    \[
+        T^0_3 =
+        \begin{bmatrix} c_{1} & 0 & s_{1} & d_{3}\,s_{1}\\ s_{1} & 0 & -c_{1} & -c_{1}\,d_{3}\\ 0 & 1 & 0 & d_{2}+1\\ 0 & 0 & 0 & 1 \end{bmatrix}
+    \]
+
+    From here, it is clear that
+
+    \[
+        R^0_3 =
+        \begin{bmatrix}
+            c_{1} & 0 & s_{1} \\ s_{1} & 0 & -c_{1} \\ 0 & 1 & 0
+        \end{bmatrix}
     \]
 \end{homeworkProblem}
 
