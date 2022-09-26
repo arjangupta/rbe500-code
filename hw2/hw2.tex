@@ -606,4 +606,14 @@
 
 \section{Report for ROS2 Portion}
 
+    For our ROS part of this assignment, we created a subscriber just like how we did in the last homework assignment. 
+    We did not create a publisher, however instead we tested the subscriber's conversion of data by using the "ros2 topic pub ..."
+    command. A sample of this has been submitted under publish.sh.
+    
+    The subscriber listens for a Float32MultiArray, and when it is received, it checks if the array length is 3. If it is not
+    3, then the subscriber notifies that no action will be taken. When the array length is exactly 3, the subscriber passes the array
+    to a helper function to convert the incoming euler angle data to quaternions. The euler angle order is assumed to be given
+    as [yaw, pitch, roll]. We use the formula given on the Wikipedia page to convert the Euler angles to quaternions. The converted
+    data is then printed to the terminal. A screenshot of this output has been submitted as well. 
+
 \end{document}
