@@ -528,7 +528,7 @@
 
     We obtain $T^0_3$ using the following MATLAB code.
 
-    \lstinputlisting{./prob5_5.m}
+    \lstinputlisting{./prob5_5_fk.m}
 
     \vspace{0.2in}
     Therefore,
@@ -545,6 +545,59 @@
             c_{1} & 0 & s_{1} \\ s_{1} & 0 & -c_{1} \\ 0 & 1 & 0
         \end{bmatrix}
     \]
+
+    \vspace{0.15in}
+
+    \textbf{Step 4}
+
+    We know that $R^3_0 = {(R^0_3)}^T$. Given this fact, we use the following MATLAB code to calculate $R^3_6$.
+
+    \lstinputlisting{./prob5_5_step4.m}
+
+    \[
+        R^3_6 =
+        \begin{bmatrix}
+            c_{1}\,r_{11}+r_{21}\,s_{1} & c_{1}\,r_{12}+r_{22}\,s_{1} & c_{1}\,r_{13}+r_{23}\,s_{1}\\
+            r_{31} & r_{32} & r_{33}\\
+            r_{11}\,s_{1}-c_{1}\,r_{21} & r_{12}\,s_{1}-c_{1}\,r_{22} & r_{13}\,s_{1}-c_{1}\,r_{23}
+        \end{bmatrix}
+    \]
+    
+    \vspace{0.15in}
+    \textbf{Step 5}
+
+    \vspace{0.15in}
+    For the final step, we make use of the Euler angles matrix, where $q_4 = \phi, q_5 = \theta, q_6 = \psi$. The matrix for this, as given in
+    the textbook, is
+
+    \[
+        R^3_6 =
+        \begin{bmatrix}
+            c_4c_5c_6 - s_4s_6 & -c_4c_5s_6 - s_4c_6 & c_4s_5\\
+            s_4c_5c_6 + c_4s_6 & -s_4c_5s_6 + c_4c_6 & s_4s_5\\
+            -s_5c_6 & s_5s_6 & c_5
+        \end{bmatrix}
+    \]
+
+    Now, if we equate this with our matrix from Step 4, we get
+    \[
+        \begin{split}
+            c_4s_5 = c_{1}\,r_{13}+r_{23}\,s_{1}\\
+            s_4s_5 = r_{33}\\
+            c_5 = r_{13}\,s_{1}-c_{1}\,r_{23}
+        \end{split}
+    \]
+
+    So, finally,
+
+    \[
+        \begin{split}
+            \theta_4 = \\
+            \theta_5 = \\
+            \theta_6 = \\
+        \end{split}
+    \]
+
 \end{homeworkProblem}
 
 \nobreak\extramarks{ROS2 Report}{}\nobreak{}

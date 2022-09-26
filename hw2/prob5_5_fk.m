@@ -1,4 +1,5 @@
-% Calculation code for problem 3.5 of the RBE500 textbook (HW 2)
+% Calculation code for the forward kinematics portion of problem 5.5
+% of the RBE500 textbook (HW 2)
 
 clear; close all; clc;
 
