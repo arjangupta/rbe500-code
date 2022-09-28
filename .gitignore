@@ -21,3 +21,6 @@
 *.synctex.gz
 *.synctex.gz(busy)
 *.pdfsync
+
+# Ignore manually added mcode.sty
+mcode.sty
