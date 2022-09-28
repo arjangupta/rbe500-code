@@ -136,7 +136,7 @@
         S(a)p = a \times p \tag{4.7}
     \]
 
-    \textbf{Solution}
+    \subsection{Solution}
 
     Suppose the vectors $a$ and $p$ are given as
 
@@ -196,5 +196,39 @@
 \nobreak\extramarks{Problem 4.3}{}\nobreak{}
 
 \pagebreak
+
+\newcommand\norm[1]{\lVert#1\rVert}
+
+\begin{homeworkProblem}[4.3]
+    Prove the assertion given in Equation (4.9) that \(R (a \times b) = Ra \times Rb \) for \(R \in SO(3)\).
+
+    \vspace{0.1in}
+    \subsection{Solution}
+    Let \(v = R (a \times b)\), and \(u = Ra \times Rb \). If $v$ and $u$ are the to be proved as the same vector, then
+    it must be shown that they have the exact same magnitude and direction. Let us consider magnitude and direction of
+    $v$ and $u$ separately.
+
+    \subsubsection{Magnitude}
+
+    Since \(R \in SO(3)\), \(\det{R} = 1\), which means that the linear transformation $R$ does not change the length (norm) of
+    any vector that it transforms. Hence we can say
+
+    \begin{align}        
+        \norm{R(a \times b)} &= \norm{a \times b} \tag{1}\\
+        \norm{Ra} &= \norm{a}\\
+        \norm{Rb} &= \norm{b}
+    \end{align}
+
+    And by the definition of cross product, we know that
+    \[
+        \norm{a \times b} = \norm{a}\norm{b}\sin\theta
+    \]
+    Using Equation (1) here, we have
+    \begin{align}
+        \norm{R(a \times b)} = \norm{a}\norm{b}\sin\theta
+    \end{align}
+
+    \subsubsection{Direction}
+\end{homeworkProblem}
 
 \end{document}
