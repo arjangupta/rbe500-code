@@ -140,21 +140,57 @@
 
     Suppose the vectors $a$ and $p$ are given as
 
-    \begin{align*}
+    \[
         a =
             \begin{bmatrix}
                 a_1\\
                 a_2\\
                 a_3
             \end{bmatrix},
-        p = 
+        p =
             \begin{bmatrix}
                 p_1\\
                 p_2\\
                 p_3
             \end{bmatrix}
-    \end{align*}
+    \]
 
+    By the definition of the cross-product, we know
+    \begin{align}
+        a \times p =
+        \begin{bmatrix}
+            a_2p_3 - a_3p_2\\
+            a_3p_1 - a_1p_3\\
+            a_1p_2 - a_2p_1
+        \end{bmatrix}
+    \end{align}
+
+    Also, by the definition of skew-symmetric matrices, we know the form of $S(a)$, where $a$ is the vector we have already defined,
+    \[
+        S(a) =
+        \begin{bmatrix}
+            0 & -a_z & a_y\\
+            a_z & 0 & -a_x\\
+            -a_y & a_x & 0\\
+        \end{bmatrix}
+    \]
+    Hence, by normal matrix multiplication,
+    \[
+        S(a) p =
+        \begin{bmatrix}
+            0 - a_3p_2 + a_2p_3\\
+            a_3p_1 + 0 -a_1p_3\\
+            -a_2p_1 + a_1p_2 + 0
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            a_2p_3 - a_3p_2\\
+            a_3p_1 - a_1p_3\\
+            a_1p_2 - a_2p_1
+        \end{bmatrix}
+    \]
+
+    Which is the same as (1). Therefore, Equation (4.7) is proved.
 \end{homeworkProblem}
 
 \nobreak\extramarks{Problem 4.3}{}\nobreak{}
