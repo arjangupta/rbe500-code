@@ -237,17 +237,19 @@
 
     \subsubsection{Direction}
 
-    Since \(R \in SO(3)\) is a linear transformation, any two planes that are perpendicular by the right-hand curl rule before $R$ has been applied
-    must remain perpendicular by the right-hand curl rule even after R has been applied.
+    Since \(R \in SO(3)\) is a merely a rotational transformation of the 3 dimensional vector space, any directional relationships given
+    by the right-hand curl rule before $R$ has been applied must remain preserved and obtainable by the right-hand curl rule even after $R$
+    has been applied.
     \vspace{0.15in}
 
-    Given these facts, let us assume that the vectors $a$ and $b$ lie in the plane $P$. Also, assume \(a \times b\) lies in the direction gvien by
-    $\hat{q}$. We know that \(\hat{q} \perp_{rhc} P\), where $\perp_{rhc}$ denotes the perpendicular direction given by the right-hand curl rule.
-    After $R$ is applied, $P$ becomes plane $P_R$, and $\hat{q}$ becomes $\hat{q_R}$.
+    Now, let us assume that the vectors $a$ and $b$ lie in the plane $P$. Also, assume \(a \times b\) lies in the direction gvien by
+    $\hat{q}$. We know that $\hat{q}$ can be obtained by applying the right-hand curl rule from $a$ to $b$.
     \vspace{0.15in}
-
-    Now, as we have described, \(v = R (a \times b)\) lies along $\hat{q_R}$. Also, $Ra$ and $Rb$ lie on $P_R$, and hence \(u = Ra \times Rb \) lies
-    in the direction $\hat{q_R}$. Therefore, $v$ and $u$ lie in the same direction.
+    
+    After $R$ is applied, $P$ becomes plane $P_R$, and $\hat{q}$ becomes $\hat{q_R}$. This means that \(v = R (a \times b)\) 
+    lies along $\hat{q_R}$. Also, vector $a$ and $b$ become vectors $Ra$ and $Rb$, which now lie in plane $P_R$.
+    However, we can still obtain $\hat{q_R}$ by applying the right-hand curl rule from $Ra$ to $Rb$. Hence,
+    \(u = Ra \times Rb \) lies in the direction $\hat{q_R}$. Therefore, $v$ and $u$ lie in the same direction.
     \vspace{0.15in}
 
     Since $v$ and $u$ lie in the same direction and have the same magnitude, they are the same vector. Hence, (4.9) is proved.
