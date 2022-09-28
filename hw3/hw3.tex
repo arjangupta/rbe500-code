@@ -219,14 +219,21 @@
         \norm{Rb} &= \norm{b}
     \end{align}
 
-    And by the definition of cross product, we know that
-    \[
-        \norm{a \times b} = \norm{a}\norm{b}\sin\theta
-    \]
-    Using Equation (1) here, we have
+    Using the definition of the cross product along with (1), we can state that
     \begin{align}
-        \norm{R(a \times b)} = \norm{a}\norm{b}\sin\theta
+        \norm{v} = \norm{R(a \times b)} = \norm{a \times b} = \norm{a}\norm{b}\sin\theta
     \end{align}
+    
+    Again using the definition of the cross product along with (2) and (3), we can state that 
+    \begin{align}
+        \norm{u} = \norm{Ra \times Rb} = \norm{Ra}\norm{Rb}\sin\theta = \norm{a}\norm{b}\sin\theta
+    \end{align}
+
+    We can see that (4) and (5) are equal. Therefore,
+    \[
+        \norm{v} = \norm{u}
+    \]
+    Which means that the magnitude of $v$ and $u$ are the same.
 
     \subsubsection{Direction}
 \end{homeworkProblem}
