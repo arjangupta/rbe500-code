@@ -237,18 +237,20 @@
 
     \subsubsection{Direction}
 
-    \(R \in SO(3)\) is a linear change of basis for the 3 dimensional vector space, and each column of $R$ is a basis vector. 
-    Since $R$ is a linear transformation, any two planes that are perpendicular by the right-hand curl rule before $R$ has been applied
+    Since \(R \in SO(3)\) is a linear transformation, any two planes that are perpendicular by the right-hand curl rule before $R$ has been applied
     must remain perpendicular by the right-hand curl rule even after R has been applied.
     \vspace{0.15in}
 
-    Given these facts, let us assume that the vectors $a$ and $b$ lie in the plane $P$. Also, assume \(a \times b\) lies in the
-    plane $Q$, and its direction is $\hat{q}$. By the definition of the
-    cross product, \(P \perp_{rhc} Q\), where $\perp_{rhc}$ is the perpendicular plane given by the right-hand curl rule. When we apply $R$, we obtain plane $P_R$
-    for $P$ and plane $Q_R$ for $Q$. We already know that \(P_R \perp_{rhc} Q_R\) by the facts established in the last paragraph.
+    Given these facts, let us assume that the vectors $a$ and $b$ lie in the plane $P$. Also, assume \(a \times b\) lies in the direction gvien by
+    $\hat{q}$. We know that \(\hat{q} \perp_{rhc} P\), where $\perp_{rhc}$ denotes the perpendicular direction given by the right-hand curl rule.
+    After $R$ is applied, $P$ becomes plane $P_R$, and $\hat{q}$ becomes $\hat{q_R}$.
     \vspace{0.15in}
 
-    Now, as we have described, \(v = R (a \times b)\) lies on $Q_R$. Also, $Ra$ and $Rb$ lie on $P_R$, and hence \(u = Ra \times Rb \) lies in $Q_R$.
+    Now, as we have described, \(v = R (a \times b)\) lies along $\hat{q_R}$. Also, $Ra$ and $Rb$ lie on $P_R$, and hence \(u = Ra \times Rb \) lies
+    in the direction $\hat{q_R}$. Therefore, $v$ and $u$ lie in the same direction.
+    \vspace{0.15in}
+
+    Since $v$ and $u$ lie in the same direction and have the same magnitude, they are the same vector. Hence, (4.9) is proved.
 \end{homeworkProblem}
 
 \end{document}
