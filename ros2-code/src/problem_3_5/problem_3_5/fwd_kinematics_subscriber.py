@@ -17,7 +17,8 @@ class ForwardKinematics(rclpy.node.Node):
     def calculate_forward_kinematics(self, theta1, theta2, theta3):
         # This function calculates the forward kinematics equations
         # for Problem 3.5 of the RBE 500 Main Textbook
-        print("Implement me!")
+        T_matrix = np.array([[0]*4]*4)
+        print(T_matrix)
     
     def subscription_callback(self, msg):
         # Check input
