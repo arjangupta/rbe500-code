@@ -44,7 +44,8 @@ class ForwardKinematics(rclpy.node.Node):
                        [s3, c3, 0, a3*s3],
                        [0, 0, 1, 0],
                        [0, 0, 0, 1]])
-        print(f'Product of A matrices is\n{np.matmul(np.matmul(A1, A2),A3)}')
+        product_of_As = np.matmul(np.matmul(A1, A2),A3)
+        print(f'Product of A matrices is\n{product_of_As}')
 
         # Using the MATLAB symbolic calculation of the T matrix in the HW2
         # assignment, write the T matrix 
@@ -52,7 +53,10 @@ class ForwardKinematics(rclpy.node.Node):
                              [c2*c3*s1-s1*s2*s3, -c2*s1*s3-c3*s1*s2, c1, a2*c2*s1-a3*s1*s2*s3+a3*c2*c3*s1],
                              [-c2*s3-c3*s2, s2*s3-c2*c3, 0, d1-a2*s2-a3*c2*s3-a3*c3*s2],
                              [0, 0, 0, 1]])
-        print(f'T_matrix is\n{T_matrix}')
+        print(f'Directly computed T_matrix is\n{T_matrix}')
+
+        if np.allclose(product_of_As, T_matrix):
+            print('The product of As and the direct T matrix are the same.') 
     
     def subscription_callback(self, msg):
         # Check input
