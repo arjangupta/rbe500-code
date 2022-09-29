@@ -37,7 +37,7 @@ class ForwardKinematics(rclpy.node.Node):
                              [c2*c3*s1-s1*s2*s3, -c2*s1*s3-c3*s1*s2, c1, a2*c2*s1-a3*s1*s2*s3+a3*c2*c3*s1],
                              [-c2*s3-c3*s2, s2*s3-c2*c3, 0, d1-a2*s2-a3*c2*s3-a3*c3*s2],
                              [0, 0, 0, 1]])
-        print(T_matrix)
+        print(f'T_matrix is {T_matrix}')
     
     def subscription_callback(self, msg):
         # Check input
