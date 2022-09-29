@@ -34,7 +34,7 @@ class ForwardKinematics(rclpy.node.Node):
         # Define the A matrices
         A1 = np.array([[c1, 0, -s1, 0],
                        [s1, 0, c1, 0],
-                       [0, -1, 0, -d1],
+                       [0, -1, 0, d1],
                        [0, 0, 0, 1]])
         A2 = np.array([[c2, -s2, 0, a2*c2],
                        [s2, c2, 0, a2*s2],
