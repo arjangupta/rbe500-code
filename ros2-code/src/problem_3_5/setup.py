@@ -20,6 +20,7 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'listener = problem_3_5.fwd_kinematics_subscriber:main'
         ],
     },
 )
