@@ -17,7 +17,26 @@ class ForwardKinematics(rclpy.node.Node):
     def calculate_forward_kinematics(self, theta1, theta2, theta3):
         # This function calculates the forward kinematics equations
         # for Problem 3.5 of the RBE 500 Main Textbook
-        T_matrix = np.array([[0]*4]*4)
+        
+        # First, assign values for a2, a3, d1
+        a2 = 1
+        a3 = 1
+        d1 = 1
+
+        # Now calculate sines and cosines using the revolute joint variables
+        c1 = math.cos(theta1)
+        s1 = math.sin(theta1)
+        c2 = math.cos(theta2)
+        s2 = math.sin(theta2)
+        c3 = math.cos(theta3)
+        s3 = math.sin(theta3)
+
+        # Using the MATLAB symbolic calculation of the T matrix in the HW2
+        # assignment, write the T matrix 
+        T_matrix = np.array([[c1*c2*c3-c1*s2*s3, -c1*c2*s3-c1*c3*s2, s1, a2*c1*c2-a3*c1*s2*s3+a3*c1*c2*c3],
+                             [c2*c3*s1-s1*s2*s3, -c2*s1*s3-c3*s1*s2, c1, a2*c2*s1-a3*s1*s2*s3+a3*c2*c3*s1],
+                             [-c2*s3-c3*s2, s2*s3-c2*c3, 0, d1-a2*s2-a3*c2*s3-a3*c3*s2],
+                             [0, 0, 0, 1]])
         print(T_matrix)
     
     def subscription_callback(self, msg):
