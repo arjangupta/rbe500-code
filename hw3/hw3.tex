@@ -366,7 +366,7 @@ For easy visualization, let us draw the z axes for each joint.
     \centering
 \end{figure}
 
-We can see that we have 6 joints, so n = 6. Let us also form the table given in the lecture videos:
+We can see that we have 6 joints, so $n = 6$. Let us also form the table given in the lecture videos:
 
 \begin{table}[h!]
     \begin{center}
@@ -380,6 +380,16 @@ We can see that we have 6 joints, so n = 6. Let us also form the table given in 
         \end{tabular}
     \end{center}
 \end{table}
+
+Using this table, and the fact that the upper half of the Jacobian contains linear components while the bottom half
+contains angular components, we have
+\[
+    J =
+    \begin{bmatrix}
+        z_{0} \times (o_6 - o_{0}) & z_1 & z_2 & z_3 \times (o_6 - o_3) & z_4 \times (o_6 - o_4) & z_5 \times (o_6 - o_5) \\
+        z_0 & 0 & 0 & z_3 & z_4 & z_5
+    \end{bmatrix}
+\]
 
 \pagebreak
 
