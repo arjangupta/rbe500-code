@@ -11,6 +11,7 @@
 \usepackage{graphicx}
 \usepackage{gensymb}
 \usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+\usepackage{listings}
 
 \graphicspath{{./images/}}
 
@@ -344,4 +345,37 @@
     As we can see, it has been shown that \(RS(a)R^T = S(Ra)\).
 \end{homeworkProblem}
 
+\nobreak\extramarks{ROS Report}{}\nobreak{}
+
+\pagebreak
+
+\section{Report for ROS2 Portion}
+
+For this week's ROS assignment portion, I created a subscriber just like how
+we did for last week's assignment. I also used the same ros2 command type as
+the one last week, specifically,
+\lstinline{ros2 topic pub --once <topic_name> <data_type> <data>}.
+\vspace{0.17in}
+\\Futhermore, this week I set up my subscriber to accept 3 joint variable 
+values from the publisher. These 3 values are floats that represent the
+angles for the three revolute joints (\(\theta_1, \theta_2, \theta_3\))
+of the robot manipulator we considered in Problem 3.5 of Homework \#2. Using
+\(\theta_1, \theta_2, \theta_3\), my subscriber calculated forward kinematics
+using the symbolic T matrix I calculated last week, given by
+\[
+    T_3^0 =
+    \begin{bmatrix}
+        c_{1}\,c_{2}\,c_{3}-c_{1}\,s_{2}\,s_{3} & -c_{1}\,c_{2}\,s_{3}-c_{1}\,c_{3}\,s_{2} & -s_{1} & a_{2}\,c_{1}\,c_{2}-a_{3}\,c_{1}\,s_{2}\,s_{3}+a_{3}\,c_{1}\,c_{2}\,c_{3}\\
+        c_{2}\,c_{3}\,s_{1}-s_{1}\,s_{2}\,s_{3} & -c_{2}\,s_{1}\,s_{3}-c_{3}\,s_{1}\,s_{2} & c_{1} & a_{2}\,c_{2}\,s_{1}-a_{3}\,s_{1}\,s_{2}\,s_{3}+a_{3}\,c_{2}\,c_{3}\,s_{1}\\
+        -c_{2}\,s_{3}-c_{3}\,s_{2} & s_{2}\,s_{3}-c_{2}\,c_{3} & 0 & d_{1}-a_{2}\,s_{2}-a_{3}\,c_{2}\,s_{3}-a_{3}\,c_{3}\,s_{2}\\
+        0 & 0 & 0 & 1
+    \end{bmatrix}
+\]
+I imported the \lstinline{numpy} python package to put this $T_3^0$ matrix in a
+\lstinline{numpy.array}, and then I printed the matrix for the given joint variables.
+In my code, I made sure to name $c_i$ and $s_i$ exactly that way so that I could
+visually verify any issues in setting up the matrix. The \lstinline{math.cos} and
+\lstinline{math.sin} python functions were used to for assigning values to $c_i$
+and $s_i$. I also set $d_1, a_2, a_3$ as 1 to make sure I could easily verify
+that my code is working correctly.
 \end{document}
