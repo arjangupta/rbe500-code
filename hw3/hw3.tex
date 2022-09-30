@@ -345,11 +345,12 @@
     As we can see, it has been shown that \(RS(a)R^T = S(Ra)\).
 \end{homeworkProblem}
 
-\nobreak\extramarks{ROS Report}{}\nobreak{}
+\nobreak\extramarks{Jacobian Problem}{}\nobreak{}
 
 \pagebreak
 
 \section{Jacobian Problem}
+\nobreak\extramarks{Jacobian Problem (continued)}{Jacobian Problem continued on next page\ldots}\nobreak{}
 
 Derive the Jacobian for the following image.
 
@@ -391,7 +392,31 @@ contains angular components, we have
     \end{bmatrix}
 \]
 
+Let us now describe how each of the $z$ and $o$ vectors can be obtained.\\
+
+$z_0$ is simply the unit vector in the z-direction in the base frame, so, $z_0 = \begin{bmatrix}
+    0 & 0 & 1
+\end{bmatrix}^T$.\\
+
+Similarly, $o_0$ is the origin of the base frame, so it is given by $o_0 = \begin{bmatrix}
+    0 & 0 & 0
+\end{bmatrix}^T$\\
+
+$o_6$ can be obtained by using the $T^0_n = A_0 \dots A_n$ matrix (set $n = 6$) as part of forward kinematics, where matrices $A_i$ are chosen using the
+Denavit-Hartenberg convention. Once the $T$ ($4 \times 4$) matrix is obtained, the $o_n$ vector is simply the $3 \times 1$ matrix in the top-right corner of $T$.
+Similarly, we can obtain $o_3$, $o_4$, and $o_5$ by setting $n = 4, 5 ,6$ for $T^0_n$.\\
+
+By using $T^0_n = A_0 \dots A_n$ again we can obtain $z_1$, $z_2$, $z_3$, $z_4$, and $z_5$. The top-left $3 \times 3$ portion of the $T^0_n$ matrix is the
+$R^0_n$ matrix, for which each column is a basis vector. The right-most basis vector is the $z_n$ vector.\\
+
+Therefore, by using forward kinematics we can obtain each of our $z$ and $o$ vectors.
+
+\nobreak\extramarks{Jacobian Problem (continued)}{Jacobian Problem continued on next page\ldots}\nobreak{}
+\nobreak\extramarks{Jacobian Problem}{}\nobreak{}
+
 \pagebreak
+
+\nobreak\extramarks{ROS Report}{}\nobreak{}
 
 \section{Report for ROS2 Portion}
 
