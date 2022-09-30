@@ -349,6 +349,40 @@
 
 \pagebreak
 
+\section{Jacobian Problem}
+
+Derive the Jacobian for the following image.
+
+\begin{figure}[h]
+    \includegraphics[scale=0.25]{jacobian-prob.png}
+    \centering
+\end{figure}
+
+\subsection{Solution}
+
+For easy visualization, let us draw the z axes for each joint.
+\begin{figure}[h]
+    \includegraphics[scale=0.5]{jacobian-prob-sketched.png}
+    \centering
+\end{figure}
+
+We can see that we have 6 joints, so n = 6. Let us also form the table given in the lecture videos:
+
+\begin{table}[h!]
+    \begin{center}
+        \begin{tabular}{|c|c|c|}
+        \hline
+        & Linear component & Angular component\\
+        \hline
+        Revolute joint & \(J_{v_i} = z^0_{i-1} \times (o^0_n - o^0_{i-1})\) & \(J_{v_i} = z^0_{i-1}\) \\
+        Prismatic joint & \(J_{\omega_i} = z^0_{i-1}\) & \(J_{\omega_i} = 0\)\\
+        \hline
+        \end{tabular}
+    \end{center}
+\end{table}
+
+\pagebreak
+
 \section{Report for ROS2 Portion}
 
 For this week's ROS assignment portion, I created a subscriber just like how
