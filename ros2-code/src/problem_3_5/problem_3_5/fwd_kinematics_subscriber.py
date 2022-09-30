@@ -31,33 +31,14 @@ class ForwardKinematics(rclpy.node.Node):
         c3 = math.cos(theta3)
         s3 = math.sin(theta3)
 
-        # Define the A matrices
-        A1 = np.array([[c1, 0, -s1, 0],
-                       [s1, 0, c1, 0],
-                       [0, -1, 0, d1],
-                       [0, 0, 0, 1]])
-        A2 = np.array([[c2, -s2, 0, a2*c2],
-                       [s2, c2, 0, a2*s2],
-                       [0, 0, 1, 0],
-                       [0, 0, 0, 1]])
-        A3 = np.array([[c3, -s3, 0, a3*c3],
-                       [s3, c3, 0, a3*s3],
-                       [0, 0, 1, 0],
-                       [0, 0, 0, 1]])
-        product_of_As = np.matmul(np.matmul(A1, A2),A3)
-        print(f'Product of A matrices is\n{product_of_As}')
-
         # Using the MATLAB symbolic calculation of the T matrix in the HW2
         # assignment, write the T matrix 
         T_matrix = np.array([[c1*c2*c3-c1*s2*s3, -c1*c2*s3-c1*c3*s2, -s1, a2*c1*c2-a3*c1*s2*s3+a3*c1*c2*c3],
                              [c2*c3*s1-s1*s2*s3, -c2*s1*s3-c3*s1*s2, c1, a2*c2*s1-a3*s1*s2*s3+a3*c2*c3*s1],
                              [-c2*s3-c3*s2, s2*s3-c2*c3, 0, d1-a2*s2-a3*c2*s3-a3*c3*s2],
                              [0, 0, 0, 1]])
-        print(f'Directly computed T_matrix is\n{T_matrix}')
+        print(f'\nThe end effector pose for the given values {theta1}, {theta2}, {theta3} is represented by the following T_matrix:\n{T_matrix}\n')
 
-        if np.allclose(product_of_As, T_matrix):
-            print('The product of As and the direct T matrix are the same.') 
-    
     def subscription_callback(self, msg):
         # Check input
         if len(msg.data) != 3:
