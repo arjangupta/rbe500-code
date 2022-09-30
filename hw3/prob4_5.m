@@ -5,4 +5,8 @@ clear; close all; clc;
 rotx90 = rotx(90);
 Sa = [0 -2 -1; 2 0 -1; 1 1 0];
 
-rotx90*Sa
+step2 = rotx90*Sa;
+step3 = step2*rotx90';
+
+a = [1,-1,2]';
+rotx90*a
