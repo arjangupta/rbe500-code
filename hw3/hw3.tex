@@ -286,7 +286,9 @@
     \]
     Now,
     \begin{align*}
-        RS(a)R^T &= \begin{bmatrix}
+        RS(a)R^T &=
+        % Step 1
+        \left(\begin{bmatrix}
             1 & 0 & 0\\
             0 & 0 & -1\\
             0 & 1 & 0
@@ -295,13 +297,26 @@
             0 & -2 & -1\\
             2 & 0 & -1\\
             1 & 1 & 0
+        \end{bmatrix}\right)
+        \begin{bmatrix}
+            1 & 0 & 0\\
+            0 & 0 & 1\\
+            0 & -1 & 0
+        \end{bmatrix}\\
+        &= 
+        % Step 2
+        \begin{bmatrix}
+            0 & -2 & -1\\
+            -1 & -1 & 0\\
+            2 & 0 & -1
         \end{bmatrix}
         \begin{bmatrix}
             1 & 0 & 0\\
             0 & 0 & 1\\
             0 & -1 & 0
         \end{bmatrix}\\
-        &= ?
+        &=
+        % Step 3
     \end{align*}
 \end{homeworkProblem}
 
