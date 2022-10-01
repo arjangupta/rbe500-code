@@ -105,10 +105,13 @@
 \newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
 
 % For derivatives
-\newcommand{\deriv}[1]{\frac{\mathrm{d}}{\mathrm{d}x} (#1)}
+\newcommand{\deriv}[2]{\frac{\mathrm{d}}{\mathrm{d}#2} \left(#1\right)}
+
+% For compact derivatives
+\newcommand{\derivcomp}[2]{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
 
 % For partial derivatives
-\newcommand{\pderiv}[2]{\frac{\partial}{\partial #2} (#1)}
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #2} \left(#1\right)}
 
 % For compact partial derivatives
 \newcommand{\pderivcomp}[2]{\frac{\partial #1}{\partial #2}}
@@ -140,14 +143,23 @@
     \subsection{Solution}
 
     \[
-        \pderiv{\phi}{R_{x,\theta}R_{y,\phi}} = R_{x,\theta}\pderiv{\phi}{R_{y,\phi}}
-        = R_{x,\theta}\pderiv{
+        \pderiv{R_{x,\theta}R_{y,\phi}}{\phi} = R_{x,\theta}\pderiv{R_{y,\phi}}{\phi}
+    \]
+    Using the the fact that \(\deriv{R_{y,\theta}}{\theta} = S(j)R_{y,\theta}\),
+    \[
+        R_{x,\theta}\pderiv{R_{y,\phi}}{\phi} =
+        R_{x,\theta}S(j)R_{y,\phi}
+        = R_{x,\theta}
             \begin{bmatrix}
+                0 & 0 & 1\\
                 0 & 0 & 0\\
-                0 & 0 & 0\\
-                0 & 0 & 0
+                -1 & 0 & 0
             \end{bmatrix}
-        }{\phi}
+            \begin{bmatrix}
+                \cos\phi & 0 & \sin\phi\\
+                0 & 1 & 0\\
+                -\sin\phi & 0 & \cos\phi
+            \end{bmatrix}
     \]
     
 \end{homeworkProblem}
