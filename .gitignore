@@ -13,7 +13,6 @@
 *.cb2
 .*.lb
 
-
 ## Build tool auxiliary files:
 *.fdb_latexmk
 *.synctex
@@ -24,3 +23,6 @@
 
 # Ignore manually added mcode.sty
 mcode.sty
+
+# Ignore MATLAB's auto-save file
+*.asv

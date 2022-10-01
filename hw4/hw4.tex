@@ -146,10 +146,10 @@
         \pderiv{R_{x,\theta}R_{y,\phi}}{\phi} = R_{x,\theta}\pderiv{R_{y,\phi}}{\phi}
     \]
     Using the the fact that \(\deriv{R_{y,\theta}}{\theta} = S(j)R_{y,\theta}\),
-    \[
+    \begin{align*}
         R_{x,\theta}\pderiv{R_{y,\phi}}{\phi} =
         R_{x,\theta}S(j)R_{y,\phi}
-        =
+        &=
         \begin{bmatrix}
             1 & 0 & 0\\
             0 & \cos\theta & -\sin\theta\\
@@ -164,8 +164,20 @@
             \cos\phi & 0 & \sin\phi\\
             0 & 1 & 0\\
             -\sin\phi & 0 & \cos\phi
+        \end{bmatrix}\\
+        &= \begin{bmatrix}-\sin\left(\phi \right) & 0 & \cos\left(\phi \right)\\ \cos\left(\phi \right)\,\sin\left(\theta \right) & 0 & \sin\left(\phi \right)\,\sin\left(\theta \right)\\ -\cos\left(\phi \right)\,\cos\left(\theta \right) & 0 & -\cos\left(\theta \right)\,\sin\left(\phi \right)\end{bmatrix}
+    \end{align*}
+    Now, plugging in the values $\theta = \frac{\pi}{2}$, $\phi = \frac{\pi}{2}$, we get
+    \[
+        \begin{bmatrix}
+            -1 & 0 & 0\\
+            0 & 0 & 1\\
+            0 & 0 & 0
         \end{bmatrix}
     \]
+    \vspace{0.2in}
+    \\We performed the above computations using the following MATLAB code.
+    \lstinputlisting{./prob4_6.m}
     
 \end{homeworkProblem}
 
