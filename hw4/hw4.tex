@@ -149,17 +149,22 @@
     \[
         R_{x,\theta}\pderiv{R_{y,\phi}}{\phi} =
         R_{x,\theta}S(j)R_{y,\phi}
-        = R_{x,\theta}
-            \begin{bmatrix}
-                0 & 0 & 1\\
-                0 & 0 & 0\\
-                -1 & 0 & 0
-            \end{bmatrix}
-            \begin{bmatrix}
-                \cos\phi & 0 & \sin\phi\\
-                0 & 1 & 0\\
-                -\sin\phi & 0 & \cos\phi
-            \end{bmatrix}
+        =
+        \begin{bmatrix}
+            1 & 0 & 0\\
+            0 & \cos\theta & -\sin\theta\\
+            0 & \sin\theta & \cos\theta
+        \end{bmatrix}   
+        \begin{bmatrix}
+            0 & 0 & 1\\
+            0 & 0 & 0\\
+            -1 & 0 & 0
+        \end{bmatrix}
+        \begin{bmatrix}
+            \cos\phi & 0 & \sin\phi\\
+            0 & 1 & 0\\
+            -\sin\phi & 0 & \cos\phi
+        \end{bmatrix}
     \]
     
 \end{homeworkProblem}
