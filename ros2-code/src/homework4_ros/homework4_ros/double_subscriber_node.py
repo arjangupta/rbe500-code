@@ -16,8 +16,8 @@ class BidirectionalKinematics(rclpy.node.Node):
         super().__init__('BidirectionalKinematics')
         # Subscribe on the forward kinematics topic, have it expect
         # an array of floats as its incoming data, execute the
-        # forward_kinematics_callback function when data is received,
-        # allow a queue of 15 messages
+        # forward_kinematics_callback member function when data
+        #  is received, allow a queue of 15 messages
         self.subscription = self.create_subscription(
             std_msgs.msg.Float32MultiArray,
             'forward_kinematics_topic',
@@ -26,8 +26,8 @@ class BidirectionalKinematics(rclpy.node.Node):
         )
         # Subscribe on the inverse kinematics topic, have it expect
         # an Pose message its incoming data, execute the
-        # inverse_kinematics_callback function when data is received,
-        # allow a queue of 15 messages
+        # inverse_kinematics_callback member function when data
+        # is received, allow a queue of 15 messages
         self.subscription = self.create_subscription(
             geometry_msgs.msg.Pose,
             'inverse_kinematics_topic',
