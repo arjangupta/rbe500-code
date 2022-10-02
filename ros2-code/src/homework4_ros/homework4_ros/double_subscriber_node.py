@@ -5,9 +5,27 @@ import geometry_msgs.msg
 import math
 import numpy as np
 
-class InverseKinematics(rclpy.node.Node):
-    def __ini__(self) -> None:
-        super().__init__('InverseKinematics')
+# This class is our ROS Node which will perform both forward and
+# inverse kinematics based on the subscription topic on which we
+# send the data.
+class BidirectionalKinematics(rclpy.node.Node):
+    def __init__(self) -> None:
+        # Give a name to this node
+        super().__init__('BidirectionalKinematics')
+        # Subscribe on the forward kinematics topic, have it expect
+        # an array of floats as its incoming data, execute the
+        # forward_kinematics_callback function when data is received,
+        # allow a queue of 15 messages
+        self.subscription = self.create_subscription(
+            std_msgs.msg.Float32MultiArray,
+            'forward_kinematics_topic',
+            self.subscription_callback,
+            15
+        )
+        # Subscribe on the inverse kinematics topic, have it expect
+        # an Pose message its incoming data, execute the
+        # inverse_kinematics_callback function when data is received,
+        # allow a queue of 15 messages
         self.subscription = self.create_subscription(
             geometry_msgs.msg.Pose,
             'inverse_kinematics_topic',
@@ -15,15 +33,8 @@ class InverseKinematics(rclpy.node.Node):
             15
         )
 
-class ForwardKinematics(rclpy.node.Node):
-    def __init__(self) -> None:
-        super().__init__('ForwardKinematics')
-        self.subscription = self.create_subscription(
-            std_msgs.msg.Float32MultiArray,
-            'forward_kinematics_topic',
-            self.subscription_callback,
-            15
-        )
+    def calculate_inverse_kinematics(self, orientation, position):
+        pass
     
     def calculate_forward_kinematics(self, theta1, theta2, theta3):
         # This function calculates the forward kinematics equations
@@ -50,7 +61,7 @@ class ForwardKinematics(rclpy.node.Node):
                              [0, 0, 0, 1]])
         print(f'\nThe end effector pose for the given values {theta1}, {theta2}, {theta3} is represented by the following T_matrix:\n{T_matrix}\n')
 
-    def subscription_callback(self, msg):
+    def forward_kinematics_callback(self, msg):
         # Check input
         if len(msg.data) != 3:
             print("\nYou have not provided 3 angles to this subscriber. No conversion has been done.")
@@ -64,13 +75,13 @@ class ForwardKinematics(rclpy.node.Node):
 def main():
     # Initialize the ros2 client library
     rclpy.init()
-    # Instantiate the ForwardKinematics class
-    euler_to_quat = ForwardKinematics()
+    # Instantiate the BidirectionalKinematics class
+    bidirectional_kinematics = BidirectionalKinematics()
     # Spin the client
-    rclpy.spin(euler_to_quat)
+    rclpy.spin(bidirectional_kinematics)
 
     # Upon Ctrl+C, clean up
-    euler_to_quat.destroy_node()
+    bidirectional_kinematics.destroy_node()
     rclpy.shutdown()
 
 if __name__ == '__main__':
