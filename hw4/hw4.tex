@@ -48,13 +48,13 @@
 
 \newcommand{\enterProblemHeader}[1]{
     \nobreak\extramarks{}{Problem {#1} continued on next page\ldots}\nobreak{}
-    \nobreak\extramarks{Problem {#1} (continued)}{Problem {#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{{#1} (continued)}{{#1} continued on next page\ldots}\nobreak{}
 }
 
 \newcommand{\exitProblemHeader}[1]{
-    \nobreak\extramarks{Problem {#1} (continued)}{Problem {#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{{#1} (continued)}{{#1} continued on next page\ldots}\nobreak{}
     % \stepcounter{#1}
-    \nobreak\extramarks{Problem {#1}}{}\nobreak{}
+    \nobreak\extramarks{{#1}}{}\nobreak{}
 }
 
 \setcounter{secnumdepth}{0}
@@ -64,7 +64,7 @@
 
 \newenvironment{homeworkProblem}[1][-1]{
     \renewcommand{\problemNumber}{{#1}}
-    \section{Problem \problemNumber}
+    \section{\problemNumber}
     \setcounter{partCounter}{1}
     \enterProblemHeader{\problemNumber}
 }{
@@ -136,7 +136,7 @@
 
 \pagebreak
 
-\begin{homeworkProblem}[4.6]
+\begin{homeworkProblem}[Problem 4.6]
     Given \(R = R_{x,\theta}R_{y,\phi}\), compute \(\pderivcomp{R}{\phi}\).
     Evaluate \(\pderivcomp{R}{\phi}\) at $\theta = \frac{\pi}{2}$, $\phi = \frac{\pi}{2}$.
     First parametrically compute, then evaluate by plugging the values in. 
@@ -182,6 +182,10 @@
     
 \end{homeworkProblem}
 
+\nobreak\extramarks{Problem 4.10}{}\nobreak{}
+
+\pagebreak
+
 \begin{homeworkProblem}[Problem 4.10]
     Two frames $o_0x_0y_0z_0$ and $o_1x_1y_1z_1$ are related by the homogeneous transformation
 
@@ -200,6 +204,15 @@
 
     \subsection{Solution}
     
+\end{homeworkProblem}
+
+\nobreak\extramarks{Problem 4.15}{}\nobreak{}
+
+\pagebreak
+
+\begin{homeworkProblem}[Problem 4.15]
+    Find the $6 \times 3$ Jacobian for the three links of the cylindrical manipulator of Figure 3.7.
+    Find the singular conﬁgurations for this arm.
 \end{homeworkProblem}
 
 \end{document}
