@@ -13,13 +13,14 @@ setup(
     ],
     install_requires=['setuptools'],
     zip_safe=True,
-    maintainer='arjan',
-    maintainer_email='arjangupta95@gmail.com',
-    description='TODO: Package description',
-    license='TODO: License declaration',
+    maintainer='Arjan Gupta',
+    maintainer_email='agupta11@wpi.edu',
+    description='Part 2 of HW4 for RBE 500',
+    license='Property of Worcester Polytechnic Institute',
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
+            'listener = homework4_ros.double_subscriber_node:main'
         ],
     },
 )
