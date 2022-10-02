@@ -139,6 +139,7 @@
 \begin{homeworkProblem}[4.6]
     Given \(R = R_{x,\theta}R_{y,\phi}\), compute \(\pderivcomp{R}{\phi}\).
     Evaluate \(\pderivcomp{R}{\phi}\) at $\theta = \frac{\pi}{2}$, $\phi = \frac{\pi}{2}$.
+    First parametrically compute, then evaluate by plugging the values in. 
 
     \subsection{Solution}
 
@@ -178,6 +179,26 @@
     \vspace{0.2in}
     \\We performed the above computations using the following MATLAB code.
     \lstinputlisting{./prob4_6.m}
+    
+\end{homeworkProblem}
+
+\begin{homeworkProblem}[Problem 4.10]
+    Two frames $o_0x_0y_0z_0$ and $o_1x_1y_1z_1$ are related by the homogeneous transformation
+
+    \[
+        H =
+        \begin{bmatrix}
+            0 & -1 & 0 & 1\\
+            1 & 0 & 0 & -1\\
+            0 & 0 & 1 & 0\\
+            0 & 0 & 0 & 1
+        \end{bmatrix}
+    \]
+
+    A particle has velocity $v_1(t) = (3,1,0)$ relative to frame $o_1x_1y_1z_1$. What is the
+    velocity of the particle in frame $o_0x_0y_0z_0$?
+
+    \subsection{Solution}
     
 \end{homeworkProblem}
 
