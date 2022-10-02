@@ -5,10 +5,12 @@ import geometry_msgs.msg
 import math
 import numpy as np
 
-# This class is our ROS Node which will perform both forward and
-# inverse kinematics based on the subscription topic on which we
-# send the data.
 class BidirectionalKinematics(rclpy.node.Node):
+    """
+    This class is our ROS Node which will perform both forward and
+    inverse kinematics based on the subscription topic on which we
+    send the data.
+    """
     def __init__(self) -> None:
         # Give a name to this node
         super().__init__('BidirectionalKinematics')
@@ -19,7 +21,7 @@ class BidirectionalKinematics(rclpy.node.Node):
         self.subscription = self.create_subscription(
             std_msgs.msg.Float32MultiArray,
             'forward_kinematics_topic',
-            self.subscription_callback,
+            self.forward_kinematics_callback,
             15
         )
         # Subscribe on the inverse kinematics topic, have it expect
@@ -29,17 +31,15 @@ class BidirectionalKinematics(rclpy.node.Node):
         self.subscription = self.create_subscription(
             geometry_msgs.msg.Pose,
             'inverse_kinematics_topic',
-            self.subscription_callback,
+            self.inverse_kinematics_callback,
             15
         )
 
-    def calculate_inverse_kinematics(self, orientation, position):
-        pass
-    
     def calculate_forward_kinematics(self, theta1, theta2, theta3):
-        # This function calculates the forward kinematics equations
-        # for Problem 3.5 of the RBE 500 Main Textbook
-        
+        """
+        This function calculates the forward kinematics equations
+        for Problem 3.5 of the RBE 500 Main Textbook.
+        """
         # First, assign values for a2, a3, d1
         a2 = 1
         a3 = 1
@@ -62,6 +62,10 @@ class BidirectionalKinematics(rclpy.node.Node):
         print(f'\nThe end effector pose for the given values {theta1}, {theta2}, {theta3} is represented by the following T_matrix:\n{T_matrix}\n')
 
     def forward_kinematics_callback(self, msg):
+        """
+        This function is executed when the forward kinematics
+        topic receives data.
+        """
         # Check input
         if len(msg.data) != 3:
             print("\nYou have not provided 3 angles to this subscriber. No conversion has been done.")
@@ -71,6 +75,21 @@ class BidirectionalKinematics(rclpy.node.Node):
         theta2 = msg.data[1]
         theta3 = msg.data[2]
         self.calculate_forward_kinematics(theta1, theta2, theta3)
+
+    def calculate_inverse_kinematics(self, orientation, position):
+        """
+        This function executes the inverse kinematics for Problem 3.5
+        of the RBE 500 main textbook.
+        """
+        print("Implement inverse kinematics!")
+    
+    def inverse_kinematics_callback(self, msg):
+        """
+        This function is executed when the inverse kinematics
+        topic receives data.
+        """
+        print("Implement the inverse kinematics callback function!")
+        self.calculate_inverse_kinematics(0,0)
 
 def main():
     # Initialize the ros2 client library
