@@ -125,7 +125,7 @@ class BidirectionalKinematics(rclpy.node.Node):
         # Before computing theta2 and theta3, compute r and s, which are
         # defined right before equation 5.25 of our textbook.
         r = x_c**2 + y_c**2
-        s = z_c - self.d_1
+        s = z_c - self.d1
         # Use equation 5.25 of textbook to find theta3
         D = (r**2 + s**2 - (self.a2)**2 - (self.a3)**2)/(2*self.a2*self.a3)
         theta3_option1 = math.atan2(D, math.sqrt(1 - D**2))
