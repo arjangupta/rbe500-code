@@ -40,9 +40,9 @@ class BidirectionalKinematics(rclpy.node.Node):
     three constants in its set up: d1, a2, and a3. Let us defined these
     as class variables for this node 
     """
-    d1 = 100
-    a2 = 100
-    a3 = 100
+    d1 = 1
+    a2 = 1
+    a3 = 1
 
     def calculate_forward_kinematics(self, theta1, theta2, theta3):
         """
