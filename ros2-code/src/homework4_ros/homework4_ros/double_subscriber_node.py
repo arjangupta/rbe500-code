@@ -119,7 +119,7 @@ class BidirectionalKinematics(rclpy.node.Node):
 
         # Compute theta1, theta2, and theta3 as given in our book.
         # For theta1, we use equations 5.18 and 5.19 of our textbook
-        theta1_option1 = math.atan2(x_c, y_c)
+        theta1_option1 = math.atan2(y_c, x_c)
         theta1_option2 = math.pi + theta1_option1
         print(f"For theta1, the two options are {theta1_option1} and {theta1_option2}")
         # Before computing theta2 and theta3, compute r and s, which are
@@ -130,11 +130,11 @@ class BidirectionalKinematics(rclpy.node.Node):
         D = (r**2 + s**2 - (self.a2)**2 - (self.a3)**2)/(2*self.a2*self.a3)
         print(f"D is {D}")
         print(f"sqrt of 1 - D^2 is {1*math.sqrt(1 - D**2)} and {-1*math.sqrt(1 - D**2)}")
-        theta3_option1 = math.atan2(D, math.sqrt(1 - D**2))
-        theta3_option2 = math.atan2(D, -1*math.sqrt(1 - D**2))
+        theta3_option1 = math.atan2(math.sqrt(1 - D**2), D)
+        theta3_option2 = math.atan2(-1*math.sqrt(1 - D**2), D)
         # Use equation 5.26 of textbook to find theta2
-        theta2_option1 = math.atan2(r, s) - math.atan2(self.a2 + self.a3*math.cos(theta3_option1), self.a3*math.sin(theta3_option1))
-        theta2_option2 = math.atan2(r, s) - math.atan2(self.a2 + self.a3*math.cos(theta3_option2), self.a3*math.sin(theta3_option2))
+        theta2_option1 = math.atan2(s, r) - math.atan2(self.a3*math.sin(theta3_option1), self.a2 + self.a3*math.cos(theta3_option1))
+        theta2_option2 = math.atan2(s, r) - math.atan2(self.a3*math.sin(theta3_option2), self.a2 + self.a3*math.cos(theta3_option2))
         print(f"For theta2, the two options are {theta2_option1} and {theta2_option2}")
         print(f"For theta3, the two options are {theta3_option1} and {theta3_option2}")
     
