@@ -40,9 +40,9 @@ class BidirectionalKinematics(rclpy.node.Node):
     three constants in its set up: d1, a2, and a3. Let us defined these
     as class variables for this node 
     """
-    d1 = 1
-    a2 = 1
-    a3 = 1
+    d1 = 100
+    a2 = 100
+    a3 = 100
 
     def calculate_forward_kinematics(self, theta1, theta2, theta3):
         """
@@ -128,6 +128,8 @@ class BidirectionalKinematics(rclpy.node.Node):
         s = z_c - self.d1
         # Use equation 5.25 of textbook to find theta3
         D = (r**2 + s**2 - (self.a2)**2 - (self.a3)**2)/(2*self.a2*self.a3)
+        print(f"D is {D}")
+        print(f"sqrt of 1 - D^2 is {1*math.sqrt(1 - D**2)} and {-1*math.sqrt(1 - D**2)}")
         theta3_option1 = math.atan2(D, math.sqrt(1 - D**2))
         theta3_option2 = math.atan2(D, -1*math.sqrt(1 - D**2))
         # Use equation 5.26 of textbook to find theta2
