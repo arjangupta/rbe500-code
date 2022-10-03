@@ -84,7 +84,8 @@ class BidirectionalKinematics(rclpy.node.Node):
         print(f"\nReceived orientation: {orientation} and position: {position}, forming homoegenous transformation from these values.")
 
         # Use the quaternion to convert to a rotation matrix, and append on the position vector to the right
-        # side.
+        # side. This will give us the transformation matrix that gets us to the wrist center (T_0_3 matrix where
+        # zero is in the super script and 3 is in the subscript).
         # The quaternion -> rotation matrix is given in the following Wikipedia link:
         # https://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles#Rotation_matrices. We
         # choose the homoegenous matrix expression because we are forming a homogeneous transformation. We will
@@ -93,10 +94,14 @@ class BidirectionalKinematics(rclpy.node.Node):
         q1 = orientation.x
         q2 = orientation.y
         q3 = orientation.z
-        end_effector_homogeneous_matrix = np.array(
-            [[(q0*q0 + q1*q1 - q2*q2 - q3*q3), 2*(q1*q2 - q0*q3), 2*(q0*q2 + q1*q3)],
-             [2*(q1*q2 + q0*q3), (q0*q0 - q1*q1 + q2*q2 - q3*q3), 2*(q2*q3 - q0*q1)],
-             [2*(q1*q3 - q0*q2), 2*(q0*q1 + q2*q3), (q0*q0 - q1*q1 - q2*q2 + q3*q3)]])
+        # Here, T_0_3 indicates 0 in the super script, 3 in the subscript. So, it is the homogeneous 
+        # transformation that gives the position and orientation of frame 3 with respect to 0. 
+        T_0_3 = np.array(
+            [[(q0*q0 + q1*q1 - q2*q2 - q3*q3), 2*(q1*q2 - q0*q3),               2*(q0*q2 + q1*q3),               position.x],
+             [2*(q1*q2 + q0*q3),               (q0*q0 - q1*q1 + q2*q2 - q3*q3), 2*(q2*q3 - q0*q1),               position.y],
+             [2*(q1*q3 - q0*q2),               2*(q0*q1 + q2*q3),               (q0*q0 - q1*q1 - q2*q2 + q3*q3), position.z],
+             [0,                               0,                               0,                               1]])
+        print(f"The wrist center T matrix is given by\n{T_0_3}")
     
     def inverse_kinematics_callback(self, msg):
         """
