@@ -81,15 +81,29 @@ class BidirectionalKinematics(rclpy.node.Node):
         This function executes the inverse kinematics for Problem 3.5
         of the RBE 500 main textbook.
         """
-        print("Implement inverse kinematics!")
+        print(f"\nReceived orientation: {orientation} and position: {position}, forming homoegenous transformation from these values.")
+
+        # Use the quaternion to convert to a rotation matrix, and append on the position vector to the right
+        # side.
+        # The quaternion -> rotation matrix is given in the following Wikipedia link:
+        # https://en.wikipedia.org/wiki/Conversion_between_quaternions_and_Euler_angles#Rotation_matrices. We
+        # choose the homoegenous matrix expression because we are forming a homogeneous transformation. We will
+        # delcare variables q0, q1, q2, q3 just like the wikipedia page so that it is easy to check our work.
+        q0 = orientation.w
+        q1 = orientation.x
+        q2 = orientation.y
+        q3 = orientation.z
+        end_effector_homogeneous_matrix = np.array(
+            [[(q0*q0 + q1*q1 - q2*q2 - q3*q3), 2*(q1*q2 - q0*q3), 2*(q0*q2 + q1*q3)],
+             [2*(q1*q2 + q0*q3), (q0*q0 - q1*q1 + q2*q2 - q3*q3), 2*(q2*q3 - q0*q1)],
+             [2*(q1*q3 - q0*q2), 2*(q0*q1 + q2*q3), (q0*q0 - q1*q1 - q2*q2 + q3*q3)]])
     
     def inverse_kinematics_callback(self, msg):
         """
         This function is executed when the inverse kinematics
         topic receives data.
         """
-        print("Implement the inverse kinematics callback function!")
-        self.calculate_inverse_kinematics(0,0)
+        self.calculate_inverse_kinematics(msg.orientation, msg.position)
 
 def main():
     # Initialize the ros2 client library
