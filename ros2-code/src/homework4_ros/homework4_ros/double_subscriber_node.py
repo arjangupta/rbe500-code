@@ -107,8 +107,6 @@ class BidirectionalKinematics(rclpy.node.Node):
         s = z_c - self.d1
         # Use equation 5.25 of textbook to find theta3
         D = (r**2 + s**2 - (self.a2)**2 - (self.a3)**2)/(2*self.a2*self.a3)
-        print(f"D is {D}")
-        print(f"sqrt of 1 - D^2 is {1*math.sqrt(1 - D**2)} and {-1*math.sqrt(1 - D**2)}")
         theta3_option1 = math.atan2(math.sqrt(1 - D**2), D)
         theta3_option2 = math.atan2(-1*math.sqrt(1 - D**2), D)
         # Use equation 5.26 of textbook to find theta2
