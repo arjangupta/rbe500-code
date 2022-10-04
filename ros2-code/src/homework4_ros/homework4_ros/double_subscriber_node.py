@@ -23,11 +23,12 @@ class BidirectionalKinematics(rclpy.node.Node):
     a2 = 1
     a3 = 1
 
-    # Also define a class variable that helps us automatically
+    # Also define a class variables that helps us automatically
     # publish to the other subscriber when a subscriber performs
     # a calculation (this is just for testing, it is not part of
     # this ROS assignment)
-    publish_to_other_subscriber = True
+    auto_publish_to_inverse_kin = False
+    auto_publish_to_fwd_kin = True
 
 
     def __init__(self) -> None:
@@ -56,10 +57,13 @@ class BidirectionalKinematics(rclpy.node.Node):
             self.inverse_kinematics_callback,
             15
         )
-        # Declare the testing publisher if the flag is set
-        if self.publish_to_other_subscriber:
-            print("Declaring the testing publisher.")
-            self.testing_publisher = self.create_publisher(geometry_msgs.msg.Pose, 'inverse_kinematics_topic', 15)
+        # Declare the testing publishers if the flag is set
+        if self.auto_publish_to_inverse_kin:
+            print("Switching on auto publishing to inverse kin.")
+            self.publish_to_inv = self.create_publisher(geometry_msgs.msg.Pose, 'inverse_kinematics_topic', 15)
+        if self.auto_publish_to_fwd_kin:
+            print("Switching on auto publishing to forward kin.")
+            self.publish_to_fwd = self.create_publisher(std_msgs.msg.Float32MultiArray, 'forward_kinematics_topic', 15)
 
     def calculate_forward_kinematics(self, theta1, theta2, theta3):
         """
@@ -86,10 +90,9 @@ class BidirectionalKinematics(rclpy.node.Node):
                              [-c2*s3-c3*s2, s2*s3-c2*c3, 0, d1-a2*s2-a3*c2*s3-a3*c3*s2],
                              [0, 0, 0, 1]])
         print(f'\nThe end effector pose for the given values {theta1}, {theta2}, {theta3} is represented by the following T_matrix:\n{T_matrix}\n')
-
         # For testing, print the d portion of the T matrix to 
         # the inverse kinematics node
-        if self.publish_to_other_subscriber:
+        if self.auto_publish_to_inverse_kin:
             pose_message = geometry_msgs.msg.Pose(
                 orientation = geometry_msgs.msg.Quaternion(
                     x=1.0, y=1.0, z=1.0, w=1.0),
@@ -98,7 +101,7 @@ class BidirectionalKinematics(rclpy.node.Node):
                     y=T_matrix[1][3],
                     z=T_matrix[2][3])
                 )
-            self.testing_publisher.publish(pose_message)
+            self.publish_to_inv.publish(pose_message)
 
     def forward_kinematics_callback(self, msg):
         """
@@ -145,7 +148,18 @@ class BidirectionalKinematics(rclpy.node.Node):
         theta2_option2 = theta2_option1 + math.pi
         print(f"For theta2, the two options are {theta2_option1} and {theta2_option2}")
         print(f"For theta3, the two options are {theta3_option1} and {theta3_option2}")
-
+        # For testing, print
+        if self.auto_publish_to_fwd_kin:
+            float_array_msg = std_msgs.msg.Float32MultiArray()
+            # First option
+            float_array_msg.data = [theta1_option1, theta2_option1, theta3_option1]
+            self.publish_to_fwd.publish(float_array_msg)
+            # Second option
+            float_array_msg.data = [theta1_option2, theta2_option2, theta3_option2]
+            self.publish_to_fwd.publish(float_array_msg)
+            # Third option
+            float_array_msg.data = [theta1_option1, theta2_option2, theta3_option1]
+            self.publish_to_fwd.publish(float_array_msg)
     
     def inverse_kinematics_callback(self, msg):
         """
