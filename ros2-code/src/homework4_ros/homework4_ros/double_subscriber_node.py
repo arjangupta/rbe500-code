@@ -148,18 +148,17 @@ class BidirectionalKinematics(rclpy.node.Node):
         theta2_option2 = theta2_option1 + math.pi
         print(f"For theta2, the two options are {theta2_option1} and {theta2_option2}")
         print(f"For theta3, the two options are {theta3_option1} and {theta3_option2}")
-        # For testing, print
+        # For testing, publish the q value options to the fwd kinematics subscriber
+        # in order to see if we can come up with the end effector position. To try
+        # all combination of q values, we form 2 arrays and iterate through them.
+        theta_option1_values = [theta1_option1, theta2_option1, theta3_option1]
+        theta_option2_values = [theta1_option2, theta2_option2, theta3_option2]
         if self.auto_publish_to_fwd_kin:
             float_array_msg = std_msgs.msg.Float32MultiArray()
-            # First option
-            float_array_msg.data = [theta1_option1, theta2_option1, theta3_option1]
-            self.publish_to_fwd.publish(float_array_msg)
-            # Second option
-            float_array_msg.data = [theta1_option2, theta2_option2, theta3_option2]
-            self.publish_to_fwd.publish(float_array_msg)
-            # Third option
-            float_array_msg.data = [theta1_option1, theta2_option2, theta3_option1]
-            self.publish_to_fwd.publish(float_array_msg)
+            for i in range(0, len(theta_option1_values)):
+                for j in range(0, len(theta_option2_values)):
+                    float_array_msg.data = [theta1_option1, theta2_option2, theta3_option1]
+                    self.publish_to_fwd.publish(float_array_msg)
     
     def inverse_kinematics_callback(self, msg):
         """
