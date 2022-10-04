@@ -1,3 +1,4 @@
+from turtle import position
 import rclpy
 import rclpy.node
 import std_msgs.msg
@@ -11,7 +12,28 @@ class BidirectionalKinematics(rclpy.node.Node):
     inverse kinematics based on the subscription topic on which we
     send the data.
     """
+
+    """
+    Class variables
+    The robot Problem 3.5 is a three-link articulated robot with only
+    three constants in its set up: d1, a2, and a3. Let us defined these
+    as class variables for this node 
+    """
+    d1 = 1
+    a2 = 1
+    a3 = 1
+
+    # Also define a class variable that helps us automatically
+    # publish to the other subscriber when a subscriber performs
+    # a calculation (this is just for testing, it is not part of
+    # this ROS assignment)
+    publish_to_other_subscriber = True
+
+
     def __init__(self) -> None:
+        """
+        Initializer/constructor method
+        """
         # Give a name to this node
         super().__init__('BidirectionalKinematics')
         # Subscribe on the forward kinematics topic, have it expect
@@ -34,15 +56,10 @@ class BidirectionalKinematics(rclpy.node.Node):
             self.inverse_kinematics_callback,
             15
         )
-
-    """
-    The robot Problem 3.5 is a three-link articulated robot with only
-    three constants in its set up: d1, a2, and a3. Let us defined these
-    as class variables for this node 
-    """
-    d1 = 1
-    a2 = 1
-    a3 = 1
+        # Declare the testing publisher if the flag is set
+        if self.publish_to_other_subscriber:
+            print("Declaring the testing publisher.")
+            self.testing_publisher = self.create_publisher(geometry_msgs.msg.Pose, 'inverse_kinematics_topic', 15)
 
     def calculate_forward_kinematics(self, theta1, theta2, theta3):
         """
@@ -69,6 +86,19 @@ class BidirectionalKinematics(rclpy.node.Node):
                              [-c2*s3-c3*s2, s2*s3-c2*c3, 0, d1-a2*s2-a3*c2*s3-a3*c3*s2],
                              [0, 0, 0, 1]])
         print(f'\nThe end effector pose for the given values {theta1}, {theta2}, {theta3} is represented by the following T_matrix:\n{T_matrix}\n')
+
+        # For testing, print the d portion of the T matrix to 
+        # the inverse kinematics node
+        if self.publish_to_other_subscriber:
+            pose_message = geometry_msgs.msg.Pose(
+                orientation = geometry_msgs.msg.Quaternion(
+                    x=1.0, y=1.0, z=1.0, w=1.0),
+                position = geometry_msgs.msg.Point(
+                    x=T_matrix[0][3],
+                    y=T_matrix[1][3],
+                    z=T_matrix[2][3])
+                )
+            self.testing_publisher.publish(pose_message)
 
     def forward_kinematics_callback(self, msg):
         """
@@ -114,6 +144,7 @@ class BidirectionalKinematics(rclpy.node.Node):
         theta2_option2 = math.atan2(s, r) - math.atan2(self.a3*math.sin(theta3_option2), self.a2 + self.a3*math.cos(theta3_option2))
         print(f"For theta2, the two options are {theta2_option1} and {theta2_option2}")
         print(f"For theta3, the two options are {theta3_option1} and {theta3_option2}")
+
     
     def inverse_kinematics_callback(self, msg):
         """
