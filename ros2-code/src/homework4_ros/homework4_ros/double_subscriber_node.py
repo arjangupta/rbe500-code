@@ -137,11 +137,12 @@ class BidirectionalKinematics(rclpy.node.Node):
         s = z_c - self.d1
         # Use equation 5.25 of textbook to find theta3
         D = (r**2 + s**2 - (self.a2)**2 - (self.a3)**2)/(2*self.a2*self.a3)
-        theta3_option1 = math.atan2(math.sqrt(1 - D**2), D)
-        theta3_option2 = math.atan2(-1*math.sqrt(1 - D**2), D)
+        D_y = math.sqrt(1 - D**2)
+        theta3_option1 = math.atan2(D_y, D)
+        theta3_option2 = math.atan2(-1*D_y, D)
         # Use equation 5.26 of textbook to find theta2
         theta2_option1 = math.atan2(s, r) - math.atan2(self.a3*math.sin(theta3_option1), self.a2 + self.a3*math.cos(theta3_option1))
-        theta2_option2 = math.atan2(s, r) - math.atan2(self.a3*math.sin(theta3_option2), self.a2 + self.a3*math.cos(theta3_option2))
+        theta2_option2 = theta2_option1 + math.pi
         print(f"For theta2, the two options are {theta2_option1} and {theta2_option2}")
         print(f"For theta3, the two options are {theta3_option1} and {theta3_option2}")
 
