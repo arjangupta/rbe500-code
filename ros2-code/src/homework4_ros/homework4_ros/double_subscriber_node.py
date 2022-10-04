@@ -85,13 +85,17 @@ class BidirectionalKinematics(rclpy.node.Node):
         theta3 = msg.data[2]
         self.calculate_forward_kinematics(theta1, theta2, theta3)
 
-    def calculate_inverse_kinematics(self, orientation, position):
+    def calculate_inverse_position(self, position):
         """
-        This function executes the inverse kinematics for Problem 3.5
+        This function executes the inverse position for Problem 3.5
         of the RBE 500 main textbook.
         """
-        print(f"\nReceived orientation: {orientation} and position: {position}, forming homoegenous transformation from these values.")
-
+        print(f"\nInverse position calculator received position: {position}")
+        # Declare x_c, y_c, z_c to denote the position of the wrist center, just like the way it
+        # is described in our main textbook.
+        x_c = position.x
+        y_c = position.y
+        z_c = position.z
         # Compute theta1, theta2, and theta3 as given in our book.
         # For theta1, we use equations 5.18 and 5.19 of our textbook
         theta1_option1 = math.atan2(y_c, x_c)
@@ -118,7 +122,10 @@ class BidirectionalKinematics(rclpy.node.Node):
         This function is executed when the inverse kinematics
         topic receives data.
         """
-        self.calculate_inverse_kinematics(msg.orientation, msg.position)
+        # Only use the position portion of the Pose message because
+        # we only have three joints. We would use the orientation
+        # portion as well if we had 3 more joints. 
+        self.calculate_inverse_position(msg.position)
 
 def main():
     # Initialize the ros2 client library
