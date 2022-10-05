@@ -133,13 +133,15 @@ class BidirectionalKinematics(rclpy.node.Node):
         # For theta1, we use equations 5.18 and 5.19 of our textbook
         theta1_option1 = math.atan2(y_c, x_c)
         theta1_option2 = math.pi + theta1_option1
-        print(f"For theta1, the two options are {theta1_option1} and {theta1_option2}")
         # Before computing theta2 and theta3, compute r and s, which are
         # defined right before equation 5.25 of our textbook.
         r = math.sqrt(x_c**2 + y_c**2)
         s = z_c - self.d1
         # Use equation 5.25 of textbook to find theta3
         D = (r**2 + s**2 - (self.a2)**2 - (self.a3)**2)/(2*self.a2*self.a3)
+        # Check if we can take the sqrt of 1 - D**2
+        if (1 - D**2) < 0:
+            print("The coordinates you have given yield a negative value for (1 - D**2). Cannot compute IK for these coordinates.")
         D_y = math.sqrt(1 - D**2)
         theta3_option1 = math.atan2(D_y, D)
         theta3_option2 = math.atan2(-1*D_y, D)
@@ -147,6 +149,8 @@ class BidirectionalKinematics(rclpy.node.Node):
         # s distance because our frame assignment puts Z in the opposite direction.
         theta2_option1 = math.atan2(-s, r) - math.atan2(self.a3*math.sin(theta3_option1), self.a2 + self.a3*math.cos(theta3_option1))
         theta2_option2 = theta2_option1 + math.pi
+        # Print all q values
+        print(f"For theta1, the two options are {theta1_option1} and {theta1_option2}")
         print(f"For theta2, the two options are {theta2_option1} and {theta2_option2}")
         print(f"For theta3, the two options are {theta3_option1} and {theta3_option2}")
         # For testing, publish the q value options to the fwd kinematics subscriber
