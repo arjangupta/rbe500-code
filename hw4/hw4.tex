@@ -203,7 +203,54 @@
     velocity of the particle in frame $o_0x_0y_0z_0$?
 
     \subsection{Solution}
-    
+
+    The given H is the homogeneous transformation $H^0_1$. Therefore, \(
+        R^0_1 =
+        \begin{bmatrix}
+            0 & -1 & 0\\
+            1 & 0 & 0\\
+            0 & 0 & 1
+        \end{bmatrix}
+    \) and \(
+        o^0_1 =
+        \begin{bmatrix}
+            1\\
+            -1\\
+            0
+        \end{bmatrix}
+    \).
+    \vspace{0.15in}
+    \\
+    At any given point in time, the position of the particle with respect to frame $o_1x_1y_1z_1$ is given as $p^1(t)$.
+    We know that
+
+    \[
+        p^0(t) = R^0_1 p^1(t) + o^0_1
+    \]
+
+    Taking the derivative of both sides and using the product rule, we get
+
+    \[
+        v^0(t) = \dot{R^0_1} p^1(t) +  R^0_1 v^1(t) + 0
+    \]
+
+    But, $\dot{R^0_1} = 0$ since $R^0_1$ is a constant in time. Therefore,
+
+    \begin{align*}
+        v^0(t) &= R^0_1 v^1(t)\\
+        v^0(t) &=
+            \begin{bmatrix}
+                0 & -1 & 0\\
+                1 & 0 & 0\\
+                0 & 0 & 1
+            \end{bmatrix}
+            \begin{bmatrix}
+                3\\
+                1\\
+                0
+            \end{bmatrix}
+    \end{align*}
+
 \end{homeworkProblem}
 
 \nobreak\extramarks{Problem 4.15}{}\nobreak{}
