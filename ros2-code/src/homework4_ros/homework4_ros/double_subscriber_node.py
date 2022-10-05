@@ -28,7 +28,7 @@ class BidirectionalKinematics(rclpy.node.Node):
     # a calculation (this is just for testing, it is not part of
     # this ROS assignment)
     auto_publish_to_inverse_kin = False
-    auto_publish_to_fwd_kin = True
+    auto_publish_to_fwd_kin = False
 
 
     def __init__(self) -> None:
