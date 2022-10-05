@@ -143,8 +143,9 @@ class BidirectionalKinematics(rclpy.node.Node):
         D_y = math.sqrt(1 - D**2)
         theta3_option1 = math.atan2(D_y, D)
         theta3_option2 = math.atan2(-1*D_y, D)
-        # Use equation 5.26 of textbook to find theta2
-        theta2_option1 = math.atan2(s, r) - math.atan2(self.a3*math.sin(theta3_option1), self.a2 + self.a3*math.cos(theta3_option1))
+        # Use equation 5.26 of textbook to find theta2, however we use a negative sign on the
+        # s distance because our frame assignment puts Z in the opposite direction.
+        theta2_option1 = math.atan2(-s, r) - math.atan2(self.a3*math.sin(theta3_option1), self.a2 + self.a3*math.cos(theta3_option1))
         theta2_option2 = theta2_option1 + math.pi
         print(f"For theta2, the two options are {theta2_option1} and {theta2_option2}")
         print(f"For theta3, the two options are {theta3_option1} and {theta3_option2}")
