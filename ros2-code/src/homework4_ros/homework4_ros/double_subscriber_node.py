@@ -156,7 +156,7 @@ class BidirectionalKinematics(rclpy.node.Node):
             float_array_msg.data = [theta1_option1, theta2_option1, theta3_option1]
             self.publish_to_fwd.publish(float_array_msg)
             # Publish the second set of solutions
-            float_array_msg.data = [theta2_option2, theta2_option2, theta3_option2]
+            float_array_msg.data = [theta1_option2, theta2_option2, theta3_option2]
             self.publish_to_fwd.publish(float_array_msg)
     
     def inverse_kinematics_callback(self, msg):
