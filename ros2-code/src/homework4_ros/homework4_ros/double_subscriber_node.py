@@ -142,6 +142,7 @@ class BidirectionalKinematics(rclpy.node.Node):
         # Check if we can take the sqrt of 1 - D**2
         if (1 - D**2) < 0:
             print("The coordinates you have given yield a negative value for (1 - D**2). Cannot compute IK for these coordinates.")
+            return
         D_y = math.sqrt(1 - D**2)
         theta3_option1 = math.atan2(D_y, D)
         theta3_option2 = math.atan2(-1*D_y, D)
