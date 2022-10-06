@@ -1,11 +1,11 @@
 clear; close all; clc;
 
-syms theta1 theta2 a2 d1 d2 d3;
+syms theta1 theta2 a2 a3 d1 d2 d3;
 
 alpha = 0;
-a = a2;
-theta = theta2;
-d = 0;
+a = a3;
+theta = 0;
+d = d3;
 
 % DH_3_10 = [round(cos(theta),2) round(-sin(theta)*cos(alpha),2) sin(theta)*sin(alpha) a*cos(theta); ...
 %            sin(theta) round(cos(theta)*cos(alpha),2) round(-cos(theta)*sin(alpha),2) a*sin(theta); ...

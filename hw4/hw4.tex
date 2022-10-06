@@ -339,9 +339,9 @@
     % \]
     % \[
         A_2 =
-        \begin{bmatrix}1 & 0 & 0 & 0\\ 0 & 1 & 0 & 0\\ 0 & 0 & 1 & d_{2}\\ 0 & 0 & 0 & 1 \end{bmatrix},
+        \begin{bmatrix}1 & 0 & 0 & 0\\ 0 & 0 & 1 & 0\\ 0 & -1 & 0 & d_{2}\\ 0 & 0 & 0 & 1\end{bmatrix},
         A_3 =
-        \begin{bmatrix}1 & 0 & 0 & 0\\ 0 & 1 & 0 & 0\\ 0 & 0 & 1 & d_{3}\\ 0 & 0 & 0 & 1 \end{bmatrix}
+        \begin{bmatrix}1 & 0 & 0 & a_{3}\\ 0 & 1 & 0 & 0\\ 0 & 0 & 1 & d_{3}\\ 0 & 0 & 0 & 1\end{bmatrix}
     \]
 
     Now we can compute our $T$ matrices using the following MATLAB code,
@@ -354,11 +354,11 @@
     \]
     \[
         T^0_2 = A_1 A_2 =
-        \begin{bmatrix}\cos\left(\theta _{1}\right) & -\sin\left(\theta _{1}\right) & 0 & 0\\ \sin\left(\theta _{1}\right) & \cos\left(\theta _{1}\right) & 0 & 0\\ 0 & 0 & 1 & d_{1}+d_{2}\\ 0 & 0 & 0 & 1 \end{bmatrix}
+        \begin{bmatrix}\cos\left(\theta _{1}\right) & 0 & -\sin\left(\theta _{1}\right) & 0\\ \sin\left(\theta _{1}\right) & 0 & \cos\left(\theta _{1}\right) & 0\\ 0 & -1 & 0 & d_{1}+d_{2}\\ 0 & 0 & 0 & 1\end{bmatrix}
     \]
     \[
         T^0_3 = A_1 A_2 A_3 =
-        \begin{bmatrix} \cos\left(\theta _{1}\right) & -\sin\left(\theta _{1}\right) & 0 & 0\\ \sin\left(\theta _{1}\right) & \cos\left(\theta _{1}\right) & 0 & 0\\ 0 & 0 & 1 & d_{1}+d_{2}+d_{3}\\ 0 & 0 & 0 & 1 \end{bmatrix}
+        \begin{bmatrix}\cos\left(\theta _{1}\right) & 0 & -\sin\left(\theta _{1}\right) & a_{3}\,\cos\left(\theta _{1}\right)-d_{3}\,\sin\left(\theta _{1}\right)\\ \sin\left(\theta _{1}\right) & 0 & \cos\left(\theta _{1}\right) & d_{3}\,\cos\left(\theta _{1}\right)+a_{3}\,\sin\left(\theta _{1}\right)\\ 0 & -1 & 0 & d_{1}+d_{2}\\ 0 & 0 & 0 & 1\end{bmatrix}
     \]
 
     From these $T$ matrices, we get
@@ -372,15 +372,15 @@
         \end{bmatrix},
         z_2 =
         \begin{bmatrix}
-            0\\
-            0\\
-            1
+            -\sin\left(\theta _{1}\right)\\
+            \cos\left(\theta _{1}\right)\\
+            0
         \end{bmatrix},
         o_3 =
         \begin{bmatrix}
-            0\\
-            0\\
-            d_1 + d_2 + d_3
+            a_{3}\,\cos\left(\theta _{1}\right)-d_{3}\,\sin\left(\theta _{1}\right)\\
+            d_{3}\,\cos\left(\theta _{1}\right)+a_{3}\,\sin\left(\theta _{1}\right)\\
+            d_{1}+d_{2}
         \end{bmatrix}
     \]\\
     \vspace{0.15in}\\
