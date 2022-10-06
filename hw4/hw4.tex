@@ -313,7 +313,7 @@
         0\\
         0
     \end{bmatrix}\). To find $z_1$, $z_2$, and $o_3$, we need to find
-    $T^0_n = A_0 \dots A_n$ for $n = 1, 2, 3$. By following the DH convention
+    $T^0_n = A_1 \dots A_n$ for $n = 1, 2, 3$. By following the DH convention
     (which Figure 3.7 already abides by), we have the following table for
     quantities \(\alpha_i, a_i, \theta_i, d_i\).
 
@@ -341,7 +341,50 @@
         A_2 =
         \begin{bmatrix}1 & 0 & 0 & 0\\ 0 & 1 & 0 & 0\\ 0 & 0 & 1 & d_{2}\\ 0 & 0 & 0 & 1 \end{bmatrix},
         A_3 =
-        \begin{bmatrix}1 & 0 & 0 & 0\\ 0 & 1 & 0 & 0\\ 0 & 0 & 1 & d_{3}\\ 0 & 0 & 0 & 1 \end{bmatrix},
+        \begin{bmatrix}1 & 0 & 0 & 0\\ 0 & 1 & 0 & 0\\ 0 & 0 & 1 & d_{3}\\ 0 & 0 & 0 & 1 \end{bmatrix}
     \]
+
+    Now we can compute our $T$ matrices using the following MATLAB code,
+
+    \lstinputlisting{prob4_15.m}
+
+    \[
+        T^0_1 = A_1 =
+        \begin{bmatrix}\cos\left(\theta _{1}\right) & -\sin\left(\theta _{1}\right) & 0 & 0\\ \sin\left(\theta _{1}\right) & \cos\left(\theta _{1}\right) & 0 & 0\\ 0 & 0 & 1 & d_{1}\\ 0 & 0 & 0 & 1 \end{bmatrix}
+    \]
+    \[
+        T^0_2 = A_1 A_2 =
+        \begin{bmatrix}\cos\left(\theta _{1}\right) & -\sin\left(\theta _{1}\right) & 0 & 0\\ \sin\left(\theta _{1}\right) & \cos\left(\theta _{1}\right) & 0 & 0\\ 0 & 0 & 1 & d_{1}+d_{2}\\ 0 & 0 & 0 & 1 \end{bmatrix}
+    \]
+    \[
+        T^0_3 = A_1 A_2 A_3 =
+        \begin{bmatrix} \cos\left(\theta _{1}\right) & -\sin\left(\theta _{1}\right) & 0 & 0\\ \sin\left(\theta _{1}\right) & \cos\left(\theta _{1}\right) & 0 & 0\\ 0 & 0 & 1 & d_{1}+d_{2}+d_{3}\\ 0 & 0 & 0 & 1 \end{bmatrix}
+    \]
+
+    From these $T$ matrices, we get
+
+    \[
+        z_1 =
+        \begin{bmatrix}
+            0\\
+            0\\
+            1
+        \end{bmatrix},
+        z_2 =
+        \begin{bmatrix}
+            0\\
+            0\\
+            1
+        \end{bmatrix},
+        o_3 =
+        \begin{bmatrix}
+            0\\
+            0\\
+            d_1 + d_2 + d_3
+        \end{bmatrix}
+    \]
+
+    Now we are ready to compute our Jacobian matrix.
 \end{homeworkProblem}
+
 \end{document}
