@@ -303,5 +303,34 @@
            z_0 & 0 & 0
         \end{bmatrix}
     \]
+
+    In this Jacobian matrix, we know that \(z_0 = \begin{bmatrix}
+        0\\
+        0\\
+        1
+    \end{bmatrix}\) and \(o_0 =\begin{bmatrix}
+        0\\
+        0\\
+        0
+    \end{bmatrix}\). To find $z_1$, $z_2$, and $o_3$, we need to find
+    $T^0_n = A_0 \dots A_n$ for $n = 1, 2, 3$. By following the DH convention
+    (which Figure 3.7 already abides by), we have the following table for
+    quantities \(\alpha_i, a_i, \theta_i, d_i\).
+
+    \begin{table}[h!]
+        \begin{center}
+            \begin{tabular}{|c|c|c|c|c|}
+            \hline
+            Link & $\alpha_i$ & $a_i$ & $\theta_i$ & $d_i$ \\
+            \hline
+            1 & 0 & 0 & $\theta_1$ & $d_1$ \\
+            2 & 0 & 0 & 0 & $d_2$\\
+            3 & 0 & 0 & 0 & $d_3$\\
+            \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+
+    Which gives us the following $A_i$ matrices.
 \end{homeworkProblem}
 \end{document}
