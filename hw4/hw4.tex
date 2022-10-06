@@ -270,6 +270,38 @@
 \begin{homeworkProblem}[Problem 4.15]
     Find the $6 \times 3$ Jacobian for the three links of the cylindrical manipulator of Figure 3.7.
     Find the singular conﬁgurations for this arm.
-\end{homeworkProblem}
 
+    \subsection{Solution}
+
+    Figure 3.7 of our book is the following.
+    \begin{figure}[h]
+        \includegraphics[scale=0.5]{prob4_15.png}
+        \centering
+    \end{figure}
+
+    We can see that we have 3 joints, so $n = 3$. Let us also form the table given in the lecture videos:
+
+    \begin{table}[h!]
+        \begin{center}
+            \begin{tabular}{|c|c|c|}
+            \hline
+            & Linear component & Angular component\\
+            \hline
+            Revolute joint & \(J_{v_i} = z^0_{i-1} \times (o^0_n - o^0_{i-1})\) & \(J_{v_i} = z^0_{i-1}\) \\
+            Prismatic joint & \(J_{\omega_i} = z^0_{i-1}\) & \(J_{\omega_i} = 0\)\\
+            \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+    
+    Using this table, and the fact that the upper half of the Jacobian contains linear components while the bottom half
+    contains angular components, we have
+    \[
+        J =
+        \begin{bmatrix}
+           z_0 \times (o_3 - o_0) & z_1 & z_2\\
+           z_0 & 0 & 0
+        \end{bmatrix}
+    \]
+\end{homeworkProblem}
 \end{document}
