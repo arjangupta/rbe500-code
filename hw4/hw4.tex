@@ -346,7 +346,7 @@
 
     Now we can compute our $T$ matrices using the following MATLAB code,
 
-    \lstinputlisting{prob4_15.m}
+    \lstinputlisting{prob4_15_tmats.m}
 
     \[
         T^0_1 = A_1 =
@@ -382,9 +382,20 @@
             0\\
             d_1 + d_2 + d_3
         \end{bmatrix}
-    \]
+    \]\\
+    \vspace{0.15in}\\
 
-    Now we are ready to compute our Jacobian matrix.
+    Now we are ready to compute our Jacobian matrix. We do this using the following
+    MATLAB code.
+
+    \lstinputlisting{prob4_15_jacobian.m}
+
+    Which gives us the following Jacobian,
+
+    \[
+        J =
+        \begin{bmatrix} 0 & 0 & 0\\ 0 & 0 & 0\\ 0 & 1 & 1\\ 0 & 0 & 0\\ 0 & 0 & 0\\ 1 & 0 & 0 \end{bmatrix}
+    \]
 \end{homeworkProblem}
 
 \end{document}
