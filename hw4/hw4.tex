@@ -395,7 +395,15 @@
     \[
         J =
         \begin{bmatrix} -d_{3}\,\cos\left(\theta _{1}\right) & 0 & -\sin\left(\theta _{1}\right)\\ -d_{3}\,\sin\left(\theta _{1}\right) & 0 & \cos\left(\theta _{1}\right)\\ 0 & 1 & 0\\ 0 & 0 & 0\\ 0 & 0 & 0\\ 1 & 0 & 0 \end{bmatrix}
+        = J_P
+        = \left[\begin{array}{@{}c@{}}
+            J_{11}\\\hline
+            J_{21} \\
+            \end{array}\right]
     \]
+    Where $J_{11}$ and $J_{21}$ are $3 \times 3$ matrices. By setting $\det J_{11} = 0$ we
+    can find the singularity configurations for the arm portion of the manipulator (first
+    three joints).
 \end{homeworkProblem}
 
 \end{document}
