@@ -3,7 +3,7 @@ clear; close all; clc;
 syms theta1 theta2 a2 a3 d1 d2 d3;
 
 alpha = 0;
-a = a3;
+a = 0;
 theta = 0;
 d = d3;
 

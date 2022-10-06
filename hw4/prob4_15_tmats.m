@@ -2,12 +2,12 @@
 
 clear; close all; clc;
 
-syms theta1 a3 d1 d2 d3;
+syms theta1 d1 d2 d3;
 
 % Form the A matrices
 A1 = [cos(theta1) -sin(theta1) 0 0; sin(theta1) cos(theta1) 0 0; 0 0 1 d1; 0 0 0 1];
 A2 = [1 0 0 0; 0 0 1 0; 0 -1 0 d2; 0 0 0 1];
-A3 = [1 0 0 a3; 0 1 0 0; 0 0 1 d3; 0 0 0 1];
+A3 = [1 0 0 0; 0 1 0 0; 0 0 1 d3; 0 0 0 1];
 
 % Compute T matrices
 T2 = A1*A2;

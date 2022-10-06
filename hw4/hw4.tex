@@ -325,7 +325,7 @@
             \hline
             1 & 0 & 0 & $\theta_1$ & $d_1$ \\
             2 & -90\degree & 0 & 0 & $d_2$\\
-            3 & 0 & $a_3$ & 0 & $d_3$\\
+            3 & 0 & 0 & 0 & $d_3$\\
             \hline
             \end{tabular}
         \end{center}
@@ -341,7 +341,7 @@
         A_2 =
         \begin{bmatrix}1 & 0 & 0 & 0\\ 0 & 0 & 1 & 0\\ 0 & -1 & 0 & d_{2}\\ 0 & 0 & 0 & 1\end{bmatrix},
         A_3 =
-        \begin{bmatrix}1 & 0 & 0 & a_{3}\\ 0 & 1 & 0 & 0\\ 0 & 0 & 1 & d_{3}\\ 0 & 0 & 0 & 1\end{bmatrix}
+        \begin{bmatrix}1 & 0 & 0 & 0\\ 0 & 1 & 0 & 0\\ 0 & 0 & 1 & d_{3}\\ 0 & 0 & 0 & 1\end{bmatrix}
     \]
 
     Now we can compute our $T$ matrices using the following MATLAB code,
@@ -358,7 +358,7 @@
     \]
     \[
         T^0_3 = A_1 A_2 A_3 =
-        \begin{bmatrix}\cos\left(\theta _{1}\right) & 0 & -\sin\left(\theta _{1}\right) & a_{3}\,\cos\left(\theta _{1}\right)-d_{3}\,\sin\left(\theta _{1}\right)\\ \sin\left(\theta _{1}\right) & 0 & \cos\left(\theta _{1}\right) & d_{3}\,\cos\left(\theta _{1}\right)+a_{3}\,\sin\left(\theta _{1}\right)\\ 0 & -1 & 0 & d_{1}+d_{2}\\ 0 & 0 & 0 & 1\end{bmatrix}
+        \begin{bmatrix}\cos\left(\theta _{1}\right) & 0 & -\sin\left(\theta _{1}\right) & -d_{3}\,\sin\left(\theta _{1}\right)\\ \sin\left(\theta _{1}\right) & 0 & \cos\left(\theta _{1}\right) & d_{3}\,\cos\left(\theta _{1}\right)\\ 0 & -1 & 0 & d_{1}+d_{2}\\ 0 & 0 & 0 & 1\end{bmatrix}
     \]
 
     From these $T$ matrices, we get
@@ -378,8 +378,8 @@
         \end{bmatrix},
         o_3 =
         \begin{bmatrix}
-            a_{3}\,\cos\left(\theta _{1}\right)-d_{3}\,\sin\left(\theta _{1}\right)\\
-            d_{3}\,\cos\left(\theta _{1}\right)+a_{3}\,\sin\left(\theta _{1}\right)\\
+            -d_{3}\,\sin\left(\theta _{1}\right)\\
+            d_{3}\,\cos\left(\theta _{1}\right)\\
             d_{1}+d_{2}
         \end{bmatrix}
     \]\\
@@ -394,7 +394,7 @@
 
     \[
         J =
-        \begin{bmatrix} 0 & 0 & 0\\ 0 & 0 & 0\\ 0 & 1 & 1\\ 0 & 0 & 0\\ 0 & 0 & 0\\ 1 & 0 & 0 \end{bmatrix}
+        \begin{bmatrix} -d_{3}\,\cos\left(\theta _{1}\right) & 0 & -\sin\left(\theta _{1}\right)\\ -d_{3}\,\sin\left(\theta _{1}\right) & 0 & \cos\left(\theta _{1}\right)\\ 0 & 1 & 0\\ 0 & 0 & 0\\ 0 & 0 & 0\\ 1 & 0 & 0 \end{bmatrix}
     \]
 \end{homeworkProblem}
 
