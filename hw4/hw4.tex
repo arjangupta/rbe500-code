@@ -403,7 +403,18 @@
     \]
     Where $J_{11}$ and $J_{21}$ are $3 \times 3$ matrices. By setting $\det J_{11} = 0$ we
     can find the singular configurations for the arm portion of the manipulator (first
-    three joints).
+    three joints). We calculate the determinant using the following MATLAB code,
+
+    \lstinputlisting{prob4_15_det.m}
+
+    \vspace{0.15in}
+
+    Which gives us,
+    \[J_{11} = d_{3}\,{\cos^2\left(\theta _{1}\right)}+d_{3}\,{\sin^2\left(\theta _{1}\right)} 
+        = d_3({\cos^2\left(\theta _{1}\right)}+{\sin^2\left(\theta _{1}\right)}) = d_3\]
+
+    When we set $J_{11} = 0$ here, we get $d_3 = 0$. Therefore, the only singular configuration for this manipulator
+    will occur when the third joint variable (which is a prismatic joint) goes to 0.
 \end{homeworkProblem}
 
 \end{document}
