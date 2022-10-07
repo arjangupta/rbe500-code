@@ -1,4 +1,3 @@
-from turtle import position
 import rclpy
 import rclpy.node
 import std_msgs.msg
