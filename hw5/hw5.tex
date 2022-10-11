@@ -197,16 +197,29 @@
     \subsection{Solution}
 
     Re-arranging the Laplace-domain controller model from Problem 1,
-    \begin{align*}
+    \begin{equation}
         E(s)\left(k_p + k_d s\right) = U(s)
-    \end{align*}
-    \begin{equation}\boxed{\frac{U(s)}{E(s)} = (k_p + k_d s)}\end{equation}
+    \end{equation}
+    \[\boxed{\frac{U(s)}{E(s)} = (k_p + k_d s)}\]
 
     Re-arranging the Laplace-domain system model from Problem 1,
-    \[
+    \begin{equation}
         X(s)\left(m s^2 + b s\right) = U(s)
+    \end{equation}
+    \[\boxed{\frac{X(s)}{U(s)} = \frac{1}{\left(m s^2 + b s\right)}}\]\\
+
+    Equating (1) and (2) as we have found above, we get
+    \begin{align*}
+        E(s)\left(k_p + k_d s\right) &= X(s)\left(m s^2 + b s\right)\\
+        \frac{\left(k_p + k_d s\right)}{\left(m s^2 + b s\right)} &= \frac{X(s)}{E(s)}
+    \end{align*}
+    \[
+        \boxed{\frac{X(s)}{E(s)} = \frac{\left(k_p + k_d s\right)}{\left(m s^2 + b s\right)}}
     \]
-    \begin{equation}\boxed{\frac{X(s)}{U(s)} = \frac{1}{\left(m s^2 + b s\right)}}\end{equation}
 \end{homeworkProblem}
+
+\nobreak\extramarks{Problem 3}{}\nobreak{}
+
+\pagebreak
 
 \end{document}
