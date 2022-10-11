@@ -173,12 +173,18 @@
     \begin{align*}
         \mathcal{L}\{m\ddot{x} + b\dot{x}\} &= \mathcal{L}\{u\}\\
         m \mathcal{L}\{\ddot{x}\} + b \mathcal{L}\{\dot{x}\} &= U(s)\\
-        \alignedbox{s^2 X(s) + b s X(s)}{=U(s)}
+        \alignedbox{m s^2 X(s) + b s X(s)}{=U(s)}
     \end{align*}
     % Separated, boxed equation:
     % \[
     %     \boxed{U(s) = s^2 X(s) + b s X(s)}
     % \]
+    Similarly, take the Laplacian on both sides of the controller model,
+    \begin{align*}
+        \mathcal{L}\{k_p e + k_d \dot{e}\} &= \mathcal{L}\{u\}\\
+        k_p\mathcal{L}\{e\} + k_d\mathcal{L}\{\dot{e}\} &= U(s)\\
+        \alignedbox{k_p E(s) + k_d s E(s)}{= U(s)}
+    \end{align*}
 \end{homeworkProblem}
 
 \end{document}
