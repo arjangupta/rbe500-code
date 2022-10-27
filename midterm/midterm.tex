@@ -348,11 +348,12 @@
     First we assign coordinate frames 0 through 5 (links 0 through 5). This is done as per the following figure.
 
     \begin{figure}[h]
-        \includegraphics[scale=0.4]{q4_figure_sola.png}
+        \includegraphics[scale=0.54]{q4_figure_sola.png}
         \centering
     \end{figure}
 
-    Now, we create a table for quantities \(\alpha_i, a_i, \theta_i, d_i\) for links 1 through 5.
+    Now, we create a table for quantities \(\alpha_i, a_i, \theta_i, d_i\) for links 1 through 6. In this table,
+    $d_1$, $d_2$, $d_3$, $\theta_4$, $\theta_5$, $\theta_6$ are variable. However, $l_4$, $l_5$, $l_6$ are fixed (constants).
 
     \begin{table}[h!]
         \begin{center}
@@ -363,12 +364,34 @@
             1 & $90\degree$ & 0 & 0 & $d_1$ \\
             2 & $90\degree$ & 0 & $-90\degree$ & $d_2$\\
             3 & 0 & 0 & 0 & $d_3$\\
-            4 & $90\degree$ & 0 & $180\degree$ & $d_4$\\
-            5 & $90\degree$ & 0 & $180\degree$ & $d_5$\\
+            4 & $90\degree$ & 0 & $\theta_4$ & $l_4$\\
+            5 & $-90\degree$ & 0 & $\theta_5$ & $l_5$\\
+            6 & 0 & 0 & $\theta_6$ & $l_6$\\
             \hline
             \end{tabular}
         \end{center}
     \end{table}
+
+    \subsection{Solution for part (b)}
+
+    We know that \(H^1_2 = A_2\), where $A_2$ is the DH matrix $A_i$ with $i=2$.
+    
+    \begin{align*}
+        H^1_2 = A_2
+        &= \begin{bmatrix}
+            \cos\theta_2 & -\sin\theta_2 \cos\alpha_2 & \sin\theta_2 \sin\alpha_2 & a_i \cos\theta_2\\
+            \sin\theta_2 & \cos\theta_2 \cos\alpha_2 & -\cos\theta_2 \sin\alpha_2 & a_i \sin\theta_2\\
+            0 & \sin\alpha_2 & \cos\alpha_2 & d_2\\
+            0 & 0 & 0 & 1
+        \end{bmatrix}\\
+        &= \begin{bmatrix}
+            \cos(-90\degree) & -\sin(-90\degree) \cos(90\degree) & \sin(-90\degree) \sin(90\degree) & a_i \cos(-90\degree)\\
+            \sin(-90\degree) & \cos(-90\degree) \cos(90\degree) & -\cos(-90\degree) \sin(90\degree) & a_i \sin(-90\degree)\\
+            0 & \sin(90\degree) & \cos(90\degree) & d_2\\
+            0 & 0 & 0 & 1
+        \end{bmatrix}\\
+        \alignedbox{H^1_2}{= \begin{bmatrix}0 & 0 & -1 & 0\\ -1 & 0 & 0 & 0\\ 0 & 1 & 0 & d_{2}\\ 0 & 0 & 0 & 1 \end{bmatrix}}
+    \end{align*}
 
 \end{homeworkProblem}
 
