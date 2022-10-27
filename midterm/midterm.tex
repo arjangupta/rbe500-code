@@ -166,7 +166,7 @@
 
     Since the x-axis remains the same in the rotation, we know this is a basic 3D rotation matrix representing a rotation
     about the x-axis. However, using the right-hand screw rule, we see that the angle $\theta$ here is negative. So, by
-    using equation (2.7) of our main textbook, the rotation matrix is given by,
+    using equation 2.7 (page 43) of our main textbook, the rotation matrix is given by,
 
     \begin{align*}
         &R^1_2 =
@@ -217,9 +217,44 @@
         1
     \end{bmatrix}\).\\
 
-    However, we want to find
+    However, we want to find $P^1$, so we apply the inverse of H to both sides,
 
+    \begin{align*}
+        P^2 &= H^2_1 P^1\\
+        {(H^2_1)}^{-1}P^2 &= P^1
+    \end{align*}
+
+    We know that \(H^2_1 = \begin{bmatrix}
+        R^2_1 & d^2_1\\
+        0 & 1
+    \end{bmatrix}\), where \(R^2_1 = \begin{bmatrix}
+        1 & 0 & 0\\
+        0 & 0.9553 & 0.2955\\
+        0 & -0.2955 & 0.9553
+    \end{bmatrix}\) and \(d^2_1 = \begin{bmatrix}
+        -1\\
+        -0.9553\\
+        0.2955
+    \end{bmatrix}\).\\
+    \vspace{0.15in}\\
+    For accuracy while computing the inverse of $H^2_1$, we use equation 2.67 of the book (page 63).
+    Therefore, \[{(H^2_1)}^{-1} = \begin{bmatrix}
+        {(R^2_1)}^T & -{(R^2_1)}^T d^2_1\\
+        0 & 1
+    \end{bmatrix}\].
     We use the following MATLAB code for this computation.
+    \lstinputlisting{prob2_midterm.m}
+
+    Which gives us the answer,
+
+    \[
+        \boxed{P^1 = \begin{bmatrix}
+            3.0000\\
+            5.7764\\
+            1.4775\\
+            1.0000
+        \end{bmatrix}}
+    \]
 \end{homeworkProblem}
 
 \nobreak\extramarks{Problem 3}{}\nobreak{}
