@@ -150,11 +150,11 @@
 
 \maketitle
 
-\nobreak\extramarks{Problem 1}{}\nobreak{}
+\nobreak\extramarks{Question 1}{}\nobreak{}
 
 \pagebreak
 
-\begin{homeworkProblem}[Problem 1]
+\begin{homeworkProblem}[Question 1]
     Derive the rotation matrix $R^1_2$ (you can leave sines and cosines as is).
 
     \begin{figure}[h]
@@ -184,11 +184,11 @@
     \end{align*}
 \end{homeworkProblem}
 
-\nobreak\extramarks{Problem 2}{}\nobreak{}
+\nobreak\extramarks{Question 2}{}\nobreak{}
 
 \pagebreak
 
-\begin{homeworkProblem}[Problem 2]
+\begin{homeworkProblem}[Question 2]
     Find the coordinates of point $p$ expressed in frame 1 (i.e. $p^1$) given the following.
 
     \[H^2_1 = \begin{bmatrix}
@@ -259,11 +259,11 @@
     \]
 \end{homeworkProblem}
 
-\nobreak\extramarks{Problem 3}{}\nobreak{}
+\nobreak\extramarks{Question 3}{}\nobreak{}
 
 \pagebreak
 
-\begin{homeworkProblem}[Problem 3]
+\begin{homeworkProblem}[Question 3]
     If \(R^0_1 = \begin{bmatrix}
         0.7071& 0& 0.7071\\
         0 & 1 & 0\\
@@ -325,11 +325,11 @@
     \]
 \end{homeworkProblem}
 
-\nobreak\extramarks{Problem 4}{}\nobreak{}
+\nobreak\extramarks{Question 4}{}\nobreak{}
 
 \pagebreak
 
-\begin{homeworkProblem}[Problem 4]
+\begin{homeworkProblem}[Question 4]
 
     (a) Calculate Denavit Hertanberg parameters for the given manipulator (just filling out the
     Denavit Hertanberg table would suffice). For this question, you are expected to solve it
@@ -343,7 +343,7 @@
 
     (b) Derive $H^1_2$. You can leave sines, cosines, joint values, and link lengths as parameters.
     
-    \subsection{Solution for part (a)}
+    \subsection{Solution for 4(a)}
 
     First we assign coordinate frames 0 through 5 (links 0 through 5). This is done as per the following figure.
 
@@ -372,7 +372,7 @@
         \end{center}
     \end{table}
 
-    \subsection{Solution for part (b)}
+    \subsection{Solution for 4(b)}
 
     We know that \(H^1_2 = A_2\), where $A_2$ is the DH matrix $A_i$ with $i=2$.
     
@@ -393,6 +393,20 @@
         \alignedbox{H^1_2}{= \begin{bmatrix}0 & 0 & -1 & 0\\ -1 & 0 & 0 & 0\\ 0 & 1 & 0 & d_{2}\\ 0 & 0 & 0 & 1 \end{bmatrix}}
     \end{align*}
 
+\end{homeworkProblem}
+
+\nobreak\extramarks{Question 5}{}\nobreak{}
+
+\pagebreak
+
+\begin{homeworkProblem}[Question 5]
+    Calculate inverse kinematics for the manipulator in Question 4. Assume that all the forward
+    kinematics information is available (i.e. all homogenous transformation matrices). Since there
+    are no values given, you will be deriving your expressions parametrically, but please be sure to
+    explicitly show, which homogeneous transformation matrix is required for the corresponding
+    information, and which segment of the matrix is used to obtain that information. (e.g. in your
+    derivations you can say something like: “to calculate this expression, I would need $z^0_3$, which is
+    available to me at the $3^{rd}$ column of $H^0_3$”).
 \end{homeworkProblem}
 
 \end{document}
