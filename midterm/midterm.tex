@@ -244,6 +244,8 @@
     \end{bmatrix}\].
     We use the following MATLAB code for this computation.
     \lstinputlisting{prob2_midterm.m}
+    % H2_1 = [1 0 0 -1; 0 0.9553 0.2955 -0.9553; 0 -0.2955 0.9553 0.2955; 0 0 0 1];
+    % inv(H2_1)*P2
 
     Which gives us the answer,
 
@@ -262,7 +264,65 @@
 \pagebreak
 
 \begin{homeworkProblem}[Problem 3]
-    
+    If \(R^0_1 = \begin{bmatrix}
+        0.7071& 0& 0.7071\\
+        0 & 1 & 0\\
+        -0.7071& 0& 0.7071
+    \end{bmatrix}\), 
+    \(R^0_2 = \begin{bmatrix}
+        0 & 0.866 & 0.5\\
+        0 & 0.5 & -0.866\\
+        -1 & 0 & 0
+    \end{bmatrix}\), and 
+    \(R^0_3 = \begin{bmatrix}
+        0 & -1 & 0\\
+        0 & 0 & 1\\
+        -1 & 0 & 0
+    \end{bmatrix}\), calculate $R^1_2$.
+
+    \subsection{Solution}
+
+    Knowing the composition law for rotational transformations, we can write
+
+    \begin{align*}
+        R^1_2 &= R^1_0 R^0_2\\
+        R^1_2 &= {(R^0_1)}^T R^0_2\\
+        R^1_2 &= {\begin{bmatrix}
+            0.7071& 0& 0.7071\\
+            0 & 1 & 0\\
+            -0.7071& 0& 0.7071
+        \end{bmatrix}}^T 
+        \begin{bmatrix}
+            0 & 0.866 & 0.5\\
+            0 & 0.5 & -0.866\\
+            -1 & 0 & 0
+        \end{bmatrix}\\
+        R^1_2 &= {\begin{bmatrix}
+            0.7071& 0& -0.7071\\
+            0 & 1 & 0\\
+            0.7071& 0& 0.7071
+        \end{bmatrix}} 
+        \begin{bmatrix}
+            0 & 0.866 & 0.5\\
+            0 & 0.5 & -0.866\\
+            -1 & 0 & 0
+        \end{bmatrix}\\
+    \end{align*}
+
+    We use the following MATLAB script to compute this multiplication.
+    \lstinputlisting{prob3_midterm.m}
+
+    Therefore,
+    \[
+        \boxed{
+            R^1_2 =
+            \begin{bmatrix}
+                0.7071 & 0.6123 & 0.3535\\
+                0 & 0.5000 & -0.8660\\
+               -0.7071 & 0.6123 & 0.3535
+            \end{bmatrix}
+        }
+    \]
 \end{homeworkProblem}
 
 \end{document}
