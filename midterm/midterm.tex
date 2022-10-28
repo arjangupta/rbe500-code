@@ -636,10 +636,12 @@
     \begin{align*}
         \mathcal{L}\{a\ddot{x} + b\dot{x} + c{x}\} &= \mathcal{L}\{u\}\\
         a X(s) s^2 + b X(s) s + c X(s) &= U(s)\\
-        X(s)[a s^2 + b s + c] &= U(s)\\
     \end{align*}
+    \begin{equation}
+        X(s)[a s^2 + b s + c] = U(s)
+    \end{equation}
     Therefore,
-    \[\boxed{\frac{X(s)}{U(s)}=\frac{1}{a s^2 + b s + c}}\]
+    \[\boxed{\frac{X(s)}{U(s)}=\frac{1}{a s^2 + b s + c}=\frac{1}{10 s^2 + 3.5 s + 0.6}}\]
 
     \subsection{Solution for 7(b)}
 
@@ -651,17 +653,92 @@
         E(s) [K_p + K_d s] &= U(s)
     \end{align*}
     Therefore, the transfer function for the PD controller is
-    \[
+    \begin{equation}
         \frac{U(s)}{E(s)}=K_p + K_d s
-    \]
+    \end{equation}
 
     Now we can draw the block diagram, as shown on the next page.
+
+    \vspace{3in}
 
     \begin{figure}
         \includegraphics[scale=0.4]{q7_figure.png}
         \centering
     \end{figure}
 
+    \subsection{Solution for 7(c)}
+    
+    From the block diagram, we can see that
+    \[E = X_r - X\]
+
+    Using equation 2 from part (b),
+
+    \[\frac{U(s)}{K_p + K_d s} = X_r - X\]
+
+    Furthermore, using equation 1 from part (a),
+
+    \begin{align*}
+        \frac{X(s)[a s^2 + b s + c]}{K_p + K_d s} &= X_r - X\\
+        \frac{X [a s^2 + b s + c]}{K_p + K_d s} + X &= X_r\\
+        X\left(\frac{a s^2 + b s + c}{K_p + K_d s} + 1\right) &= X_r\\
+        X\left(\frac{a s^2 + b s + c + K_p + K_d s}{K_p + K_d s}\right) &= X_r\\
+    \end{align*}
+    Therefore,
+    \[
+        \boxed{\frac{X}{X_r}=\frac{K_p + K_d s}{a s^2 + s(b + K_d) + (c + K_p)}=\frac{K_p + K_d s}{10 s^2 + s(3.5 + K_d) + (0.6 + K_p)}}
+    \]
+
+    \subsection{Solution for 7(d)}
+
+    Taking the denominator of $\frac{X}{X_r}$, we have the charateristic equation,
+
+    \begin{align*}
+        10 s^2 + s(3.5 + K_d) + (0.6 + K_p) &= 0\\
+        s^2 + s\frac{3.5 + K_d}{10} + \frac{0.6 + K_p}{10} &= 0
+    \end{align*}
+
+    The general form of the charateristic equation is
+
+    \[s^2 + (2\xi\omega_n)s + {\omega_n}^2 = 0\]
+
+    Where $\xi$ is the damping ratio and $\omega_n$ is the natural frequency.\\
+    \vspace*{0.3in}\\
+    Hence, we have,
+    \begin{equation}
+        {\omega_n}^2 = \frac{0.6 + K_p}{10}
+    \end{equation}
+    and
+    \begin{equation}
+        2\xi\omega_n = \frac{3.5 + K_d}{10}
+    \end{equation}
+
+    Also, we know that the natural frequency and settling time $T_s$ are related by
+
+    \[\xi\omega_n T_s = 4\]
+
+    Since we are solving for a critically damped system, we set \(\xi = 1\). We also want settling time $T_s$ = 2 seconds.\\
+    
+    So, \begin{align*}
+        \xi\omega_n T_s &= 4\\
+        1 \cdot \omega_n \cdot 2 &= 4\\
+        \omega_n &= 2
+    \end{align*}
+
+    Plugging this into equation 3, we have
+
+    \begin{align*}
+        {(2)}^2 &= \frac{0.6 + K_p}{10}\\
+        40 &= 0.6 + K_p\\
+        \alignedbox{K_p}{=39.4}
+    \end{align*}
+
+    Also, plugging in values into equation 4, we have
+
+    \begin{align*}
+        2(1)(2) &= \frac{3.5 + K_d}{10}\\
+        40 &= 3.5 + K_d\\
+        \alignedbox{K_d}{=36.5}
+    \end{align*}
 \end{homeworkProblem}
 
 \nobreak\extramarks{Question 8}{}\nobreak{}
