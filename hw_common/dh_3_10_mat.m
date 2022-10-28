@@ -4,7 +4,7 @@ syms theta1 theta2 theta4 theta5 theta6 a2 a3 d1 d2 d3 l4 l5 l6;
 
 alpha = 0; % in radians
 a = 0;
-theta = theta5; % in radians
+theta = theta6; % in radians
 d = l6;
 
 % DH_3_10 = [round(cos(theta),2) round(-sin(theta)*cos(alpha),2) sin(theta)*sin(alpha) a*cos(theta); ...

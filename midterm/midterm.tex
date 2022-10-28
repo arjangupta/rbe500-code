@@ -647,7 +647,7 @@
         \item $z_2$ is the third column of $R^0_2$, which is the upper-left $3\times3$ section of the $H^0_2 = T_2 = A_1A_2$ matrix.
         \item $z_3$ is the third column of $R^0_3$, which is the upper-left $3\times3$ section of the $H^0_3 = T_3 = A_1A_2A_3$ matrix.
         \item $z_4$ is the third column of $R^0_4$, which is the upper-left $3\times3$ section of the $H^0_4 = T_4 = A_1A_2A_3A_4$ matrix.
-        \item $z_4$ is the third column of $R^0_5$, which is the upper-left $3\times3$ section of the $H^0_5 = T_5 = A_1A_2A_3A_4A_5$ matrix.
+        \item $z_5$ is the third column of $R^0_5$, which is the upper-left $3\times3$ section of the $H^0_5 = T_5 = A_1A_2A_3A_4A_5$ matrix.
         \item $o_3$ is the $3\times1$ vector in the upper-right section of $T_3$.
         \item $o_4$ is the $3\times1$ vector in the upper-right section of $T_4$.
         \item $o_5$ is the $3\times1$ vector in the upper-right section of $T_5$.
@@ -660,8 +660,11 @@
     ,
     A_5 = \begin{bmatrix} \cos\left(\theta _{5}\right) & 0 & -\sin\left(\theta _{5}\right) & 0\\ \sin\left(\theta _{5}\right) & 0 & \cos\left(\theta _{5}\right) & 0\\ 0 & -1 & 0 & l_{5}\\ 0 & 0 & 0 & 1 \end{bmatrix}
     ,
-    A_6 = \begin{bmatrix}\cos\left(\theta _{5}\right) & -\sin\left(\theta _{5}\right) & 0 & 0\\ \sin\left(\theta _{5}\right) & \cos\left(\theta _{5}\right) & 0 & 0\\ 0 & 0 & 1 & l_{6}\\ 0 & 0 & 0 & 1 \end{bmatrix}
+    A_6 = \begin{bmatrix}\cos\left(\theta _{6}\right) & -\sin\left(\theta _{6}\right) & 0 & 0\\ \sin\left(\theta _{6}\right) & \cos\left(\theta _{6}\right) & 0 & 0\\ 0 & 0 & 1 & l_{6}\\ 0 & 0 & 0 & 1 \end{bmatrix}
     \]
+
+    Now, we write a MATLAB script that will utilize the $A_i$ matrices we have found to find the $T_i$ matrices. The script will then extract
+    the required parts of the $T_i$ matrices, place them into the Jacobian matrix and give us our final answer.  
     
 \end{homeworkProblem}
 
