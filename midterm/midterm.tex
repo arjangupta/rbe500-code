@@ -612,7 +612,7 @@
     \subsection{Solution}
 
     \begin{figure}[h]
-        \includegraphics[scale=0.45]{q4_figure_sola.png}
+        \includegraphics[scale=0.51]{q4_figure_sola.png}
         \centering
     \end{figure}
 
@@ -638,6 +638,31 @@
             0 & 0 & 0 & z_3 & z_4 & z_5
         \end{bmatrix}
     \]
+    In this Jacobian matrix,
+    \begin{enumerate}
+        \item $z_0$ is the third column of the base frame's rotation matrix, which is just the identity matrix. Therefore, \(z_0 = \begin{bmatrix}
+            0\\0\\1
+        \end{bmatrix}\)
+        \item $z_1$ is the third column of $R^0_1$, which is the upper-left $3\times3$ section of the $H^0_1 = A_1$ matrix.
+        \item $z_2$ is the third column of $R^0_2$, which is the upper-left $3\times3$ section of the $H^0_2 = T_2 = A_1A_2$ matrix.
+        \item $z_3$ is the third column of $R^0_3$, which is the upper-left $3\times3$ section of the $H^0_3 = T_3 = A_1A_2A_3$ matrix.
+        \item $z_4$ is the third column of $R^0_4$, which is the upper-left $3\times3$ section of the $H^0_4 = T_4 = A_1A_2A_3A_4$ matrix.
+        \item $z_4$ is the third column of $R^0_5$, which is the upper-left $3\times3$ section of the $H^0_5 = T_5 = A_1A_2A_3A_4A_5$ matrix.
+        \item $o_3$ is the $3\times1$ vector in the upper-right section of $T_3$.
+        \item $o_4$ is the $3\times1$ vector in the upper-right section of $T_4$.
+        \item $o_5$ is the $3\times1$ vector in the upper-right section of $T_5$.
+        \item $o_6$ is the $3\times1$ vector in the upper-right section of $H^0_6 = T_6 = A_1A_2A_3A_4A_5A_6$ matrix.
+    \end{enumerate}
+
+    We already found $A_1$, $A_2$, $A_3$, and $T_3$ in the solutions for Question 4 and Question 5. Similarly, we write $A_4$, $A_5$ and $A_6$ as follows.
+    \[
+    A_4 = \begin{bmatrix}\cos\left(\theta _{4}\right) & 0 & \sin\left(\theta _{4}\right) & 0\\ \sin\left(\theta _{4}\right) & 0 & -\cos\left(\theta _{4}\right) & 0\\ 0 & 1 & 0 & l_{4}\\ 0 & 0 & 0 & 1 \end{bmatrix}
+    ,
+    A_5 = \begin{bmatrix} \cos\left(\theta _{5}\right) & 0 & -\sin\left(\theta _{5}\right) & 0\\ \sin\left(\theta _{5}\right) & 0 & \cos\left(\theta _{5}\right) & 0\\ 0 & -1 & 0 & l_{5}\\ 0 & 0 & 0 & 1 \end{bmatrix}
+    ,
+    A_6 = \begin{bmatrix}\cos\left(\theta _{5}\right) & -\sin\left(\theta _{5}\right) & 0 & 0\\ \sin\left(\theta _{5}\right) & \cos\left(\theta _{5}\right) & 0 & 0\\ 0 & 0 & 1 & l_{6}\\ 0 & 0 & 0 & 1 \end{bmatrix}
+    \]
+    
 \end{homeworkProblem}
 
 \nobreak\extramarks{Question 7}{}\nobreak{}
