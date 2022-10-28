@@ -407,6 +407,98 @@
     information, and which segment of the matrix is used to obtain that information. (e.g. in your
     derivations you can say something like: “to calculate this expression, I would need $z^0_3$, which is
     available to me at the $3^{rd}$ column of $H^0_3$”).
+
+    \subsection{Solution}
+
+    Before we begin, let us make a brief list of steps we need to take to solve the complete inverse kinematics problem for our 
+    particular manipulator's configuration.
+    \begin{enumerate}
+        \item Find wrist center $o_c$.
+        \item Find $q_1$, $q_2$, $q_3$.
+        \item Perform forward kinematics to arrive at \(R^0_3 = {(R^3_0)}^T\).
+        \item Get \(R^3_6 = R^3_0R^0_6\).
+        \item Use $R^3_6$ to find $\phi, \theta, \psi$ of Euler configuration to find $q_4, q_5, q_6$.
+    \end{enumerate}
+    In essence, once we have found all joint variables given the end-effector's homogeneous transformation, we have solved the inverse kinematics problem.\\
+
+    Now, considering the figure we had in Question 4, let us draw vectors $o_c$ and $o_6$ in it as shown below.
+
+    \begin{figure}[h]
+        \includegraphics[scale=0.45]{q5_figure_sol.png}
+        \centering
+    \end{figure}
+
+    We have determined $o_c$ as the wrist center. This is because joints 4, 5, 6 form a spherical wrist, and the z-axes
+    of frames 3, 4, 5 intersect at $o_c$. Now let us proceed to Step 1.\\
+
+    \textbf{Step 1} - Find the wrist center\\
+
+    The end-effector's homogeneous transformation is known to us as the $4\times4$ matrix
+
+    \[
+        H^0_6 =
+        \begin{bmatrix}
+             R^0_6 & o^0_6\\
+             0 & 1
+        \end{bmatrix}
+    \]
+
+    where
+
+    \[
+        R^0_6 = 
+        \begin{bmatrix}
+            r_{11} & r_{12} & r_{13}\\
+            r_{21} & r_{22} & r_{23}\\
+            r_{31} & r_{32} & r_{33}
+        \end{bmatrix},
+        o^0_6 =
+        \begin{bmatrix}
+            x_6 \\
+            y_6 \\
+            z_6
+        \end{bmatrix}
+    \]
+
+    Where $o^0_6$ is $o_6$ as shown in the diagram. As shown in the figure, we can establish a relationship between $o_6$ and $o_c$ as
+
+    \[
+        \begin{split}
+            o_c = o_6 - (l_5 + l_6)R^0_6
+            \begin{bmatrix}
+                0\\
+                0\\
+                1
+            \end{bmatrix}\\
+            \begin{bmatrix}
+                x_c \\
+                y_c \\
+                z_c
+            \end{bmatrix}
+            =
+            \begin{bmatrix}
+                x_6 - (l_5 + l_6)r_{13} \\
+                y_6 - (l_5 + l_6)r_{23} \\
+                z_6 - (l_5 + l_6)r_{33}
+            \end{bmatrix}
+        \end{split}
+    \]
+
+    Where $(l_5 + l_6)$ is a scalar.\\
+    
+    \textbf{Step 2} - Find $q_1$, $q_2$, $q_3$.\\
+
+    In the figure we have drawn, we can see that \(x_c = -(d_3 + l_4)\), where $d_3$ is variable and $l_4$ is a constant. Therfore,
+    \(d_3 = -x_c - l_4 = -(x_c + l_4)\).\\
+
+    We can also see that \(y_c = -d_2\) and \(z_c = d_1\).\\
+
+    Therefore, we have,
+    \begin{align*}
+        q_1 &= d_1 = z_c = z_6 - (l_5 + l_6)r_{33}\\
+        q_2 &= d_2 = -y_c = -y_6 + (l_5 + l_6)r_{23}\\
+        q_3 &= d_3 = -(x_c + l_4) = -x_6 + (l_5 + l_6)r_{13} - l_4
+    \end{align*}
 \end{homeworkProblem}
 
 \end{document}
