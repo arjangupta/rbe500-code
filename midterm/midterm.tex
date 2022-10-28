@@ -665,7 +665,20 @@
 
     Now, we write a MATLAB script that will utilize the $A_i$ matrices we have found to find the $T_i$ matrices. The script will then extract
     the required parts of the $T_i$ matrices, place them into the Jacobian matrix and give us our final answer.  
-    
+    \lstinputlisting{prob6_midterm.m}
+
+    Our Jacobian is as follows:
+
+    \[J =
+    \left(\begin{smallmatrix}
+        0 & 0 & -1 & 0 & \sin\left(\theta _{4}\right)\,\left(l_{5}\,\cos\left(\theta _{4}\right)+l_{6}\,\sin\left(\theta _{4}\right)\,\sin\left(\theta _{5}\right)\right)-\cos\left(\theta _{4}\right)\,\left(l_{5}\,\sin\left(\theta _{4}\right)-l_{6}\,\cos\left(\theta _{4}\right)\,\sin\left(\theta _{5}\right)\right) & 0\\
+        0 & -1 & 0 & l_{6}\,\cos\left(\theta _{4}\right)\,\sin\left(\theta _{5}\right)-l_{5}\,\sin\left(\theta _{4}\right) & l_{6}\,\cos\left(\theta _{5}\right)\,\sin\left(\theta _{4}\right) & 0\\
+        1 & 0 & 0 & -l_{5}\,\cos\left(\theta _{4}\right)-l_{6}\,\sin\left(\theta _{4}\right)\,\sin\left(\theta _{5}\right) & l_{6}\,\cos\left(\theta _{4}\right)\,\cos\left(\theta _{5}\right) & 0\\
+        0 & 0 & 0 & -1 & 0 & -\cos\left(\theta _{5}\right)\\
+        0 & 0 & 0 & 0 & \cos\left(\theta _{4}\right) & \sin\left(\theta _{4}\right)\,\sin\left(\theta _{5}\right)\\
+        0 & 0 & 0 & 0 & -\sin\left(\theta _{4}\right) & \cos\left(\theta _{4}\right)\,\sin\left(\theta _{5}\right)
+    \end{smallmatrix}\right)
+    \]
 \end{homeworkProblem}
 
 \nobreak\extramarks{Question 7}{}\nobreak{}

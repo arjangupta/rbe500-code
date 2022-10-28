@@ -29,3 +29,15 @@ z2 = T2(1:3,3);
 z3 = T3(1:3,3);
 z4 = T4(1:3,3);
 z5 = T5(1:3,3);
+
+% Extract required o vectors
+o3 = T3(1:3,4);
+o4 = T4(1:3,4);
+o5 = T5(1:3,4);
+o6 = T6(1:3,4);
+
+% Calculate the Jacobian matrix
+J = [z0 z1 z2 cross(z3,(o6-o3)) cross(z4,(o6-o4)) cross(z5,(o6-o5)); zeros(3,1) zeros(3,1) zeros(3,1) z3 z4 z5];
+
+% Export to LaTeX
+latex(J)
