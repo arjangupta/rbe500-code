@@ -431,7 +431,7 @@
     We have determined $o_c$ as the wrist center. This is because joints 4, 5, 6 form a spherical wrist, and the z-axes
     of frames 3, 4, 5 intersect at $o_c$. Now let us proceed to Step 1.\\
 
-    \textbf{Step 1} - Find the wrist center\\
+    \textbf{Step 1} --- Find the wrist center\\
 
     The end-effector's homogeneous transformation is known to us as the $4\times4$ matrix
 
@@ -486,7 +486,7 @@
 
     Where $(l_5 + l_6)$ is a scalar.\\
     
-    \textbf{Step 2} - Find $q_1$, $q_2$, $q_3$.\\
+    \textbf{Step 2} --- Find $q_1$, $q_2$, $q_3$.\\
 
     In the figure we have drawn, we can see that \(x_c = -(d_3 + l_4)\), where $d_3$ is variable and $l_4$ is a constant. Therfore,
     \(d_3 = -x_c - l_4 = -(x_c + l_4)\).\\
@@ -499,6 +499,18 @@
         q_2 &= d_2 = -y_c = -y_6 + (l_5 + l_6)r_{23}\\
         q_3 &= d_3 = -(x_c + l_4) = -x_6 + (l_5 + l_6)r_{13} - l_4
     \end{align*}
+
+    \textbf{Step 3} --- Perform forward kinematics\\
+
+    We perform forward kinematics for the first three joint variables. We already found the table in Question 4 as well as $A_2$.
+    We write $A_1$ and $A_3$ as the following.
+    \[
+    A_1 = \begin{bmatrix} 1 & 0 & 0 & 0\\ 0 & 0 & -1 & 0\\ 0 & 1 & 0 & d_{1}\\ 0 & 0 & 0 & 1 \end{bmatrix}
+    ,
+    A_3 = \begin{bmatrix} 1 & 0 & 0 & 0\\ 0 & 1 & 0 & 0\\ 0 & 0 & 1 & d_{3}\\ 0 & 0 & 0 & 1 \end{bmatrix}
+    \]
+
+
 \end{homeworkProblem}
 
 \end{document}
