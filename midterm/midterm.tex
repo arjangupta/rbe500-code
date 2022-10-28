@@ -608,6 +608,36 @@
     information, and which segment of the matrix is used to obtain that information. (e.g. in your
     derivations you can say something like: “to calculate this expression, I would need $z^0_3$, which is
     available to me at the $3^{rd}$ column of $H^0_3$”).
+
+    \subsection{Solution}
+
+    \begin{figure}[h]
+        \includegraphics[scale=0.45]{q4_figure_sola.png}
+        \centering
+    \end{figure}
+
+    \begin{table}[h!]
+        \begin{center}
+            \begin{tabular}{|c|c|c|}
+            \hline
+            & Linear component & Angular component\\
+            \hline
+            Revolute joint & \(J_{v_i} = z^0_{i-1} \times (o^0_n - o^0_{i-1})\) & \(J_{v_i} = z^0_{i-1}\) \\
+            Prismatic joint & \(J_{\omega_i} = z^0_{i-1}\) & \(J_{\omega_i} = 0\)\\
+            \hline
+            \end{tabular}
+        \end{center}
+    \end{table}
+    
+    Using this table, and the fact that the upper half of the Jacobian contains linear components while the bottom half
+    contains angular components, we have
+    \[
+        J =
+        \begin{bmatrix}
+            z_0 & z_1 & z_2 & z_3 \times (o_6 - o_3) & z_4 \times (o_6 - o_4) & z_5 \times (o_6 - o_5) \\
+            0 & 0 & 0 & z_3 & z_4 & z_5
+        \end{bmatrix}
+    \]
 \end{homeworkProblem}
 
 \nobreak\extramarks{Question 7}{}\nobreak{}
