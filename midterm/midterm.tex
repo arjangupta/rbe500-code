@@ -817,7 +817,31 @@
 \pagebreak
 
 \begin{homeworkProblem}[Question 8]
-    
+    Consider your derivation in question 6 in which you
+    solved the Jacobian matrix parametrically. In this question you are expected to give the
+    numerical value of that Jacobian matrix when joint values are $q$ = [0,0,0.2,0,0,0]. You can
+    assume link lengths as 1.\\
+    Tip: For achieving this, you will need to calculate the forward kinematics numerically as well.
+    Use a tool like Matlab (or any other) to obtain such numerical values.
+
+    \subsection{Solution}
+
+    Let us modify our MATLAB script from Question 6 accordingly to compute the Jacobian in numerical form.
+    \lstinputlisting{prob8_midterm.m}
+    \vspace{0.15in}
+    The script outputs the following matrix for J.
+
+    \[
+        J =
+        \begin{bmatrix}
+         0 &        0 &  -1.0000 &        0  &       0 &        0\\
+         0 &  -1.0000 &        0 &        0  &       0 &        0\\
+    1.0000 &        0 &        0 &  -1.0000  &  1.0000 &        0\\
+         0 &        0 &        0 &  -1.0000  &       0 &  -1.0000\\
+         0 &        0 &        0 &        0  &  1.0000 &        0\\
+         0 &        0 &        0 &        0  &       0 &        0
+        \end{bmatrix}
+    \]
 \end{homeworkProblem}
 
 \end{document}
