@@ -14,6 +14,7 @@
 \usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
 \usepackage{listings}
 \usepackage{empheq}
+\usepackage{enumitem}
 
 \graphicspath{{./images/}}
 
@@ -593,6 +594,82 @@
         \end{split}
     \]
 
+\end{homeworkProblem}
+
+\nobreak\extramarks{Question 6}{}\nobreak{}
+
+\pagebreak
+
+\begin{homeworkProblem}[Question 6]
+    Calculate Jacobian matrix for the manipulator in Question 4. Assume that all the forward
+    kinematics information is available (i.e.\ all homogenous transformation matrices). Since there
+    are no values given, you will be deriving your Jacobian matrix parametrically, but please be sure
+    to explicitly show which homogeneous transformation matrix is required for the corresponding
+    information, and which segment of the matrix is used to obtain that information. (e.g. in your
+    derivations you can say something like: “to calculate this expression, I would need $z^0_3$, which is
+    available to me at the $3^{rd}$ column of $H^0_3$”).
+\end{homeworkProblem}
+
+\nobreak\extramarks{Question 7}{}\nobreak{}
+
+\pagebreak
+
+\begin{homeworkProblem}[Question 7]
+    The dynamic system below
+    \[a\ddot{x} + b\dot{x} + c{x} = u\]
+    Here u is the force applied to the system, x is the position of the system. $a$, $b$, and $c$ are model
+    parameters all of which are constant. There parameters are
+     
+    \[a = 10, b = 3.5, c = 0.6\]
+
+    \begin{enumerate}[label= (\alph*)]
+    \item (5 pts) Find the open loop transfer function for this system, i.e. $\frac{X(s)}{U(s)}$ in laplace domain.
+    \item (3 pts) Draw a block diagram of a closed loop system with a PD controller for controlling the position of the system. Explicitly write the transfer functions (Laplace domain) of the system and the PD controller inside the blocks (leave $K_p$ and $K_d$ as parameters).
+    \item (5 pts) Derive the closed loop transfer function i.e. $\frac{x}{x_r}$, where $x_r$ is the position reference signal.
+    \item (7pts) Find the values of the $K_p$ and $K_d$ gains for a critically damped system with 2 seconds settling time.
+    \end{enumerate}
+    Show all your steps explicitly.
+
+    \subsection{Solution for 7(a)}
+
+    Transform the system model to Laplace domain on both sides,
+    \begin{align*}
+        \mathcal{L}\{a\ddot{x} + b\dot{x} + c{x}\} &= \mathcal{L}\{u\}\\
+        a X(s) s^2 + b X(s) s + c X(s) &= U(s)\\
+        X(s)[a s^2 + b s + c] &= U(s)\\
+    \end{align*}
+    Therefore,
+    \[\boxed{\frac{X(s)}{U(s)}=\frac{1}{a s^2 + b s + c}}\]
+
+    \subsection{Solution for 7(b)}
+
+    First let us find the transfer function for the controller. Let our PD controller model be
+    \[K_p e + K_d \dot{e} = u\]
+    Transform to Laplace domain,
+    \begin{align*}
+        K_p E(s) + K_d E(s) s &= U(s)\\
+        E(s) [K_p + K_d s] &= U(s)
+    \end{align*}
+    Therefore, the transfer function for the PD controller is
+    \[
+        \frac{U(s)}{E(s)}=K_p + K_d s
+    \]
+
+    Now we can draw the block diagram, as shown on the next page.
+
+    \begin{figure}
+        \includegraphics[scale=0.4]{q7_figure.png}
+        \centering
+    \end{figure}
+
+\end{homeworkProblem}
+
+\nobreak\extramarks{Question 8}{}\nobreak{}
+
+\pagebreak
+
+\begin{homeworkProblem}[Question 8]
+    
 \end{homeworkProblem}
 
 \end{document}
