@@ -1,0 +1,276 @@
+\documentclass{article}
+
+\usepackage{fancyhdr}
+\usepackage{extramarks}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
+\usepackage{algpseudocode}
+\usepackage{graphicx}
+\usepackage{gensymb}
+\usepackage{calc}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+\usepackage{listings}
+\usepackage{empheq}
+\usepackage{enumitem}
+
+\graphicspath{{./images/}}
+
+\usetikzlibrary{automata,positioning}
+
+%
+% Basic Document Settings
+%
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
+%
+% Create Problem Sections
+%
+
+\newcommand{\enterProblemHeader}[1]{
+    \nobreak\extramarks{}{Problem {#1} continued on next page\ldots}\nobreak{}
+    \nobreak\extramarks{{#1} (continued)}{{#1} continued on next page\ldots}\nobreak{}
+}
+
+\newcommand{\exitProblemHeader}[1]{
+    \nobreak\extramarks{{#1} (continued)}{{#1} continued on next page\ldots}\nobreak{}
+    % \stepcounter{#1}
+    \nobreak\extramarks{{#1}}{}\nobreak{}
+}
+
+\setcounter{secnumdepth}{0}
+\newcounter{partCounter}
+
+\newcommand{\problemNumber}{0.0}
+
+\newenvironment{homeworkProblem}[1][-1]{
+    \renewcommand{\problemNumber}{{#1}}
+    \section{\problemNumber}
+    \setcounter{partCounter}{1}
+    \enterProblemHeader{\problemNumber}
+}{
+    \exitProblemHeader{\problemNumber}
+}
+
+%
+% Homework Details
+%   - Title
+%   - Class
+%   - Author
+%
+
+\newcommand{\hmwkTitle}{Homework\ \#6}
+\newcommand{\hmwkClass}{RBE 500}
+\newcommand{\hmwkAuthorName}{\textbf{Arjan Gupta}}
+
+%
+% Title Page
+%
+
+\title{
+    \vspace{2in}
+    \textmd{\textbf{\hmwkClass\ \hmwkTitle}}\\
+    \vspace{3in}
+}
+
+\author{\hmwkAuthorName}
+\date{}
+
+\renewcommand{\part}[1]{\textbf{\large Part \Alph{partCounter}}\stepcounter{partCounter}\\}
+
+%
+% Various Helper Commands
+%
+
+% Useful for algorithms
+\newcommand{\alg}[1]{\textsc{\bfseries \footnotesize #1}}
+
+% For derivatives
+\newcommand{\deriv}[2]{\frac{\mathrm{d}}{\mathrm{d}#2} \left(#1\right)}
+
+% For compact derivatives
+\newcommand{\derivcomp}[2]{\frac{\mathrm{d}#1}{\mathrm{d}#2}}
+
+% For partial derivatives
+\newcommand{\pderiv}[2]{\frac{\partial}{\partial #2} \left(#1\right)}
+
+% For compact partial derivatives
+\newcommand{\pderivcomp}[2]{\frac{\partial #1}{\partial #2}}
+
+% Integral dx
+\newcommand{\dx}{\mathrm{d}x}
+
+% Alias for the Solution section header
+\newcommand{\solution}{\textbf{\large Solution}}
+
+% Probability commands: Expectation, Variance, Covariance, Bias
+\newcommand{\E}{\mathrm{E}}
+\newcommand{\Var}{\mathrm{Var}}
+\newcommand{\Cov}{\mathrm{Cov}}
+\newcommand{\Bias}{\mathrm{Bias}}
+
+\newlength\dlf% Define a new measure, dlf
+\newcommand\alignedbox[2]{
+% Argument #1 = before & if there were no box (lhs)
+% Argument #2 = after & if there were no box (rhs)
+&  % Alignment sign of the line
+{
+\settowidth\dlf{$\displaystyle #1$}  
+    % The width of \dlf is the width of the lhs, with a displaystyle font
+\addtolength\dlf{\fboxsep+\fboxrule}  
+    % Add to it the distance to the box, and the width of the line of the box
+\hspace{-\dlf}  
+    % Move everything dlf units to the left, so that & #1 #2 is aligned under #1 & #2
+\boxed{#1 #2}
+    % Put a box around lhs and rhs
+}
+}
+
+\begin{document}
+
+\maketitle
+
+\nobreak\extramarks{Question 1}{}\nobreak{}
+
+\pagebreak
+
+\begin{homeworkProblem}[Question 1]
+    Consider the following robot joint model
+    \[J\ddot{\theta}(t) + B\dot{\theta}(t) = u(t) + d(t)\]
+    where $J$ is the inertia of the link, $B$ is the effective damping on the link, $\theta$ is the joint angle, $u$ is 
+    the actuator torque (input), and $d$ is the disturbance acting on the system.
+    \vspace{0.15in}\\
+    First, assume that disturbance is zero and take \(J = 2\), \(B = 0.5\). Design a PD 
+    controller such that the closed loop system is critically damped, and settling time is 2 second. Do 
+    not do this by tuning the gains;  calculate  the  $K_p$  and  $K_d$  gains  using  natural  frequency  and 
+    damping ratio.
+
+    \subsection{Solution}
+    Since $d(t) = 0$, \(J = 2\), \(B = 0.5\), we have
+
+    \[2 \ddot{\theta}(t) + 0.5 \dot{\theta}(t) = u(t)\]
+
+    Transform to Laplace domain,
+
+    \begin{align*}
+        2 \Theta(s) s^2 + 0.5 \Theta(s) s &= U(s)\\
+        \Theta(s) [2s^2 + 0.5s] &= U(s)\\
+        \frac{\Theta(s)}{U(s)} &= \frac{1}{2s^2 + 0.5s}
+    \end{align*}
+
+    So our charateristic equation is,
+    \begin{align*}
+        2s^2 + 0.5s = 0\\
+        s^2 + 0.25s = 0\\
+    \end{align*}
+    The general form of the charateristic equation is
+    \[s^2 + (2\xi\omega_n)s + {\omega_n}^2 = 0\]
+    Where $\xi$ is the damping ratio and $\omega_n$ is the natural frequency.
+    \vspace*{0.3in}\\
+    Hence, we have,
+    \begin{equation}
+        {\omega_n}^2 = 0
+    \end{equation}
+    and
+    \begin{equation}
+        2\xi\omega_n = \frac{3.5 + K_d}{10}
+    \end{equation}
+\end{homeworkProblem}
+
+\nobreak\extramarks{Question 2}{}\nobreak{}
+
+\pagebreak
+
+\begin{homeworkProblem}[Question 2]
+    Find the coordinates of point $p$ expressed in frame 1 (i.e. $p^1$) given the following.
+
+    \[H^2_1 = \begin{bmatrix}
+        1 & 0 & 0 & -1\\
+        0 & 0.9553 & 0.2955 & -0.9553\\
+        0 & -0.2955 & 0.9553 & 0.2955\\
+        0 & 0 & 0 & 1
+    \end{bmatrix},\text{   } p^2 = \begin{bmatrix}
+        2\\
+        5\\
+        0
+    \end{bmatrix}\]
+
+    \subsection{Solution}
+
+    From our knowledge of homogeneous transformations, we know that
+
+    \[P^2 = H^2_1 P^1\]
+
+    Where
+    \(P^2 = \begin{bmatrix}
+        p^2\\
+        1
+    \end{bmatrix}\) and \(P^1 = \begin{bmatrix}
+        p^1\\
+        1
+    \end{bmatrix}\).\\
+
+    However, we want to find $P^1$, so we apply the inverse of H to both sides,
+
+    \begin{align*}
+        P^2 &= H^2_1 P^1\\
+        {(H^2_1)}^{-1}P^2 &= P^1
+    \end{align*}
+
+    We know that \(H^2_1 = \begin{bmatrix}
+        R^2_1 & d^2_1\\
+        0 & 1
+    \end{bmatrix}\), where \(R^2_1 = \begin{bmatrix}
+        1 & 0 & 0\\
+        0 & 0.9553 & 0.2955\\
+        0 & -0.2955 & 0.9553
+    \end{bmatrix}\) and \(d^2_1 = \begin{bmatrix}
+        -1\\
+        -0.9553\\
+        0.2955
+    \end{bmatrix}\).\\
+    \vspace{0.15in}\\
+    For accuracy while computing the inverse of $H^2_1$, we use equation 2.67 of the book (page 63).
+    Therefore, \[{(H^2_1)}^{-1} = \begin{bmatrix}
+        {(R^2_1)}^T & -{(R^2_1)}^T d^2_1\\
+        0 & 1
+    \end{bmatrix}\].
+    We use the following MATLAB code for this computation.
+    % \lstinputlisting{prob2_midterm.m}
+    % H2_1 = [1 0 0 -1; 0 0.9553 0.2955 -0.9553; 0 -0.2955 0.9553 0.2955; 0 0 0 1];
+    % inv(H2_1)*P2
+
+    Which gives us the answer,
+
+    \[
+        \boxed{p^1 = \begin{bmatrix}
+            3.0000\\
+            5.7764\\
+            1.4775
+        \end{bmatrix}}
+    \]
+\end{homeworkProblem}
+
+\end{document}
