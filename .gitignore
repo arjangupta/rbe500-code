@@ -20,6 +20,7 @@
 *.synctex.gz
 *.synctex.gz(busy)
 *.pdfsync
+*-eps-converted-to.pdf
 
 # Ignore manually added mcode.sty
 mcode.sty
