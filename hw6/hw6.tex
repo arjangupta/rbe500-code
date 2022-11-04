@@ -451,4 +451,33 @@
     Therefore, the steady state error is \(0.95455 - 1 = \boxed{-0.04545}\), or a \(\boxed{-4.545\%}\) error.
 \end{homeworkProblem}
 
+\nobreak\extramarks{Question 4}{}\nobreak{}
+
+\pagebreak
+
+\begin{homeworkProblem}[Question 5]
+    Keeping the disturbance the same, add the integral term to your controller 
+    (using  the  integral  Simulink  blocks)  and  tune  the  P,  I  and  D  gains  to  obtain  the  desired 
+    performance and remove the steady state error even under the disturbance effect. Report the 
+    current $K_p$, $K_d$ and $K_i$ values together with your new plot.  
+
+    \subsection{Solution}
+
+    First, we edit our MATLAB script so that it looks as follows.
+
+    \lstinputlisting{hw6_q5.m}
+
+    \vspace{0.15in}
+
+    Now we edit our Simulink block diagram so that it looks as follows (Figure 9).
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.59]{hw6_system_pid}
+        \vspace*{-7mm}
+        \caption{Block diagram with PID controller}
+    \end{figure}
+
+\end{homeworkProblem}
+
 \end{document}
