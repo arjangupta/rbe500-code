@@ -366,7 +366,34 @@
     It is clear from this plot that the system's response enters the 2\% tolerance zone (i.e., above 0.98 and below 1.02) at 4.2 seconds.
     Therefore, the settling time $T_s$ is 2.919 seconds.\\
     \vspace{0.05in}\\
-    Now we manually tune our $K_p$ and $K_d$ values to achieve our goal settling time of 2 seconds.
+    Now we take the following steps to manually tune our $K_p$ and $K_d$ values to achieve our goal settling time of 2 seconds.
+
+    \begin{itemize}
+        \item First $K_p$ was increased to 10. This decreased the settling time to about 2.2 seconds with no overshoot.
+        \item Then $K_p$ was incrased to 12. This decreased the settling time to about 1.6 seconds but introduced an overshoot of about 1\%.
+        \item $K_p$ was reduced to 11. This decreased the settling time to 1.8, and reduced overshoot to 0.5\%.
+        \item Next, we increased $K_d$ to 15. This drastically worsened our settling time (around 4 sec) while removing the overshoot.
+        \item $K_d$ was then decreased to 6. This decreased our settling time to 1.3, and caused an overshoot of 5\%.
+        \item We then set $K_d$ to 8. This decreased our overshoot to about 0.1\%, and decreased our settling time to 2.034 seconds.
+    \end{itemize}
+
+    Therefore, by tuning our controller gains to \(\boxed{K_p = 11}\) and \(\boxed{K_d = 8}\), we have achieved an improved controller.\\
+    \vspace{0.1in}\\
+    The following plots show the improved system response and settling-time of the system.
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.4]{q3_tuned_whole}
+        \vspace*{-2mm}
+        \caption{Tuned system reponse for Question 3}
+    \end{figure}
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.33]{q3_tuned_settling}
+        \vspace*{-2mm}
+        \caption{Zoomed-in plot to show settling time for Question 3}
+    \end{figure}
     
 \end{homeworkProblem}
 
