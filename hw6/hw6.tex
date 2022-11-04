@@ -397,4 +397,43 @@
     
 \end{homeworkProblem}
 
+\nobreak\extramarks{Question 4}{}\nobreak{}
+
+\pagebreak
+
+\begin{homeworkProblem}[Question 4]
+    Now add a constant disturbance to the system, (Please check the lecture 
+    slides for where to add this disturbance from to your simulink block diagram), by using “constant” 
+    block from “Sources”. Assign the value $D$ to the block. Define this same parameter in the script 
+    and set its value to $D = 0.5$. Provide the plot for theta with the same gain values to the previous 
+    question. You will see some steady state error. Report the amount of steady state error. 
+
+    \subsection{Solution}
+    Our new block diagram, with disturbance $D$ added, is shown in Figure 6.
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.59]{hw6_system_disturbed}
+        \vspace*{-7mm}
+        \caption{Block diagram with disturbance}
+    \end{figure}
+
+    At this point, our MATLAB script looks as follows.
+
+    \lstinputlisting{hw6_q4.m}
+
+    \vspace{0.15in}
+
+    Now we run our simulation again, and obtain the plot shown on the next page (Figure 7).
+
+    \vspace{3in}
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.4]{q4_disturbance_plot}
+        \vspace*{-2mm}
+        \caption{Disturbed system reponse for Question 4}
+    \end{figure}
+\end{homeworkProblem}
+
 \end{document}
