@@ -278,32 +278,67 @@
 
 \begin{homeworkProblem}[Question 2]
     Follow steps in the assignment PDF file. Explain the process and be sure to include the plot to your report.
+    \vspace{0.2in}
 
     \subsection{Solution}
 
     First we write the following MATLAB script that contains the system and controller values of the closed loop system. 
     Here, $J$ is the intertia of the link in the system model, $B$ is the effective damping on the link in the system model,
-    $K_p$ is the proportional gain for the controller, and $K_d$ is the derivative gain for the controller.  
+    $K_p$ is the proportional gain for the controller, and $K_d$ is the derivative gain for the controller.
 
     \lstinputlisting{hw6_q2.m}
 
-    Next, we run our script so that the variables are loaded into our base workspace in MATLAB. We then type \lstinline{simulink}
+    \vspace{0.15in}
 
-    \begin{figure}[h]
+    Next, we run our script so that the variables are loaded into our base workspace in MATLAB.\@ We then type \lstinline{simulink}
+    into the MATLAB command window to launch Simulink. Now we use the Library Browser to begin to construct our closed-loop block diagram.
+    Our process is as follows:
+    \vspace{0.15mm}
+    \begin{itemize}
+        \item First, we choose the step function as the input block.
+        \item Then we choose gain blocks to construct our PD controller. By double-clicking on the gain blocks, we are able to indicate 
+        the variables \lstinline{K_p} and \lstinline{K_d} from our base worksapce. In the case of \lstinline{K_d}, we also add a derivative
+        block before the gain block.
+        \item Now we add a summation block to add these gains.
+        \item Next, we add a transfer function block and write $[J \hspace{1mm} B \hspace{1mm} 0]$ in the denominator to accurately represent our transfer function.
+        \item Now we connect the output of the controller summation into our system model.
+        \item We can now add a scope to monitor the output of our controlled system. We connect the transfer function output to the scope.
+        \item Now we add a summation after the input, and edit it by double-clicking the summation and making sure it says $| \hspace{1mm} + \hspace{1mm} -$.
+        \item We can now represent our feedback error. For this, we right-click the connector leading to the scope, and draw a line into the minus part of the summation after the input.
+        \item The input is fed into the plus part of the summation right after the input, so we draw that connector.
+        \item Finally, the output of the summation right after the input feeds into our controller.
+        \item Now our closed loop system is ready to run. We click the play button to run the simulation.
+        \item Our plot is now ready, which can be viewed by double-clicking the scope block.
+    \end{itemize}
+
+    \vspace{0.15in}
+
+    Figure 1 below shows the end-result of the closed loop system we constructed in Simulink.
+
+    \begin{figure}[h!]
         \centering
         \includegraphics[scale=0.59]{hw6-q2-block-diagram.pdf}
         \vspace*{-7mm}
-        \caption*{Block diagram for Question 2}
+        \caption{Block diagram for Question 2}
     \end{figure}
 
-    After constructing the system model, we obtained the following plot.
+    \vspace{0.15mm}
+    After constructing the block diagram, we obtained the following plot (Figure 2).
 
     \begin{figure}[h]
         \centering
         \includegraphics[scale=0.5]{hw6_q2_figure}
         \vspace*{-2mm}
-        \caption*{Generated plot for Question 2}
+        \caption{Generated plot for Question 2}
     \end{figure}
+\end{homeworkProblem}
+
+\nobreak\extramarks{Question 3}{}\nobreak{}
+
+\pagebreak
+
+\begin{homeworkProblem}[Question 3]
+    
 \end{homeworkProblem}
 
 \end{document}
