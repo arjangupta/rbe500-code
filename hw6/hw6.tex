@@ -338,6 +338,31 @@
 \pagebreak
 
 \begin{homeworkProblem}[Question 3]
+
+    You may have noticed that the system performance (overshoot and 
+    settling  time)  is  quite  close  to  your  goal,  but  it  might  not  be  exactly  there.  Report  the  current 
+    settling time in your report (you may need to zoom in to the plot to see the exact settling time). 
+    This  is  because  the  equations  defining  the  relations  between  the  damping  ratio,  natural 
+    frequency, settling time and overshoot, are approximations, not exact relations. Specifically, the 
+    settling time equation is only accurate when damping ratio is $\ll 1$. Now, tune the values of $K_p$ 
+    and $K_d$ so that you get closer to your goal performance. Please remember the $K_p$ and $K_d$ to the 
+    system  performance  from  our  slides  and  discussions.  Explain  your  process  and  include  a  plot 
+    showing the results after tuning. If your values have already been good and do not require tuning, 
+    report that as well.
+
+    \subsection{Solution}
+
+    When we zoom into the plot we obtained in Question 2, we get the following plot (Figure 3).
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.5]{hw6_q3_graph}
+        \vspace*{-2mm}
+        \caption{Zoomed-in plot for Question 3}
+    \end{figure}
+
+    It is clear from this plot that the system's response enters the 2\% tolerance zone (i.e., above 0.98 and below 1.02) at 4.2 seconds.
+    Therefore, the settling time $T_s$ is 4.2 seconds.
     
 \end{homeworkProblem}
 
