@@ -26,3 +26,9 @@ mcode.sty
 
 # Ignore MATLAB's auto-save file
 *.asv
+
+# Simulink code generation folders
+slprj/
+
+# Simulink cache files
+*.slxc
