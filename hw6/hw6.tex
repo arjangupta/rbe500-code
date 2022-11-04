@@ -15,7 +15,7 @@
 \usepackage{listings}
 \usepackage{empheq}
 \usepackage{enumitem}
-\usepackage{caption}
+\usepackage[font=footnotesize]{caption}
 
 \graphicspath{{./images/}}
 
@@ -281,19 +281,27 @@
 
     \subsection{Solution}
 
+    First we write the following MATLAB script that contains the system and controller values of the closed loop system. 
+    Here, $J$ is the intertia of the link in the system model, $B$ is the effective damping on the link in the system model,
+    $K_p$ is the proportional gain for the controller, and $K_d$ is the derivative gain for the controller.  
+
+    \lstinputlisting{hw6_q2.m}
+
+    Next, we run our script so that the variables are loaded into our base workspace in MATLAB. We then type \lstinline{simulink}
+
     \begin{figure}[h]
         \centering
-        \includegraphics[scale=0.59]{cropped.pdf}
-        \vspace*{-3mm}
+        \includegraphics[scale=0.59]{hw6-q2-block-diagram.pdf}
+        \vspace*{-7mm}
         \caption*{Block diagram for Question 2}
     \end{figure}
 
-    After constructing the system model, here is the plot we obtained.
+    After constructing the system model, we obtained the following plot.
 
     \begin{figure}[h]
         \centering
         \includegraphics[scale=0.5]{hw6_q2_figure}
-        \vspace*{-5mm}
+        \vspace*{-2mm}
         \caption*{Generated plot for Question 2}
     \end{figure}
 \end{homeworkProblem}
