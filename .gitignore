@@ -31,5 +31,6 @@ mcode.sty
 # Simulink code generation folders
 slprj/
 
-# Simulink cache files
+# Simulink cache & autosave files
 *.slxc
+*.slx.autosave

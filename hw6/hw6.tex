@@ -295,7 +295,7 @@
     Our process is as follows:
     \vspace{0.15mm}
     \begin{itemize}
-        \item First, we choose the step function as the input block.
+        \item First, we choose the step function as the input block. We double-click on this block and set the step time as 0 instead of 1, because we want to provide an instantaneous signal.
         \item Then we choose gain blocks to construct our PD controller. By double-clicking on the gain blocks, we are able to indicate 
         the variables \lstinline{K_p} and \lstinline{K_d} from our base worksapce. In the case of \lstinline{K_d}, we also add a derivative
         block before the gain block.
@@ -303,10 +303,12 @@
         \item Next, we add a transfer function block and write $[J \hspace{1mm} B \hspace{1mm} 0]$ in the denominator to accurately represent our transfer function.
         \item Now we connect the output of the controller summation into our system model.
         \item We can now add a scope to monitor the output of our controlled system. We connect the transfer function output to the scope.
-        \item Now we add a summation after the input, and edit it by double-clicking the summation and making sure it says $| \hspace{1mm} + \hspace{1mm} -$.
+        \item Now we add a summation after the input, and edit 22it by double-clicking the summation and making sure it says $| \hspace{1mm} + \hspace{1mm} -$.
         \item We can now represent our feedback error. For this, we right-click the connector leading to the scope, and draw a line into the minus part of the summation after the input.
         \item The input is fed into the plus part of the summation right after the input, so we draw that connector.
-        \item Finally, the output of the summation right after the input feeds into our controller.
+        \item The output of the summation right after the input feeds into our controller, so we draw that connector as well.
+        \item We are almost ready to run our simulation. However as explained in the lectures, in order to be more accurate, we want to edit the solver 
+        in our model settings such that the solver-selection is fixed-step, and ode3 (Bogacki-Shampine).
         \item Now our closed loop system is ready to run. We click the play button to run the simulation.
         \item Our plot is now ready, which can be viewed by double-clicking the scope block.
     \end{itemize}
@@ -362,11 +364,9 @@
     \end{figure}
 
     It is clear from this plot that the system's response enters the 2\% tolerance zone (i.e., above 0.98 and below 1.02) at 4.2 seconds.
-    Therefore, the settling time $T_s$ is 4.2 seconds.\\
+    Therefore, the settling time $T_s$ is 2.919 seconds.\\
     \vspace{0.05in}\\
-    Now we write the following script to tune our $K_p$ and $K_d$ values.
-
-    
+    Now we manually tune our $K_p$ and $K_d$ values to achieve our goal settling time of 2 seconds.
     
 \end{homeworkProblem}
 
