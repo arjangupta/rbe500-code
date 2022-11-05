@@ -495,13 +495,31 @@
         \item Upon decreased $K_i$ to 15, we shrunk our oscillations and dereased settling time, but to performance was still poor.
         \item Upon decreasing $K_i$ to 1, we removed oscillations but now saw a positive error in steady state.
         \item Upon decreasing $K_i$ to 0.75, we saw a lower postive steady-state error with no oscillation.
-        \item For $K_i = 6$ we had no steady state error and no oscillation. However our settling time was now 2.15 seconds.
+        \item For $K_i = 6$ we had negligible steady state error and no oscillation. However our settling time was now 2.15 seconds.
         \item We now start to slightly increase $K_p$. We find that increasing in increments of 0.1 improved our results, until
         11.6, which put our settling time right before two. Hence, we chose 11.55 as a satisfactory value for $K_p$ because it puts our
         settling time at 2.01 seconds.
     \end{itemize}
 
-    Therefore, our new tuned values are \(\boxed{K_p = 11.55}\), \(\boxed{K_d = 8}\), and \(\boxed{K_i = 0.6}\).
+    Therefore, our new tuned values are \(\boxed{K_p = 11.55}\), \(\boxed{K_d = 8}\), and \(\boxed{K_i = 0.6}\).\\
+
+    The plots on the next page show the new overall system response (Figure 11) and the zoomed-in plot to show the settling time (Figure 12).
+
+    \vspace{3in}
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.4]{q5_tuned}
+        \vspace*{-2mm}
+        \caption{Tuned system response for PID controller}
+    \end{figure}
+
+    \begin{figure}[h]
+        \centering
+        \includegraphics[scale=0.4]{q5_settling_plot}
+        \vspace*{-2mm}
+        \caption{Zoomed in version of Figure 11, showing settling time of 2.01 seconds}
+    \end{figure}
 
 \end{homeworkProblem}
 
