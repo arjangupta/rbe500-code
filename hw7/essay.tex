@@ -1,13 +1,38 @@
-\documentclass[a4paper, 12pt]{article}
+\documentclass[12pt]{article}
 \usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
 \usepackage{graphicx}
 \usepackage{natbib}
+\usepackage{fancyhdr}
 \bibliographystyle{abbrvnat}
 \setcitestyle{authoryear,open={(},close={)}}
 
 \newcommand{\hmwkTitle}{Homework\ \#7}
 \newcommand{\hmwkClass}{RBE 500}
 \newcommand{\hmwkAuthorName}{\textbf{Arjan Gupta}}
+
+% Document settings
+
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1}
+
+\pagestyle{fancy}
+\lhead{\hmwkAuthorName}
+\chead{\hmwkClass\ \hmwkTitle}
+\rhead{\firstxmark}
+\lfoot{\lastxmark}
+\cfoot{\thepage}
+
+\renewcommand\headrulewidth{0.4pt}
+\renewcommand\footrulewidth{0.4pt}
+
+\setlength\parindent{0pt}
+
 
 % Title Page
 \title{
