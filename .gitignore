@@ -22,6 +22,14 @@
 *.pdfsync
 *-eps-converted-to.pdf
 
+## Bibliography auxiliary files (bibtex/biblatex/biber):
+*.bbl
+*.bcf
+*.blg
+*-blx.aux
+*-blx.bib
+*.run.xml
+
 # Ignore manually added mcode.sty
 mcode.sty
 
