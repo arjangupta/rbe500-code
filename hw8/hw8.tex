@@ -107,6 +107,33 @@ actions, which are given in the textbook/slides as the following.
 \end{align*}
 These are represented in my code as the following.
 \lstinputlisting[language=python, firstline=36, lastline=53]{hw8_bayes_filter.py}
+\vspace{0.15in}
+Next, I defined a data-only class called \lstinline{FilterIteration} to represent
+the filter iterations in a coherent manner.
+The data members of this class are
+simply \lstinline{self.action} and \lstinline{self.measurement}. In my main function,
+I defined a list of instances of this \lstinline{FilterIteration} class, as given in
+the prompt of this assignment. The list is shown below here.
+\lstinputlisting[language=python, firstline=102, lastline=108]{hw8_bayes_filter.py}
+\vspace{0.15in}
+I now began implementating my Bayes Filter algorithm. The algorithm is contained
+in the \lstinline{bayes_filter_algorithm()} function in my code. The code loops over
+all states of the door and performs the prediction step and correction step for
+each step. After these steps are done, the algorithm computes the normalizer,
+$\eta$, and updates the \lstinline{base_belief_list} for usage in the next iteration.\\
+\vspace{0in}\\
+The prediction and correction step in my algorithm make use of helper functions,
+named \lstinline{bf_predict_step()} and \lstinline{bf_correct_step()} respectively.
+The prediction step helper function loops over all states and sums the products 
+of the action-belief and base beliefs, as given in the pseudo-code algorithm in
+the lecture slides. The correction step helper function simply returns the product
+of the measurement belief and the prediction step result. This is also implemented
+as seen in the slides. The code snippet for my implementation of the algorithm is
+shown below here.
+\lstinputlisting[language=python, firstline=61, lastline=97]{hw8_bayes_filter.py}
+\vspace{0.15in}
+Finally, after we run our iterations through this algorithm, we get the following
+output.
 \lstinputlisting{hw8_output.txt}
 
 \end{document}
