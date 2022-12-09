@@ -3,6 +3,11 @@
 \usepackage{fancyhdr}
 \usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
 \usepackage{listings}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage[plain]{algorithm}
 
 \newcommand{\hmwkTitle}{Homework\ \#8}
 \newcommand{\hmwkClass}{RBE 500}
@@ -44,6 +49,7 @@
 \newcommand{\supercite}[1]{~{\textsuperscript{\cite{#1}}}}
 
 \begin{document}
+
 \maketitle
 
 \pagebreak
@@ -51,9 +57,28 @@
 \begin{center}
     \large\textbf{Bayes Filter Report}
 \end{center}
-
-Here, we describe the Bayes Filter implementation.\\
-\vspace{0in}\\
+I started my Bayes Filter implementation in a python file called
+\lstinline{hw8_bayes_filter.py}. At the top of the file, I added a \lstinline{VERBOSE}
+flag that helps me toggle on and off output that is helpful for debugging, but
+probably superfluous for the grader. I defined a list of states of the door,
+which are \textit{open} and \textit{closed}. I also defined the list of 
+`base' beliefs, which
+are given in the slides/textbook as the following.
+\begin{align*}
+    bel(X_0 = \mathbf{open})\;\; &=\;\; 0.5\\
+    bel(X_0 = \mathbf{closed})\;\; &=\;\; 0.5
+\end{align*}
+These are the initial beliefs (as denoted by $X_0$), which means that these values
+will adjust as the script runs through the iteration cases. In my code, these are
+simply a python list, followed by two helper functions. One helper function helps
+us print the current belief values.
+The other helper function makes sure our states, which are strings, are `mapped'
+to the belief values, and returns them as such.
+\lstinputlisting[language=python, firstline=8, lastline=25]{hw8_bayes_filter.py}
+\vspace{0.1in}
+Next, we start defining the helper function to get the belief values associated
+with the sensor, i.e. the measurement beliefs. In the slides, these are given
+as the following.
 \lstinputlisting{hw8_output.txt}
 
 \end{document}
