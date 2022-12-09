@@ -61,8 +61,12 @@ def bf_correct_step(state, measurement, prediction):
 
 # Implementation of the Bayes Filter algorithm
 def bayes_filter_algorithm(iteration: FilterIteration):
+    # Display information about current iteration case
     print(f'The given action is {iteration.action} and mesurement is {iteration.measurement}')
+    # Declare lists for each step
     predictions_list = []
+    correction_list = []
+    # Loop over [open, closed] to perform prediction and correction steps 
     for s in all_states:
         # Step 1 - prediction stage
         prediction = bf_predict_step(s, iteration.action)
@@ -73,6 +77,16 @@ def bayes_filter_algorithm(iteration: FilterIteration):
         correction = bf_correct_step(s, iteration.measurement, prediction=prediction)
         if VERBOSE:
             print(f'Correction for {s} is {correction}')
+        correction_list.append(correction)
+    # Use correction list to calculate normalizer
+    normalizer = 1/sum(correction_list)
+    if VERBOSE:
+        print(f'The normalizer is {normalizer}')
+    # Update beliefs
+    global base_belief_list 
+    base_belief_list = [b * normalizer for b in correction_list]
+    if VERBOSE:
+        print(f'The updated base beliefs are {base_belief_list[0]} and {base_belief_list[1]}')
 
 def main():
     print("Starting HW8 Bayes Filter")
