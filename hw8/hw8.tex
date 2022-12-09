@@ -75,10 +75,38 @@ us print the current belief values.
 The other helper function makes sure our states, which are strings, are `mapped'
 to the belief values, and returns them as such.
 \lstinputlisting[language=python, firstline=8, lastline=25]{hw8_bayes_filter.py}
-\vspace{0.1in}
-Next, we start defining the helper function to get the belief values associated
-with the sensor, i.e. the measurement beliefs. In the slides, these are given
+\vspace{0.15in}
+Next, I started defining the helper function to get the belief values associated
+with the sensor, i.e.\ the measurement beliefs. In the slides, these are given
 as the following.
+\begin{align*}
+    p(Z_t = \mathbf{sense\_open} \;|\; X_t = \mathbf{is\_open})\;\;&=\;\;0.6\\
+    p(Z_t = \mathbf{sense\_closed} \;|\; X_t = \mathbf{is\_open})\;\;&=\;\;0.4\\
+    p(Z_t = \mathbf{sense\_open} \;|\; X_t = \mathbf{is\_closed})\;\;&=\;\;0.2\\
+    p(Z_t = \mathbf{sense\_closed} \;|\; X_t = \mathbf{is\_closed})\;\;&=\;\;0.8\\
+\end{align*}
+Therfore, my helper function for the sensor is the following.
+\lstinputlisting[language=python, firstline=27, lastline=34]{hw8_bayes_filter.py}
+\vspace{0.15in}
+I used the condition on the right side of the probability statements to write the
+if-else logic branching in the helper function. For the sake of making sure that
+I only return a valid value from known strings, which are \lstinline{'open'} and
+\lstinline{'closed'}, I returned $0.0$ when any other string is retrieved.\\
+\vspace{0in}\\
+My next helper function is used for retrieving values associate beliefs with
+actions, which are given in the textbook/slides as the following.
+\begin{align*}
+    p(X_t = \mathbf{is\_open} \;|\; U_t = \mathbf{push},  X_{t\_1} = \mathbf{is\_open})\;\;&=\;\;1\\
+    p(X_t = \mathbf{is\_closed} \;|\; U_t = \mathbf{push},  X_{t\_1} = \mathbf{is\_open})\;\;&=\;\;0\\
+    p(X_t = \mathbf{is\_open} \;|\; U_t = \mathbf{push},  X_{t\_1} = \mathbf{is\_closed})\;\;&=\;\;0.8\\
+    p(X_t = \mathbf{is\_closed} \;|\; U_t = \mathbf{push},  X_{t\_1} = \mathbf{is\_closed})\;\;&=\;\;0.2\\
+    p(X_t = \mathbf{is\_open} \;|\; U_t = \mathbf{do\_nothing},  X_{t\_1} = \mathbf{is\_open})\;\;&=\;\;1\\
+    p(X_t = \mathbf{is\_closed} \;|\; U_t = \mathbf{do\_nothing},  X_{t\_1} = \mathbf{is\_open})\;\;&=\;\;0\\
+    p(X_t = \mathbf{is\_open} \;|\; U_t = \mathbf{do\_nothing},  X_{t\_1} = \mathbf{is\_closed})\;\;&=\;\;0\\
+    p(X_t = \mathbf{is\_closed} \;|\; U_t = \mathbf{do\_nothing},  X_{t\_1} = \mathbf{is\_closed})\;\;&=\;\;1
+\end{align*}
+These are represented in my code as the following.
+\lstinputlisting[language=python, firstline=36, lastline=53]{hw8_bayes_filter.py}
 \lstinputlisting{hw8_output.txt}
 
 \end{document}
