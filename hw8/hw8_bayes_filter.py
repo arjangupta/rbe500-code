@@ -1,7 +1,7 @@
 # This Python script implements the Bayes Filter for the iterations in HW8
 
 # Set verbosity flag
-VERBOSE = True
+VERBOSE = False
 
 # List of states
 all_states = ['open', 'closed']
@@ -9,6 +9,11 @@ all_states = ['open', 'closed']
 # These are the initial beliefs. As we run our 
 # iterations, these base beliefs change.
 base_belief_list = [0.5, 0.5]
+
+# Helper function for printing base beliefs
+def print_base_beliefs():
+    print(f'bel(open) = {base_belief_list[0]}')
+    print(f'bel(closed) = {base_belief_list[1]}')
 
 # Helper function to get "base" beliefs
 def get_base_belief(state) -> float:
@@ -62,7 +67,7 @@ def bf_correct_step(state, measurement, prediction):
 # Implementation of the Bayes Filter algorithm
 def bayes_filter_algorithm(iteration: FilterIteration):
     # Display information about current iteration case
-    print(f'The given action is {iteration.action} and mesurement is {iteration.measurement}')
+    print(f'The given action is {iteration.action} and given mesurement is {iteration.measurement}')
     # Declare lists for each step
     predictions_list = []
     correction_list = []
@@ -85,8 +90,6 @@ def bayes_filter_algorithm(iteration: FilterIteration):
     # Update beliefs
     global base_belief_list 
     base_belief_list = [b * normalizer for b in correction_list]
-    if VERBOSE:
-        print(f'The updated base beliefs are {base_belief_list[0]} and {base_belief_list[1]}')
 
 def main():
     print("Starting HW8 Bayes Filter")
@@ -99,12 +102,20 @@ def main():
         FilterIteration('do_nothing', 'open')
     ]
 
+    # Print initial beliefs
+    print(f'The initial beliefs are:')
+    print_base_beliefs()
+
     # Run the iteration cases
     iteration_number = 1
     for i in filter_iteration_list:
+        print('------------------------')
         print(f'Iteration {iteration_number}:')
         # Call the bayes filter for this iteration case
         bayes_filter_algorithm(i)
+        # Print the new beliefs
+        print(f'The updated beliefs are:')
+        print_base_beliefs()
         iteration_number += 1
 
 if __name__ == '__main__':
