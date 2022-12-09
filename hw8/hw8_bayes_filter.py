@@ -13,7 +13,23 @@ def get_measurement_belief(sense, measure) -> float:
         return 0.0
 
 def get_action_belief(prediction, action, last_known) -> float:
-    return 0.2
+    if action == 'open':
+        if last_known == 'open':
+            return 1.0 if prediction == 'open' else 0.0
+        elif last_known == 'closed':
+            return 0.8 if prediction == 'open' else 0.2
+        else:
+            return 0.0
+    elif action == 'do_nothing':
+        if last_known == 'open':
+            return 1.0 if prediction == 'open' else 0.0
+        elif last_known == 'closed':
+            return 0.0 if prediction == 'open' else 1.0
+        else:
+            return 0.0
+    else:
+        return 0.0
+
 
 def bayes_algorithm():
     pass
