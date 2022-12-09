@@ -17,7 +17,12 @@ def print_base_beliefs():
 
 # Helper function to get "base" beliefs
 def get_base_belief(state) -> float:
-    return 0.5 if state == 'open' or state == 'closed' else 0.0
+    if state == 'open':
+        return base_belief_list[0]
+    elif state == 'closed':
+        return base_belief_list[1]
+    else:
+        return 0.0
 
 # Helper function for retrieving measurement beliefs
 def get_measurement_belief(sense, true_state) -> float:
