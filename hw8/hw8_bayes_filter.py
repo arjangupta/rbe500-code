@@ -1,5 +1,23 @@
 # This Python script implements the Bayes Filter for the iterations in HW8
 
+# "Base" beliefs
+bel_open   = 0.5
+bel_closed = 0.5
+
+def get_measurement_belief(sense, measure) -> float:
+    if measure == 'open':
+        return 0.6 if sense == 'open' else 0.4
+    elif measure == 'closed':
+        return 0.2 if sense == 'open' else 0.8
+    else:
+        return 0.0
+
+def get_action_belief(prediction, action, last_known) -> float:
+    return 0.2
+
+def bayes_algorithm():
+    pass
+
 # Declare a data-only class for each filter iteration
 class FilterIteration():
     def __init__(self, action: str, measurement: str) -> None:
