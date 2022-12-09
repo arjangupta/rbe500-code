@@ -1,17 +1,24 @@
 # This Python script implements the Bayes Filter for the iterations in HW8
 
+# Set verbosity flag
+VERBOSE = True
+
 # List of states
 all_states = ['open', 'closed']
+# List of base beliefs for [open, closed]
+# These are the initial beliefs. As we run our 
+# iterations, these base beliefs change.
+base_belief_list = [0.5, 0.5]
 
 # Helper function to get "base" beliefs
 def get_base_belief(state) -> float:
     return 0.5 if state == 'open' or state == 'closed' else 0.0
 
 # Helper function for retrieving measurement beliefs
-def get_measurement_belief(sense, measure) -> float:
-    if measure == 'open':
+def get_measurement_belief(sense, true_state) -> float:
+    if true_state == 'open':
         return 0.6 if sense == 'open' else 0.4
-    elif measure == 'closed':
+    elif true_state == 'closed':
         return 0.2 if sense == 'open' else 0.8
     else:
         return 0.0
@@ -48,6 +55,10 @@ def bf_predict_step(state, action):
         sum += get_action_belief(prediction=state, action=action, last_known=s)*get_base_belief(state=s)
     return sum
 
+# Helper function for the correction stage of bayes filter
+def bf_correct_step(state, measurement, prediction):
+    return get_measurement_belief(sense=measurement, true_state=state)*prediction
+
 # Implementation of the Bayes Filter algorithm
 def bayes_filter_algorithm(iteration: FilterIteration):
     print(f'The given action is {iteration.action} and mesurement is {iteration.measurement}')
@@ -55,9 +66,13 @@ def bayes_filter_algorithm(iteration: FilterIteration):
     for s in all_states:
         # Step 1 - prediction stage
         prediction = bf_predict_step(s, iteration.action)
-        print(f'Prediction for {s} is {prediction}')
+        if VERBOSE:
+            print(f'Prediction for {s} is {prediction}')
         predictions_list.append(prediction)
         # Step 2 - correction stage
+        correction = bf_correct_step(s, iteration.measurement, prediction=prediction)
+        if VERBOSE:
+            print(f'Correction for {s} is {correction}')
 
 def main():
     print("Starting HW8 Bayes Filter")
