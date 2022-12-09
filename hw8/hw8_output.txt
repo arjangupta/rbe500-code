@@ -1,0 +1,35 @@
+---- Starting HW8 Bayes Filter ----
+
+The initial beliefs are:
+bel(open) = 0.5
+bel(closed) = 0.5
+------------------------
+Iteration 1:
+The given action is do_nothing and given mesurement is closed
+The updated beliefs are:
+bel(open) = 0.3333333333333333
+bel(closed) = 0.6666666666666666
+------------------------
+Iteration 2:
+The given action is open and given mesurement is closed
+The updated beliefs are:
+bel(open) = 0.7647058823529411
+bel(closed) = 0.23529411764705882
+------------------------
+Iteration 3:
+The given action is do_nothing and given mesurement is closed
+The updated beliefs are:
+bel(open) = 0.6190476190476191
+bel(closed) = 0.38095238095238093
+------------------------
+Iteration 4:
+The given action is open and given mesurement is open
+The updated beliefs are:
+bel(open) = 0.9732441471571905
+bel(closed) = 0.026755852842809368
+------------------------
+Iteration 5:
+The given action is do_nothing and given mesurement is open
+The updated beliefs are:
+bel(open) = 0.9909194097616345
+bel(closed) = 0.009080590238365497

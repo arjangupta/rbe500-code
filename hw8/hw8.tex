@@ -1,6 +1,8 @@
 \documentclass[12pt]{article}
 \usepackage{lipsum} %This package just generates Lorem Ipsum filler text. 
 \usepackage{fancyhdr}
+\usepackage[framed,numbered,autolinebreaks,useliterate]{mcode}
+\usepackage{listings}
 
 \newcommand{\hmwkTitle}{Homework\ \#8}
 \newcommand{\hmwkClass}{RBE 500}
@@ -47,17 +49,11 @@
 \pagebreak
 
 \begin{center}
-    \large\textbf{Discussion Essay}
+    \large\textbf{Bayes Filter Report}
 \end{center}
 
-\textit{Please write a two-page essay (excluding references) discussing the existing and potential 
-ethical issues in the application domain(s) of robotics you are interested in exploring in your 
-graduate study and future career.}\\
+Here, we describe the Bayes Filter implementation.\\
 \vspace{0in}\\
-In this essay, I will be exploring the ethical concerns surrounding the advent of autonomous vehicles.
-Specifically, I will focus on self-driving vehicles in the civilian space, such as cars, buses, and trucks.
-As for a geographical and cultural focus, this essay will mostly take on a perspective encapsulated by 
-transportation and traffic sensibilities within the United States of America.\\
-\vspace{0in}\\
+\lstinputlisting{hw8_output.txt}
 
 \end{document}
