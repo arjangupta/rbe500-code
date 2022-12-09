@@ -97,7 +97,7 @@ def bayes_filter_algorithm(iteration: FilterIteration):
     base_belief_list = [b * normalizer for b in correction_list]
 
 def main():
-    print("Starting HW8 Bayes Filter")
+    print("---- Starting HW8 Bayes Filter ----\n")
 
     filter_iteration_list = [
         FilterIteration('do_nothing', 'closed'),
